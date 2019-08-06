@@ -3,7 +3,7 @@ Shiny From Start To Finish
 
 ### rstudio::conf 2020
 
-by INSTRUCTOR_NAME
+by Danny Kaplan
 
 -----
 
