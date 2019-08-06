@@ -25,7 +25,8 @@ can remove these instructions from the README.
 
 ## Overview
 
-ABSTRACT
+Shiny is the leading R-based system for writing interactive web-based apps. These give your clients, users, or students the power and sophistication of R with a friendly, no-code interface custom designed to your purpose. The workshop will start at the beginning: designing and creating user interfaces, learning and mastering the reactive model that connects your R code to the interface, and deploying apps publicly and privately. Then we'll work with intermediate-level tools: communicating with outside files and databases, debugging, modularizing. You'll build a range of (closely related) app formats in wide use: interactive Rmd, browser-page apps, tutorials, and dashboards. In the end, you'll be a confident Shiny craftsperson, able to design interactive apps to achieve your purpose and produce a polished and professional implementation.
+
 
 ## Learning objectives
 
