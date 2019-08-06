@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Shiny From Start To Finish
 ================
 
 ### rstudio::conf 2020
