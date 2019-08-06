@@ -34,7 +34,7 @@ Workshop participants will learn to create and deploy a professional Shiny app f
 
 ## Is this course for me?
 
-THREE_QUESTIONS
+ADD THREE QUESTIONS
 
 ## Prework
 
