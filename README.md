@@ -30,7 +30,7 @@ Shiny is the leading R-based system for writing interactive web-based apps. Thes
 
 ## Learning objectives
 
-LEARNING_OBJECTIVES
+Workshop participants will learn to create and deploy a professional Shiny app from scratch.
 
 ## Is this course for me?
 
