@@ -1,0 +1,150 @@
+---
+title: "![San Francisco](images/title-slide.png)"
+output: 
+  revealjs::revealjs_presentation:
+    self_contained: false
+    reveal_plugins: ["notes", "search", "chalkboard", "menu"]
+---
+
+```{r child="page-definitions.Rmd"}
+```
+ 
+#   {data-background-image="./images/title-slide.png"}
+ 
+# Orientation  {data-background-image="./images/cityscape.png"}
+
+---
+
+1. Outline
+2. People
+3. Computer setup
+4. The workshop proper
+
+
+# Outline 
+
+```{r child="schedule.Rmd"}
+```
+
+# People
+
+```{r child="people.Rmd"}
+```
+
+#   {data-background-image="./images/sticky-notes.png"}
+
+#   {data-background-image="./images/workshop-policies.png"}
+
+# Computer Setup
+
+```{r child="computer-setup.Rmd"}
+```
+
+# File Organization
+
+```{r child="file_organization.Rmd"}
+```
+
+# What is a shiny app?
+
+```{r child="what-is-an-app.Rmd"}
+```
+
+
+
+
+
+# An introductory app {data-background-image="./images/cityscape.png"}
+
+```{r child="Project-0.Rmd"}
+```
+
+
+# Building a UI {data-background-image="./images/cityscape.png"}
+
+## Three conceptual levels
+
+It's helpful to divide the ideas behind implementing a UI into three conceptual levels.
+
+1. Instantiating input and output widgets
+2. Frameworks for layout
+3. Organizing *within* framework elements
+
+
+# Widgets
+
+```{r child="Projects/Project-1-UI/Project-1-slides.Rmd"}
+```
+
+# Frameworks & Layouts
+
+```{r child="UI-frameworks.Rmd"}
+```
+
+# Practice: Creating a UI
+
+```{r child="UI-tree-exercises.Rmd"}
+```
+
+# Project: Plot a data frame: UI components
+
+```{r child = "Project-5.Rmd"}
+```
+
+
+
+
+
+# Reactives {data-background-image="./images/cityscape.png"}
+
+```{r child="reactives.Rmd"}
+```
+
+# Debugging 
+
+```{r child="debugging.Rmd"}
+```
+
+# Avoiding loops: Updating inputs
+
+```{r child="values-and-inputs.Rmd"}
+```
+
+# Project: Plot a data frame: server components
+
+
+```{r child = "Project-5.Rmd"}
+```
+
+
+# Shiny documents
+
+Laying out an Rmd document: Big Mac?
+
+See prototype.Rmd under 06-design-ui
+
+# Flexdashboards
+
+apps/dashboards/flexdashboard_01.Rmd
+
+# TUESDAY
+
+# Deploy
+
+```{r child="deploy.Rmd"}
+```
+
+# Persistent storage
+
+```{r child="persistent.Rmd"}
+```
+
+# Prettifying your app
+
+```{r child="prettifying.Rmd"}
+```
+
+# Making Animated GIFS
+
+How to record a movie of interaction with an app.
+

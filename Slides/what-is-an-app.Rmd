@@ -1,0 +1,61 @@
+```{r child="page-definitions.Rmd"}
+```
+
+## Every Shiny App is a webpage
+
+<div class="container">
+<div class="col">
+![](images/app-is-webpage.png)
+</div>
+<div class="col2">
+**Included in the webpage:**
+
+a. HTML & CSS
+b. JavaScript
+
+**Behind the webpage:**
+
+a. An R session (on a computer)
+b. (optionally) Persistent storage
+</div>
+</div>
+
+## Creating an App involves {style="margin:0px;font-size:80%;"}
+
+**Behind the scenes**
+
+1. Write basic software to make graphs, access persistent storage, ...
+
+**From RStudio**
+
+2. Construct a user interface with Shiny functions
+3. Connect (1) to (2) with **reactive logic**
+
+**Deployment to server**
+
+Usually this is semi-automatic.
+
+In this workshop, you'll use ...
+
+- shinyapps.io
+- RStudio Connect
+
+## A metaphor ... *The Wizarding World*
+
+Two kinds of programming worlds in a Shiny app:
+
+<div class="container">
+<div class="col">
+1. **Muggle** world. 
+    - ordinary R programming: functions, packages, ...
+</div>
+<div class="col">
+2. **Wizard** world.
+    - reactives 
+    - functions without arguments
+    - values that can't be changed by normal assignment `<-`
+    - packaged in a "server" function (usually)
+</div>
+</div>
+    
+The wizard world can reach out to the Muggle world ... but not *vice versa*. 

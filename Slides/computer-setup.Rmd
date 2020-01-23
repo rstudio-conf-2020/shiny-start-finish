@@ -1,0 +1,53 @@
+
+ 
+## Computer Setup
+
+You'll need ...
+
+1. A **development** machine/server: RStudio
+2. A Shiny **server**
+
+## Development organization
+
+When running R on your own machine, the computer serving your app is your server.
+
+![](images/computer-is-server.png)
+
+Almost all  your time will be spent in this configuration, but it is exceptional.
+
+## Deployed app organization
+
+![](images/server-organization.png)
+
+Your development machine is not in the picture.
+
+## Set up your development server now
+
+<div class="container">
+<div class="col">
+Strongly recommended ... RStudio.cloud
+
+- This avoids possible problems with versions, installing packages, etc.
+- Follow this link: [rstudio.cloud/project/834721](https://rstudio.cloud/project/834721)  NEED TO UPDATE?
+</div>
+<div class="col">
+If you must use your own machine ...
+
+- Make new project from github.com/dtkaplan/Shiny2020
+- Be prepared to install packages. See `Packages-installed.R` in root directory of project.
+</div>
+</div>
+
+
+Navigate to `Projects/Project-1/app.R` NEED TO UPDATE?, open in editor, and run.
+
+## Now, set up your **deployment** server
+
+If you already have a Shiny server available, you can use that.
+
+Otherwise ...
+
+Go to `shinyapps.io` and set up a free account. 
+
+Use your Google credentials or something similar.
+

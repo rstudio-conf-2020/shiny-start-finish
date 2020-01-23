@@ -1,0 +1,74 @@
+## Our Workshop Materials
+
+```{r child="page-definitions.Rmd"}
+```
+
+A single R project, available as 
+    
+- A GitHub repo at <https://github.com/rstudio-conf-2020/shiny-start-finish> or the short-link [https://rstd.io/conf20-intro-shiny](https://rstd.io/conf20-intro-shiny).
+    - always up to date
+- An RStudio.cloud project clonable at <https://rstudio.cloud/project/834721>
+    - once you clone this, it won't be updated.
+    - you can clone a new one if you want.
+
+## The workshop's R project
+
+- Root directory
+    - **`Slides/`**
+        - Whole collection in `MAIN.html`/`MAIN.Rmd`
+        - Individual units in separate `.Rmd` files
+    - **`Projects/`**
+        - Separate directory for each project
+        - Some projects will span multiple sessions of this workshop, e.g. UI or server ...
+        - Work in the directory itself, modifying the files as need be.
+    - **`Sandbox/`**
+        - For impulsive short demos
+ 
+## **`Slides/`**  
+
+Almost all the slides are in individual topic-oriented files.
+
+- These are regular `.Rmd` files.
+- You may find these easier to follow (in `.html`) and make notes in (in `.Rmd`).
+- If you're not sure which file something is in, look in `MAIN.Rmd` or **ASK**.
+
+## Your turn
+
+1. Open up the project.
+2. In `Sandbox/`, open a blank shiny app.
+
+If you don't have a clear view of how to accomplish (2), ask a neighbor. But, as you'll see, I'll suggest another way.
+
+## Your turn ... but my way
+
+We'll do this particular one in **`Sandbox/`**
+
+1. Open an ordinary R script file
+2. Type `shinyapp` and leave the cursor after the final `p`
+3. Press Shift+Tab
+    - This will expand `shinyapp` into starting code.
+    - This is called a "[snippet](https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets)", but this is the only one we'll use.
+4. Save the script (say, `newapp.R`?) in the **`Sandbox/`** directory and run it. It should be a working Shiny app, but not an interesting one.
+5. Stop the app by pressing ![](images/stop.png).
+    
+## Why this way?
+
+`shinyapp` then Shift+Tab
+
+1. Avoids having to delete the boilerplate contents of `ui.R` and `server.R`.
+2. Takes away some of the atmosphere of magic.
+
+As you'll see, we will use magic as a metaphor, but nothing's really magic, just choices made by the Shiny designers (esp. Joe Cheng) to exploit built-in features of R to do non-R-like things.
+
+## Our unusual file organization
+
+We're going to do things in what will be an unfamiliar way.
+
+1. App `.R` files will be very short and can have any name, e.g. `app-first.R`, `app-second.R`, `calculator.R`, `chess.R`, ...
+2. The guts of the app will be in other `.R` files, with names like `server-part-1.R` or `ui-keyboard.R`, etc.
+
+This will break up code into manageable chunks.
+
+*Caveat for much later*: When we deploy the app to a server, we'll have to put it in its own directory and call it `app.R`.
+
+        

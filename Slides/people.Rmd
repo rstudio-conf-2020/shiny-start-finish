@@ -1,0 +1,86 @@
+## People
+
+Danny Kaplan | Sara Altman | Dean Attali | Randy Pruim | Homer White
+-------------|-------------|-------------|-------------|-------------|
+one | two | ![](images/dean_attali_2.jpg) | four | ![](images/Homer_White.jpg)
+
+Danny Kaplan
+---
+
+- Professor of Applied Math and Statistics at Macalester College
+- First use of R in a classroom in Western Hemisphere (likely)
+- First use of RStudio beyond JJ and Joe
+- First client for Shiny
+- Textbook Author
+     - [Statistical Modeling: A Fresh Approach]()
+     - [Data Computing]()
+     - [Stats for Data Science]()
+     - [Modern Data Science with R]()
+     - [Compact Guide]()
+
+
+Sara Altman
+---
+
+Something about Sara
+
+
+<style>
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+.col2{
+    flex: 2;
+}
+</style>
+
+Dean Attali
+---
+
+<div class="container">
+<div class="col">
+![](images/dean_attali.jpg)
+</div>
+
+<div class="col2">
+* *"I love shiny so much that I decided to make that my job."*
+* Creator of ["Shiny Case Studies"](https://www.datacamp.com/courses/building-web-applications-in-r-with-shiny-case-studies) course — an interactive, online video course
+* Second highest all-time answerer in the "shiny" tag on StackOverflow
+* *"If anybody needs any help with Shiny I'd be happy to talk."*
+</div>
+
+</div>
+
+Dean Attali, President & CEO     
+AttaliTech Ltd, <http://AttaliTech.com>
+
+Randy J. Pruim
+---
+
+Something about Randy
+
+Homer S. White
+---
+
+
+
+<div class="container">
+
+<div class="col">
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("images/Homer_White.jpg")
+```
+</div>
+
+<div class="col2">
+- Chair and professor of mathematics and computer science at, Georgetown College, a small liberal arts college in Kentucky.  
+- Teaches introductory computer science and data science with R 
+- Author of several R packages used in the teaching of undergraduate statistics
+- Early enthusiast of Shiny.
+
+</div>
+</div>
+Contact: 502-863-8307 `Homer_White@georgetowncollege.edu`

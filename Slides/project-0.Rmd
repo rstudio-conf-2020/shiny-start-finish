@@ -1,0 +1,167 @@
+```{r  include=FALSE}
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(DT)
+```
+
+# Writing our First App
+
+A simple app written in an unconventional way.
+
+It may look strange if you have already written Shiny apps.
+
+Meant to demonstrate the  full scope of app writing in a compact example.
+
+File in directory "Projects/Project-0"
+
+## The file, `app.R`  {style="color:blue;"}
+
+Everything is in this one file, but there's no requirement for that. 
+
+Alternatives:
+
+- separate `.R` files for the various components, sourced into `app.R` 
+- functions provided by a package
+- mix and match
+
+## `app.R` is an ordinary R script
+
+You can run in  the normal ways, e.g. cmd-p, source-button, ...
+
+Because of the call to `shinyApp()` (last line), the  RStudio IDE gives you a "Run" button. 
+
+But you can work with this file outside of RStudio if you wanted to.
+
+
+## Start in the Muggle world {style="margin:0px;font-size:80%;"}
+
+<div class="container">
+<div class="col">
+
+```{r echo=TRUE}
+## Muggle World
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(DT)
+
+muggle_plot <- function(xvar, yvar) {
+  ggplot(
+     diamonds %>% sample_n(size = 200), 
+     aes(x = !!xvar,  y  = !!yvar)) +
+  geom_point()
+}
+
+# test for Muggle functionality:
+# muggle_plot(as.name("cut"), 
+#             as.name("price"))
+```
+</div>
+<div class="col2">
+- Ordinary package  loading  with `library()`, then
+- Defines a function, `muggle_plot()`.
+     - since it's in the Muggle world, it's a perfectly ordinary function with arguments. 
+     - I  wrote it as a function because I know what's coming.
+</div>
+</div>
+ 
+- Even simple functions can be subtle (e.g. the `!!xvar`),  so be sure to test and  debug it in the Muggle world.
+
+**Your Turn**: Evaluate the first several lines of `app.R`, then run the test of `muggle_plot()`.
+
+## Specifications for User Interface {style="margin:0px;font-size:80%;"}
+
+<div class="container">
+<div class="colsmall">
+```{r echo = TRUE}
+user_interface <- tagList(
+  h2("A very basic Shiny App"),
+  p("This app demonstrates the split 
+    between the Muggle and Wizard worlds"),
+  actionButton("go", "Go!"),
+  plotOutput("main"),
+  textOutput("button_message")
+)
+```
+</div>
+<div class="col4">
+- The functions `tagList()`, `h2()`, and `p()` are from the `<htmltools>` package.
+- They are perfectly ordinary functions. They generate HTML -- essentially a character string.
+- The functions `actionButton()`, `plotOutput()`, and `textOutput()` are from the `<shiny>` package and are also  perfectly ordinary functions. They also generate HTML.
+</div>
+</div>
+
+**Your turn**: At the console, run one or more of the individual lines  in the user interface. What does the result look like?
+
+## The bridge from the Wizard world to the Muggle world {style="margin:0px;font-size:80%;"}
+
+I'm calling it `reactive_logic` but it's usually called "server".
+
+<div class="container">
+<div class="col">
+```{r echo=TRUE}
+reactive_logic <- function(input, output, session) {
+  output$main <- renderPlot(
+    muggle_plot(as.name("cut"), 
+                as.name("price"))
+  )
+  output$button_message <- renderText(
+    paste("You have pressed the button", input$go, 
+          "times.")
+  )
+}
+```
+</div>
+<div class="col3" style="font-size:90%">
+- arguments are always `input,  output, session`
+- the contents look  ordinary, but  they  are highly stylized:
+    - assignments  to `output[[`*name*`]]`
+    - calls `<shiny>` functions such as `render___()`. Others we will see: `observe()`, `react()`, `isolate()`, ...
+</div>
+</div>
+
+**Your turn**: At the console, run `renderText("hello")`. What's the value of this expression? Are their side effects?
+
+## Invoking the app {style="margin:0px;font-size:80%;"}
+
+<div class="container">
+<div class="col">
+A simple function call:
+
+```r
+shinyApp(user_interface, reactive_logic)
+```
+
+**Your turn**: Run it in  the console.
+</div>
+<div class="col">
+Uses the  objects we created: `user_interface` and `bridge`.
+
+**Your turn**:
+
+- What kind of objects are `user_interface` and `bridge`?
+    Hint: Use `class()`
+- What kind of object is produced by `shinyApp()`?
+    Hint: Name the object `hoo <-` and  look at the `class()`. Then  "print" it.
+</div>
+</div>
+
+
+## Modify the App
+
+**Your turn**:
+
+1. Don't display the button message until the button value is > 2.
+2. Add `selectInput()`s for the x-variable and y-variables.
+3. (Aspirational) Connect the x- and y-selectors to the plot. **Nota Bene: We haven't yet covered how to do this.**
+
+## Deploy the app
+
+With the `app.R` file open  for editing, press "Run App"
+
+You will be asked to set up some things  relative to your `ShinyApps.io` account.
+
+**Your turn**: Try to deploy the app. If you  succeed, you can be a resource for your neighbor who didn't have such good luck.
+
+If you don't succeed, ask a TA for help during a break. We're moving on and will return  to deployment tomorrow.
