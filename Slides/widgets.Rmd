@@ -1,0 +1,119 @@
+---
+title: "Widgets"
+---
+
+```{r child="page-definitions.Rmd"}
+```
+
+```{r  include=FALSE}
+library(shiny)
+library(dplyr)
+library(ggplot2)
+```
+
+
+
+
+## Project-1-build-UI  {style="margin:0px;font-size:90%;"}
+
+
+The file `app.R`:
+```{r eval=FALSE}
+library(shiny)
+
+source("muggle.R")
+source("UI_starting.R") # defines UI  <-
+
+Server <- function(input, output, session) {
+  source("Server.R", local = TRUE)
+}
+
+shinyApp(UI, Server)
+```
+
+**Your turn:** Open `app.R` and run the app. Exercise the inputs  around to confirm that they work.
+
+## The UI {style="margin:0px;font-size:80%;"}
+
+
+<div class="container">
+<div class="col2">
+<pre>
+UI <- tagList(
+  h1("A Bag of Widgets"),
+  p("Here are my widgets:"),
+  sliderInput("fred", "Value:", 
+              min=0, max=100, value=55),
+  selectInput("annie", "Pick an animal",
+              choices = c("antelope", "bear",
+                          "chicken", "dove")),
+  textOutput("felix"),
+  plotOutput("fiona")
+)
+</pre>
+</div>
+<div class="col">
+![](images/ui-taglist.png)
+</div>
+</div>
+
+**Question**: Why don't we see the `textOutput()` and `plotOutput()`?
+
+## Many Shiny inputs
+
+<div class="container">
+<div class="col">
+![](images/shiny-inputs-1.png)
+</div>
+<div class="col">
+![](images/shiny-inputs-2.png)
+</div>
+</div>
+
+## UI Outputs
+
+![](images/ui-outputs.png)
+
+## Project 1: Add UI inputs
+
+**Your turn:** 
+
+Add several of these widgets to your UI. Have fun with the choices. You can see code examples at [https://shiny.rstudio.com/gallery/widget-gallery.html](https://shiny.rstudio.com/gallery/widget-gallery.html)
+
+- actionLink
+- checkboxInput
+- checkboxGroupInput
+- radioButtons
+- passwordInput
+- textInput
+
+Verify that the UI works.
+
+## Your turn: display UI input values
+
+Preface: The `glue()` function is a nice way to embed values in strings.
+```{r}
+glue::glue("The value of 3 + 7 is {3+7}.")
+```
+
+**TASK**: Add an element to your server to display in `output$felix` a string with the values of the UI inputs you added. 
+
+
+## Widgets are HTML
+
+```r 
+actionButton("fred", label="?")
+````
+
+```{r echo=FALSE, comment=""}
+cat(actionButton("fred", label="?") %>%
+  as.character())
+```
+
+## An HTML Example
+
+See Projects/Project-2-calculator
+
+UI defined in `keyboard.R`
+
+

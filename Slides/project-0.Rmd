@@ -150,6 +150,8 @@ Uses the  objects we created: `user_interface` and `bridge`.
 
 ## Modify the App
 
+Just to get an idea of what you already know.
+
 **Your turn**:
 
 1. Don't display the button message until the button value is > 2.

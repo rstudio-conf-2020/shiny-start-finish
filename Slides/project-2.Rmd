@@ -1,0 +1,72 @@
+---
+title: "Project 2: Calculator"
+---
+```{r child="../../page-definitions.Rmd", eval=not_child}
+```
+
+```{r  include=FALSE}
+library(shiny)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r child="../../page-definitions.Rmd", eval=not_child}
+```
+
+## Project Four: Calculator 
+
+In the `Projects/Project-4-Calculator` directory are several files. 
+
+We'll start with `app.R` and `keyboard.R`.
+
+## Phase I: Extend the UI
+
+1. Confirm that you can run `app.R` to create a UI as might be suitable for a calculator.
+2. Glance through the functions in `keyboard.R` to get an idea of how you might add new keys. (Hint: It's not hard.)
+3. Add several keys: square-root, exp,  ln, sin, .... Keep in mind, these keys don't have to do anything yet except allow themselves to be pushed.
+
+## Phase II: Start writing the server
+
+The file `server-starting.R` contains statements that call some of the Shiny functions to create reactives. These statements will be `source()`d into the `server()` function, as if they were typed there.
+
+To start the server:
+
+1. Create a reactive value `entry_string`. This will store the number being created at the keyboard. Initialize it to a blank string: `""`.
+    - which of the Shiny functions to make reactives will you use?
+2. Arrange that the value of `entry_string` is at all times displayed in the `current` UI output widget.
+    - which of the Shiny functions to make reactive displays will you use?
+3. Write an observer which, when the "one" button is pressed, concatenates a "1" to the `entry_string`. 
+    - Use `observeEvent()`.
+4. Write similar observers for the other 11 buttons in the 4x3 array of keyboard buttons.
+    - the tricky one is for "delete". `substr()` and `nchar()` will help.
+
+## Phase 3: Respond to the operation buttons
+
+The file `server-ops.R` is intended to hold server commands to handle the operation  button presses. It's blank right now. 
+
+Your task is to implement a system that will determine which operation button was pressed and store a corresponding identifying string in the reactive value named `last_op`.
+
+## When `last_op()` changes
+
+## Your Turn: Taking an action when `last_op` changes
+
+Read through `server-ops-soln.R` to see some ideas.
+
+1. Make a note of what doesn't make sense to you or why one reactive constructor is used rather than another.
+2. Let's discuss and play with changes as they come up.
+
+## Changes that don't register
+
+In `server-ops-soln.R` on lines 18, 20, 22, and so on, what's going on? Why is `last_op()` being called twice, when only the second call really matters? What happens when the first call is deleted?
+
+Hint: 3 + 2 + 4
+
+
+
+
+
+## See what happens if we change observeEvent to observe
+
+Talk about isolate.
+
+

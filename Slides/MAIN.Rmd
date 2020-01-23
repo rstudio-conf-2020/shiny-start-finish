@@ -73,7 +73,7 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 # Widgets
 
-```{r child="Projects/Project-1-UI/Project-1-slides.Rmd"}
+```{r child="widgets.Rmd"}
 ```
 
 # Frameworks & Layouts
@@ -100,10 +100,17 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 ```{r child="reactives.Rmd"}
 ```
 
+
+
 # Debugging 
 
 ```{r child="debugging.Rmd"}
 ```
+
+
+# Project 2 return
+ 
+## Augment the server for Project-2-Calculator
 
 # Avoiding loops: Updating inputs
 
@@ -115,6 +122,7 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 ```{r child = "Project-5.Rmd"}
 ```
+
 
 
 # Shiny documents
