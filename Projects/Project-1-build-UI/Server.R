@@ -3,5 +3,6 @@
 # This file is empty, because we don't need a non-empty
 # reactive logic for this project. 
 #
-# This project is just about the UI.
+# Except when we get to the bit about writing values
+# to `output$felix`
 

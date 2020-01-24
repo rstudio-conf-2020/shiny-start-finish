@@ -14,7 +14,7 @@ library(ggplot2)
 
 
 
-## Project-1-build-UI  {style="margin:0px;font-size:90%;"}
+## Project-1 {style="margin:0px;font-size:90%;"}
 
 
 The file `app.R`:
@@ -74,29 +74,7 @@ UI <- tagList(
 
 ![](images/ui-outputs.png)
 
-## Project 1: Add UI inputs
 
-**Your turn:** 
-
-Add several of these widgets to your UI. Have fun with the choices. You can see code examples at [https://shiny.rstudio.com/gallery/widget-gallery.html](https://shiny.rstudio.com/gallery/widget-gallery.html)
-
-- actionLink
-- checkboxInput
-- checkboxGroupInput
-- radioButtons
-- passwordInput
-- textInput
-
-Verify that the UI works.
-
-## Your turn: display UI input values
-
-Preface: The `glue()` function is a nice way to embed values in strings.
-```{r}
-glue::glue("The value of 3 + 7 is {3+7}.")
-```
-
-**TASK**: Add an element to your server to display in `output$felix` a string with the values of the UI inputs you added. 
 
 
 ## Widgets are HTML
@@ -116,4 +94,12 @@ See Projects/Project-2-calculator
 
 UI defined in `keyboard.R`
 
+## Don't forget these "widgets"
+
+`tags$p(...) tags$h1(...) tags$h2(...) tags$h3(...) tags$h4(...) tags$h5(...) tags$h6(...)
+tags$a(...) tags$br(...) tags$div(...) tags$span(...) tags$pre(...) tags$code(...) tags$img(...) tags$strong(...) tags$em(...) tags$hr(...)`
+
+Or the wrappers, ...
+
+`p(...) h1(...) h2(...) h3(...) h4(...) h5(...) h6(...) a(...) br(...) div(...) span(...) pre(...) code(...) img(...) strong(...) em(...) hr(...)`
 

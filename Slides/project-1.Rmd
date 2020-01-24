@@ -1,0 +1,28 @@
+## Project 1 
+
+*Remember, our first project was "Project 0". Now we're on to the real projects!*
+
+Go to `Projects/Project-1-build-UI/`
+
+## Add UI inputs
+
+Edit `UI_starting.R` to add several of these widgets to your UI. Have fun with the choices. You can see code examples at [https://shiny.rstudio.com/gallery/widget-gallery.html](https://shiny.rstudio.com/gallery/widget-gallery.html)
+
+- actionLink
+- checkboxInput
+- checkboxGroupInput
+- radioButtons
+- passwordInput
+- textInput
+
+Verify that the UI works. How? Run the `app.R` file.
+
+## Display UI input values
+
+Preface: The `glue()` function is a nice way to embed values in strings.
+```{r}
+glue::glue("The value of 3 + 7 is {3+7}.")
+```
+
+**TASK**: Add an element to your server to display in `output$felix` a string with the values of the UI inputs you added. # Project 1
+

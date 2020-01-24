@@ -1,0 +1,250 @@
+---
+title: "Frameworks to Arrange UI Elements"
+---
+
+## Frameworks
+
+Organizes UI elements.
+
+Allows sensible grouping of elements.
+
+## Some high-level frameworks
+
+- `fluidPage()` -- 
+- `fixedPage()` -- just rows and columns
+- `fullPage()` -- fills up the browser window
+- `tagList()` -- just sequential
+- `navbarPage()` -- use with `tabPanel()` and `navbarMenu()`
+- `miniUI::miniUI()` -- for add-ins or mobile
+- `runtime::shiny` in an Rmd file -- for reports
+
+##  `fluidPage()`
+
+An organization using the [Bootstrap](https://getbootstrap.com/docs/4.4/) CSS/JavaScript/HTML system.
+
+Define containers based on a 12-unit wide grid.
+
+## Return to Project 1
+
+We're now going to throw away the original UI for Project 1.
+
+- Look at `Muggle.R`. What kind of thing is `First`, `Second`, and so on in terms of user interfaces. 
+- Modify `app.R` file to source the UI defined in `UI-languages.R`.
+- Notice that the highest level container in `UI-languages.R` is `tagList()`.
+    - What do you expect to happen when--don't do it yet!-- you replace `tagList()` with `fluidPage()`? Talk to your neighbor about what you expect to put a stake in the ground.
+    - Now do the replacement.
+    - What changes in the display of the app? Is this what you expected? If not, speculate on what's wrong?
+
+## Need to use the grid system!
+
+Nothing much was different between `fluidPage()` and `tagList()` in the previous exercise:
+
+1. Usual all-in-a-line layout.
+2. Fonts are different. 
+
+In order to get things laid out, we need to specify rows and columns for the 12-unit Bootstrap grid.
+
+Use `fluidRow(...)` to  group elements in a row.
+
+Use `column(width=..., ...)`  to group elements in a column of the indicated width.
+
+## Your turn
+
+Edit `UI-languages.R` to change the UI to this.
+
+![](images/fluid-wide.png)
+
+## The tree
+
+```r
+UI <- fluidPage(
+  fluidRow(
+    column(width  = 4, First, Second),
+    column(width = 3, Third)
+  ),
+  fluidRow(Fourth, Fifth),
+  title = "Fluid!"
+)
+```
+Your turn: Draw this as a tree with `First`, `Second` as the leaves and UI layout statements as the nodes. Hint: The root is at `fluidPage()`.
+
+What's up with `title = "Fluid!"`?
+
+
+## fluidPage() is responsive
+
+The layout depends on the width of the device.
+
+Narrow window | Wide window
+--------------|-------------
+![](images/fluid-narrow.png) | ![](images/fluid-wide.png)
+
+## Your turn: A new tree
+
+Draw this interface as a tree. Remember, the nodes are UI layout functions (like `column()`) and the leaves are `First`, `Second` and so on.
+
+![](images/fluid-3.png)
+
+Modify `UI-languages.R` to implement this tree.
+
+## Answer:
+
+```r
+UI <- fluidPage(
+  fluidRow(
+    column(width  = 4, First, Second, Third),
+    column(width = 6,
+      column(width=8, Fourth), 
+      column(width=3, Fifth)
+    )
+  )
+)
+```
+
+## Your turn: Another tree
+
+![](images/fluid-4.png)
+Implement this UI. You'll need to use both the `width` and `offset` arguments to `column()`.
+
+
+## Answer:
+
+```r
+UI <- fluidPage(
+  fluidRow(
+    column(width  = 4, First, Second, Third),
+    column(width = 6, offset = 1,
+      column(width=8,Fourth), 
+      column(width=3, offset=1, Fifth)
+    )
+  )
+)
+```
+
+## Convenience UI layout functions
+
+- `titlePanel()`
+- `sidebarLayout()` with `sidebarPanel()` & `mainPanel()`
+- `tabsetPanel()` and `tabPanel()`
+- `splitLayout()`
+- `flowLayout()`
+- `verticalLayout()`
+- `wellPanel()`
+
+## Your turn: Make this
+
+Use `fluidPage()`, `titlePanel()`, and `wellPanel()`
+
+![](images/layout-exercise-A.png) 
+
+## The tree
+
+```r
+UI <- 
+  fluidPage(
+    titlePanel("My App's Title"),
+    fluidRow(
+      column(width = 4, 
+        wellPanel(
+          First, 
+          wellPanel(
+            Second), 
+          Third)),
+      column(width = 8, 
+        wellPanel(
+          Fourth), 
+        Fifth)
+  )
+)
+```
+
+## Your turn: Make this
+
+Use `fluidPage()`, `sidebarLayout()`, `sidebarPanel()`, mainPanel()` and `wellPanel()`
+
+![](images/layout-exercise-B.png)
+
+```r
+UI <- 
+  fluidPage(
+    sidebarLayout(
+      titlePanel("My App's Title"),
+      sidebarLayout(
+        sidebarPanel(
+          First, 
+          wellPanel(Second)),
+        mainPanel(
+         fluidRow(
+           column(Third, width=8), 
+           column(Fourth, width=4)), 
+         Fifth)
+    )
+  )
+)
+```
+
+## High-level layouts
+
+- `tagList()` -- just sequential
+- `fluidPage()` -- Bootstrap grid
+- `navbarPage()` -- use with `tabPanel()` and `navbarMenu()`
+- `miniUI::miniUI()`
+
+## navbarPage
+
+![](images/layout-exercise-C.png)
+
+```r
+navbarPage(
+  title = "A navbarPage App",
+  tabPanel(title="Latin/Arabic", First, Fourth),
+  navbarMenu(title="Others",
+             tabPanel(title="Ukrainian", Fourth),
+             tabPanel(title = "Hebrew", Second),
+             tabPanel(title = "Chinese", Fifth)
+             )
+  )
+```
+
+## miniUI
+
+![](images/layout-exercise-D.png)
+
+## The tree
+
+```r
+miniUI::miniPage(
+    miniTitleBar("A miniPage App"),
+    
+    miniContentPanel(Fourth),
+    miniTabstripPanel(
+      miniTabPanel(title = "Chinese", 
+                   miniButtonBlock(
+                     actionButton("reset", "Reset to defaults"),
+                     actionButton("clear", "Clear all")
+                   ),
+                   Fifth),
+      miniTabPanel(title = "Ukrainian", 
+                   miniTabstripPanel(
+                     miniTabPanel(title="First", First),
+                     miniTabPanel(title="Second", Second)),
+                   Third),
+      miniTabPanel(title = "Others",
+                   First,
+                   Second,
+                   Third)
+    )
+```
+
+## Exercise n-1
+
+With your neighbor, draw the UI tree on paper.
+
+![](images/ggextra.png](https://daattali.com/shiny/ggExtra-ggMarginal-demo/) 
+
+## Exercise n
+
+Again, with your neighbor, draw the UI tree on paper.
+
+![](images/twin-cities-busses.png](https://shiny.rstudio.com/gallery/bus-dashboard.html)
+

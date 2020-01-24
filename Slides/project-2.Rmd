@@ -1,8 +1,6 @@
 ---
 title: "Project 2: Calculator"
 ---
-```{r child="../../page-definitions.Rmd", eval=not_child}
-```
 
 ```{r  include=FALSE}
 library(shiny)
@@ -10,12 +8,9 @@ library(dplyr)
 library(ggplot2)
 ```
 
-```{r child="../../page-definitions.Rmd", eval=not_child}
-```
+## Project 2: Calculator 
 
-## Project Four: Calculator 
-
-In the `Projects/Project-4-Calculator` directory are several files. 
+In the `Projects/Project-2-calculator` directory are several files. 
 
 We'll start with `app.R` and `keyboard.R`.
 

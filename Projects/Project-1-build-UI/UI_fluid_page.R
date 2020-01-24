@@ -1,27 +1,12 @@
-# UI.R: UI definition
-library(miniUI)
-
-# Some individual UI elements
+# See Muggle.R for these definitions
 UI <- 
-  miniUI::miniPage(
-    miniTitleBar("A miniPage App"),
-    
-    miniContentPanel(Fourth),
-    miniTabstripPanel(
-      miniTabPanel(title = "Chinese", 
-                   miniButtonBlock(
-                     actionButton("reset", "Reset to defaults"),
-                     actionButton("clear", "Clear all")
-                   ),
-                   Fifth),
-      miniTabPanel(title = "Ukrainian", 
-                   miniTabstripPanel(
-                     miniTabPanel(title="First", First),
-                     miniTabPanel(title="Second", Second)),
-                   Third),
-      miniTabPanel(title = "Others",
-                   First,
-                   Second,
-                   Third)
-    )
-  )
+  tagList(
+    First,
+    Second,
+    Third,
+    Fourth,
+    Fifth)
+# No good reason to define these things in Muggle.R
+# rather than here. But it helps keep in mind the distinction
+# between Muggle code and Wizard code.
+

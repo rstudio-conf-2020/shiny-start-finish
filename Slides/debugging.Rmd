@@ -1,0 +1,21 @@
+## Debugging
+
+Basic methods:
+
+1. Add `message()`
+2. Add `browser()` (within a reactive  or observer in the server function)
+3. Put a breakpoint (within  a reactive or observer)
+
+## More advanced
+
+- [display objects in a tab](https://github.com/daattali/advanced-shiny/tree/master/debug-value)
+
+- putting a console in your app! shinyjs::runcode, but see [this github  site](https://github.com/daattali/advanced-shiny/blob/master/run-arbitrary-code/app.R) for the actual code, so that you can display the output in a text field.
+
+General article: <https://shiny.rstudio.com/articles/debugging.html>
+
+## View reactivity
+
+NEED TO  MAKE A NICE EXAMPLE, where a connection is not being made. Maybe Pythagorus, but where we forgot to connect to B.
+
+## Load testing

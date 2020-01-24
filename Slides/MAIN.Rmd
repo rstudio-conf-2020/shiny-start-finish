@@ -76,9 +76,19 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 ```{r child="widgets.Rmd"}
 ```
 
+# Project 1
+
+```{r child="project-1.Rmd"}
+```
+
 # Frameworks & Layouts
 
 ```{r child="UI-frameworks.Rmd"}
+```
+
+## Project 2
+
+```{r child="project-2.Rmd"}
 ```
 
 # Practice: Creating a UI
@@ -86,18 +96,14 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 ```{r child="UI-tree-exercises.Rmd"}
 ```
 
-# Project: Plot a data frame: UI components
-
-```{r child = "Project-5.Rmd"}
-```
-
-
-
-
-
 # Reactives {data-background-image="./images/cityscape.png"}
 
 ```{r child="reactives.Rmd"}
+```
+
+# Project 3: Plot a data frame
+
+```{r child = "project-3.Rmd"}
 ```
 
 

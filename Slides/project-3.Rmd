@@ -1,0 +1,106 @@
+---
+title: "Project 5: Plot a data frame"
+output: 
+  revealjs::revealjs_presentation:
+    self_contained: false
+    reveal_plugins: ["notes", "search", "chalkboard", "menu"]
+---
+
+```{r child="page-definitions.Rmd"}
+```
+
+
+## Orientation to the project
+
+This is to be an app where you can select a data frame from a set of choices, then select a response and explanatory variable. The app will:
+
+1. Plot out the data frame: response vs explanatory
+2. Show the head of the data frame.
+3. Print out a regression report
+4. Show the codebook for the selected data
+
+## A starting app
+
+A working, but incomplete version of the app is in 
+
+`Projects/Project-5-DF/app-0.R`
+
+## Your turn: re-organize code
+
+The app is already a bit crowded. So ...
+
+1. Pull out the UI into a file `UI.R` and the server into `Server.R`.
+2. Source these into `app-0.R` in the appropriate place.
+    - The `Server.R` sourcing is tricky.
+3. Make sure it still runs!
+
+
+## Task 1: Examine the UI
+
+1. What about the `selectInput()`s makes it so that the app starts with a little message (e.g., "*Choose data frame*") instead of a selected value?
+    - Find where in the documentation for `selectInput()` this feature is described.
+2. The app is to display the data in 4 different ways. (See above.) Four output widgets have been provided. 
+    - Do the output widgets have a sensible type?
+    
+## Task 2: Tabify the app
+
+Too ugly to have all four output displays one after the other. Re-arrange things to:
+
+1. Put each output widget in its own tab, with an informative label.
+2. Put the inputs in the same tab as the table display.
+3. Make sure the tab in (2) is displayed at start-up.
+
+## The reactive logic
+
+I've provided you with two components of the reactive logic.
+
+1. A reactive: `Raw_data()` that uses one of the inputs to provide an appropriate data frame.
+2. A renderer for `outputCodebook`. This uses the name of the `input$frame` to fetch the documentation. (It's a little involved; that's why I've given it to you.)
+
+When you choose a data frame, the codebook should be available in its tab.
+
+## Task 3: A small extension
+
+Your task now is to fill in appropriate choices for the `response` and `explanatory` input widgets.
+
+Hints: Use `updateSelectInput()`. The choice names will be `names(Raw_data())`. Think about whether this operation should be in a `reactive()` or an `observer()`.
+
+<!-- Answer: an observer(), because the action desired is a side effect -->
+
+## Task 4: Showing the data
+
+Add appropriate server logic to 
+
+1. Display the head of the selected data in the table.
+2. Plot the response versus the explanatory variable.
+
+Keep in mind that only the response and explanatory variables are to be shown.
+
+Question: You'll be using `renderXXX()` to make the actual displays. Is there something in common that could be handled well by a `reactive()`?
+
+## Task 5: Show a summary of the model
+
+Display a summary of the linear model `response ~ explanatory` in the appropriate tab.
+
+Hints:
+
+- `paste()` is a good way to construct the formula.
+- The text form of `summary(lm(...))` can be had with `capture.output()`.
+- `renderVerbatimText()` really wants to work with a single string, not a string vector.
+
+## Task 6: Annoying errors
+
+You might see a console error: "undefined columns selected" and a little flash of a red error message just before the table is displayed.
+
+Kill these. 
+
+Hint: Block the evaluation of the problematic reactive until all the inputs it needs are valid.
+
+## Endless tasks
+
+As you play with the app, you'll see additional problems, such as:
+
+a. not so nice that the response and explanatory variables are the same when the selectors are updated.
+    - arrange things so that no assignment to response and explanatory is made until the user does so herself.
+    - exclude the selected response variable from the set of choices allowed for the explanatory.
+b. when the response variable is not numeric, `lm()` complains. In such a case, arrange for the response variable to be binary: the most common level and "others". Also, arrange the model to do logistic regression.
