@@ -34,7 +34,7 @@ Your (lack of) previous experience with Shiny is not an issue. If you have exper
 
 ## Prework
 
-1. Bookmark this page. This is where the most up-to-date schedule will be shown. This repo contains the materials for the workshop: Slides, projects, ... The file organization is explained [here](file_organization.html), under `Slides/file_organization.html`.
+1. Bookmark this page. This is where the most up-to-date schedule will be shown. This repo contains the materials for the workshop: Slides, projects, ... The file organization is explained in `Slides/file_organization.Rmd`.
 
 2. Read the [general information](https://docs.google.com/document/d/1_-uhk9dQt_LhpdUrmrCMgcznS79xyZ6EDQHrY1rhfhI/edit) for workshop participants posted by RStudio. 
 
