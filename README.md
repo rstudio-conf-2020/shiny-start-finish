@@ -10,11 +10,10 @@ by Danny Kaplan
 :spiral_calendar: January 27 and 28, 2020  
 :alarm_clock:     09:00 - 17:00  
 :hotel:           Continental Ballroom 1-3  
-:writing_hand:    [rstd.io/conf](http://rstd.io/conf)  
-[Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093) 
-[rstudio.cloud/project/865256](https://rstudio.cloud/project/8652560)   
-:mark_github: GitHub repo: [https://github.com/rstudio-conf-2020/shiny-start-finish](https://github.com/rstudio-conf-2020/shiny-start-finish)  
-:globe: Network: rstudio20, password: tidyverse20 
+:writing_hand:    [Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093)   
+[rstudio.cloud/project/865256](https://rstudio.cloud/project/8652560)     
+GitHub repo: [https://github.com/rstudio-conf-2020/shiny-start-finish](https://github.com/rstudio-conf-2020/shiny-start-finish)  
+wifi: rstudio20, password: tidyverse20 
 
 -----
 
