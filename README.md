@@ -36,29 +36,45 @@ Your (lack of) previous experience with Shiny is not an issue. If you have exper
 
 1. Bookmark this page. This is where the most up-to-date schedule will be shown.
 
+2. Read the [general information](https://docs.google.com/document/d/1_-uhk9dQt_LhpdUrmrCMgcznS79xyZ6EDQHrY1rhfhI/edit) for workshop participants posted by RStudio. 
 
-2. Shortly before the workshop starts, open up a new project in `rstudio.cloud` by following this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256). 
+4. Shortly before the workshop starts, open up a new project in `rstudio.cloud` by following this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256). 
     - You may be prompted to set up an account, which is free. If you already have an account, use that.
     - Your `rstudio.cloud` project is yours and you can leave it for future reference or delete it after the workshop: your choice.
     - Packages will be pre-installed on `rstudio.cloud`
     
-3. (An alternative to (2) if you want to use your own RStudio system--e.g. a laptop or an institutional server.) First, think again; it's probably  easier to use the `rstudio.cloud` server. [.. pause while contemplating ...] OK, we understand.
+5. (An alternative to (2) if you want to use your own RStudio system--e.g. a laptop or an institutional server.) First, think again; it's probably  easier to use the `rstudio.cloud` server. [.. pause while contemplating ...] OK, we understand.
     - Scroll up on this GitHub page to the green "clone or download" button. Copy the link and use it on your system to create a new project with "New project/Version control system/GitHub".
     - When your project is created, look at the file `packages-for-workshop.R`. Install any packages there that you don't already have installed. 
 
-4. If you don't already have a system for deploying apps, or if you don't know what that means,  go to `shinyapps.io` and set  up a free account. Keep track of your account ID etc., you'll need it for the workshop.
+6. If you don't already have a system for deploying apps, or if you don't know what that means,  go to `shinyapps.io` and set  up a free account. Keep track of your account ID etc., you'll need it for the workshop.
 
 ## Schedule
 
-| Time          | Activity         |
+### Monday
+
+| Time          | Topic         |
 | :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
+| 09:00 - 10:30 | Intro & widgets  |
 | 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:00 | Session 2        |
+| 11:00 - 12:00 | UI structure     |
 | 12:00 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
+| 13:30 - 15:00 | Reactive logic   |
 | 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+| 15:30 - 17:00 | Debugging        |
+
+### Tuesday
+
+| Time          | Topic         |
+| :------------ | :--------------- |
+| 09:00 - 10:30 | Documents & dashboards  | <!--learnr here -->
+| 10:30 - 11:00 | *Coffee break*   |
+| 11:00 - 12:00 | Deployment     | <!-- including persistent storage -->
+| 12:00 - 13:30 | *Lunch break*    |
+| 13:30 - 15:00 | Modules          |
+| 15:00 - 15:30 | *Coffee break*   |
+| 15:30 - 16:45 | Prettifying       |
+| 16:45 - 17:00 | [Feedback](http://rstd.io/ws-survey) |
 
 ## Instructor and Teaching Assistants
 
