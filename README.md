@@ -7,19 +7,14 @@ by Danny Kaplan
 
 -----
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your
-workshop below. Then, add workshop content in the materials folder and
-link to each session’s materials from the schedule below. You are
-welcomed to add more rows to the schedule. We just ask that you take
-breaks at the specified times. Once you are done adding information, you
-can remove these instructions from the README.
-
------
-
 :spiral_calendar: January 27 and 28, 2020  
 :alarm_clock:     09:00 - 17:00  
-:hotel:           \[ADD ROOM\]  
-:writing_hand:    [rstd.io/conf](http://rstd.io/conf)
+:hotel:           Continental Ballroom 1-3  
+:writing_hand:    [rstd.io/conf](http://rstd.io/conf)  
+[Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093) 
+[rstudio.cloud/project/865256](https://rstudio.cloud/project/8652560)   
+:mark_github: GitHub repo: [https://github.com/rstudio-conf-2020/shiny-start-finish](https://github.com/rstudio-conf-2020/shiny-start-finish)  
+:globe: Network: rstudio20, password: tidyverse20 
 
 -----
 
@@ -34,7 +29,9 @@ Workshop participants will learn to create and deploy a professional Shiny app f
 
 ## Is this course for me?
 
-ADD THREE QUESTIONS
+You should be comfortable with routine R programming tasks (such as writing functions, indexing vectors and lists).
+
+Your (lack of) previous experience with Shiny is not an issue. If you have experience, you'll see things in a new way. If you don't, we'll get you started on the right footing.
 
 ## Prework
 
