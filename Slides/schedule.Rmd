@@ -1,0 +1,72 @@
+## Schedule
+
+The workshop will be a mix:
+
+1. Me talking and you asking questions or observations.
+2. Activities, called "**Your turn**"
+    a. Questions for you to figure out
+    b. Systems for you to design
+    c. **Demos** that you run, but don't alter.
+    d. **Projects**, which are like demos, but you alter/fix them. 
+
+As you undertake activites, please:
+
+- engage your neighbors in them
+- pull in a TA (or me) to the discussion
+
+## Day 1
+
+Breakfast available from 8:00am
+
+Time	Activity
+09:00 - 10:30	Session 1
+10:30 - 11:00	Coffee break
+11:00 - 12:30	Session 2
+12:30 - 13:30	Lunch break
+13:30 - 15:00	Session 3
+15:00 - 15:30	Coffee break
+15:30 - 17:00	Session 4
+
+- From a report to an app
+- Avoiding Shiny
+    - brief introduction to packages
+- Designing and implementing UIs
+    - HTML and trees
+    - parsing UIs
+- Reactive logic
+- Debugging 
+- Prettifying: shinythemes
+
+## Day 2
+
+Breakfast available from 8:00am
+
+Time	Activity
+09:00 - 10:30	Session 1
+10:30 - 11:00	Coffee break
+11:00 - 12:30	Session 2
+12:30 - 13:30	Lunch break
+13:30 - 15:00	Session 3
+15:00 - 15:30	Coffee break
+15:30 - 16:45	Session 4
+16:45 - 17:00   [Provide feedback](http://rstd.io/ws-survey)
+
+- Client-side computing
+    - leaflet
+    - ggvis
+- Javascript: shinyjs
+- Deployment
+    - packages
+    - apps
+- Persistent storage
+- Using the query string
+- Mobile and modal apps
+
+## Logistics
+
+- Location: Continental Ballroom rooms 1-3, Ballroom floor
+- WiFi: Network: rstudio20, password: tidyverse20 
+- GitHub site (short link): [https://rstd.io/conf20-intro-shiny](https://rstd.io/conf20-intro-shiny)
+- [Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093)  
+- Lunch: Grand Ballroom A: 12:30 - 13:30
+- [Code of conduct](http://info.rstudio.com/Q0tN0sX0Ny2Sm0C6Y005sH0)

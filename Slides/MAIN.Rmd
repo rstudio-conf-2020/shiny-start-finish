@@ -1,5 +1,4 @@
 ---
-title: "![San Francisco](images/title-slide.png)"
 output: 
   revealjs::revealjs_presentation:
     self_contained: false
@@ -91,11 +90,6 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 ```{r child="project-2.Rmd"}
 ```
 
-# Practice: Creating a UI
-
-```{r child="UI-tree-exercises.Rmd"}
-```
-
 # Reactives {data-background-image="./images/cityscape.png"}
 
 ```{r child="reactives.Rmd"}
@@ -116,17 +110,17 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 # Project 2 return
  
-## Augment the server for Project-2-Calculator
+## Augment the server for Project-2-calculator
 
 # Avoiding loops: Updating inputs
 
 ```{r child="values-and-inputs.Rmd"}
 ```
 
-# Project: Plot a data frame: server components
+# Project 3: server components
 
 
-```{r child = "Project-5.Rmd"}
+```{r child = "project-3.Rmd"}
 ```
 
 
@@ -148,6 +142,8 @@ apps/dashboards/flexdashboard_01.Rmd
 ```{r child="deploy.Rmd"}
 ```
 
+# Learnr tutorials
+
 # Persistent storage
 
 ```{r child="persistent.Rmd"}
@@ -158,7 +154,4 @@ apps/dashboards/flexdashboard_01.Rmd
 ```{r child="prettifying.Rmd"}
 ```
 
-# Making Animated GIFS
-
-How to record a movie of interaction with an app.
 

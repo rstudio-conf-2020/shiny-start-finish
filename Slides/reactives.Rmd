@@ -1,0 +1,416 @@
+---
+title: "Reactives"
+---
+
+```{r  include=FALSE}
+library(shiny)
+library(rlang)
+```
+
+## Reactives
+
+Reactives are R objects created by some of the functions from the `<shiny>` package:
+
+- `reactive()`
+- `observer()`
+- `reactiveEvent()`
+- `observeEvent()`
+- `reactiveVal()`
+- `reactiveVals()`
+
+You, the programmer, create these objects explicitly in your code.
+
+## Inputs and Outputs
+
+It's helpful to imagine that reactives are also created by calls to constructors of inputs and outputs, such as
+
+- `selectInput()`
+- `plotOutput()`
+- and so on
+
+ULTIMATELY, it's the HTML that matters, not the calls to constructors.
+
+Elaboration: The constructors create HTML. When the UI HTML document is handled by `runApp()` it will create `reactive()`s for the inputs and `observer()`s for the output.
+
+## The Shiny server
+
+- a process running in an R session. 
+    - might be on your machine
+    - another machine that serves up the HTML and responds to events.
+- NOT the object conventionally called `server` which is just a function.
+- It would be more fun if the function you create were called `Knight_Bus` rather than `server`.
+
+## The Knight Bus
+
+<div class="container">
+<div class="col2">
+[JK Rowling writes](https://www.wizardingworld.com/writing-by-jk-rowling/the-knight-bus):
+
+<smaller>*The Knight Bus is a relatively modern invention in wizarding society, which sometimes (though it will rarely admit it) takes ideas from the Muggle world. The need for some form of transportation that could be used safely and discreetly by the underage or the infirm had been felt for a while .... Finally, Minister for Magic Dugald McPhail hit upon the idea of imitating the Muggles’ relatively new ‘bus service’ and in 1865, the Knight Bus hit the streets.*</smaller>
+</div>
+<div class="col">
+![](images/knight_bus.jpg)
+</div>
+</div>
+
+## Comparison
+
+<div class="container">
+<div class="col">
+The Knight Bus:
+
+- a bus
+- has three decks
+- safely conveys wizards from the muggle world to the wizarding world.
+
+</div>
+<div class="col">
+The "server" function:
+
+- a function
+- has three arguments
+- safely conveys **code** from the ordinary world of R scripts to the world of `runApp`.
+</div>
+</div>
+
+
+`knight_bus <- function(input, output, session) {`    
+           ... Your code here ...    
+`}`    
+
+
+## Passengers on the Knight Bus
+
+These are entities carried into the Wizard world.
+
+Useful to think of **three** types of passengers
+
+inputs | conductors | observer
+-------|------------|---------
+![](images/input.png) | ![](images/conductor.png) | ![](images/observer.png)
+
+## Putting wizards on the bus
+
+inputs | conductors | observer
+-------|------------|---------
+![](images/input.png) | ![](images/conductor.png) | ![](images/observer.png)
+`actionButton()` | `reactiveVal()` | `textOutput()`
+ and such        | `reactive()`    | `observe()`
+                 | `reactiveEvent()` | `observeEvent()`
+
+
+OUT OF PLACE: Always use curly braces.  This  helps identify the source code position for debugging.
+
+## The wizard world
+
+Wizards have two kinds of *state*:
+
+1. Their value, e.g. `input$x_var`, a plot, a table
+2. Their **validity**
+    - valid, invalidated, suspended
+
+Wizards have *connections*:
+
+- An input only has *outward* connections.
+- An observer only has *inward* connections.
+- A conductor has both *inward* and *outward* connections.
+
+## Connections
+
+The reactive model is driven by connections that you, the programmer, made between passengers.
+
+You define/establish a connection **only** at the *recipient*.
+
+Example: See app at `Demos/pythagorean-1.R`
+
+## `pythagorean-1.R`: Inputs
+
+Create the inputs
+
+```r
+ui <- tagList(
+  ...
+  numericInput("A", "Leg A:", value = 3),
+  numericInput("B", "Leg B:", value = 4),
+  ...
+)
+```
+
+## `pythagorean-1.R`: Outputs
+
+Describe the outputs
+
+```r
+server <- function(input, output, session) {
+  output$C <- renderText({
+    sqrt(input$A^2 + input$B^2)
+  })
+}
+```
+
+Mentioning `input$A` and `input$B` will create a connection when the app is run.
+
+## `pythagorean-1.R`: Conductors
+
+There are none.
+
+**Your turn:** How can you be sure there are no conductors?
+
+<!-- Ans: no calls to `reactive()` or `reactiveEvent()` or `reactiveVal()`, ...  -->
+
+## The Shiny evaluation cycle
+
+1. Wait, until something changes, e.g. an input.
+2. Send message to the input's **next of kin**, invalidating them. 
+    - Each of next of kin then invalidate their own next of kin.
+    - As each message is sent, the recipient is struck off the sender's next-of-kin list.
+3. When all the messages in (2) have been sent ... there is very likely one or more outputs that have been invalidated.
+    - Run the instructions for each of those invalidated outputs, one output at a time.
+    - Each call to a *conductor* or *input* will produce a value **and** add a connection on the *conductor*'s or *input*'s next of kin list.
+4. Back to (1)
+
+## Making a connection
+
+When a downstream reactive makes a call to a *conductor* or an *input*, that call is arranged to carry the ID of the caller.
+
+Receiving the call, the *conductor* or *input* ...
+
+1. Adds the ID of the caller to a list: **Next of kin**. (Dark arrow)
+2. *If the recipient is a conductor* ... carry out its own calls and calculations, potentially creating new connections. This creates a value. 
+    - Inputs don't have to do this. The user sets the value.
+    - Conductors cache their values, which is what they will return if they are called when in a valid state.
+3. Return the value to *conductor* or *observer* that made the call in the first place.
+
+## Using a connection: invalidating
+
+An *input* or *conductor* can be invalidated
+
+- input: the user interacts with the app
+- conductor: something changes upstream
+
+Once invalidated, the node
+
+1. Sends a message to each **next of kin** that it is now invalid.
+2. Deletes that node from the next of kin list. (Like checking off a to-do list.)
+
+## Finished invalidating?
+
+When all the **next of kin** have been (recursively) invalidated, Shiny starts the next part of the cycle.
+
+1. Pick a random observer that is invalid.
+2. Evaluate the instruction code for that observer.
+    - Whenever the code calls a *conductor* or *input*, make a **new** connection. And so on up the tree.
+3. When instruction code is complete, mark the observer as *valid*.
+4. Back to step (1). If there are no invalid observers left, the cycle is complete and there is nothing more to do: Idle.
+
+
+
+
+## `pythagorean-1.R`: Watching the action
+
+0. Open the file.
+1. Press the Run App button
+2. Make a couple of changes to the inputs and observe the changes to the output.
+3. ![](images/stop.png) Stop the app process
+
+Back in the console ... Let's go to the videotape!
+
+4. `reactlogShow()`
+
+## Using `reactlogShow()`
+
+Dark lines show connections that have become apparent when "calculating" a node.
+
+Light lines are connections that have not yet become apparent.^[But the visualizer knows that they will eventually be used.]
+
+Let's rewind to the beginning.
+
+Then one step at a time, and narrate.
+
+## Adding a conductor: `pythagorean-2.R`
+
+```r
+server <- function(input, output, session) {
+  C2 <- reactive(input$A^2 + input$B^2, label = "C2")
+  output$C <- renderText(sqrt(C2())) 
+}
+```
+
+Run the app and `reactlogShow()`
+
+## Adding another conductor: `phythagorean-3.R`
+
+```r
+server <- function(input, output, session) {
+  C2 <- reactive(input$A^2 + input$B^2, label="C2")
+  C  <- reactive(sqrt(C2()), label = "C")
+  output$C <- renderText(C())
+}
+```
+
+## Make a cycle and show the reactivity log
+
+Perhaps hadley's celsius/fahrenheit
+
+## Note: Want a reactive to run?
+
+Write an observer that does nothing but calls that reactive.
+
+## Isolate
+
+What isolate does.
+
+## Should you use `reactive()` or `observer()`?
+
+Inputs and outputs are  obvious.  
+
+What about `reactiveVal()` -- use only in an `observer()`
+
+Whatever you might do in  an observer, you could also do in  an output renderXXXX
+
+Joe Cheng's haiku:
+
+> Keep your side effects    
+> Outside your reactives    
+> Or I will kill you
+
+
+## When should you use `eventReactive()` or `observeEvent()`?
+Once you've made this choice, 
+-- or  their isolated  equivalents, `eventReactive()` or `observeEvent()`
+
+`validate()` and `req()`
+
+## Actions and side effects
+
+Reactive: Calculate a value **without** side effects. Or cache a value.
+
+Observer: Peform **actions**, with side effects. What kind of side effects. Note that observers can't be hidden behind a tab, so they will always run. If you don't have side effects in an observer, there's no reason for it.
+
+- writing to disk, upload to server, ...
+- setting reactiveValues -- never do this in a reactive.
+- set other input values. updateXXX should only be in an observer. You can't rely on a reactive to execute. 
+
+
+
+
+
+# MOVE THIS TO A NEW SHOW: FUNCTIONS AND EXPRESSIONS
+
+
+## Reminders about R functions
+
+Functions are containers for R code.^[There are others, see `quote()`, `expression`, and `parse`.]
+
+<div class="container">
+<div class="col">
+Constructing functions
+
+- usually, the container is created by the keyword `function`
+- **arguments** are in parentheses.
+- R code placed in the curly brackets defines the **body** of the function.
+    - The code in the body is **not evaluated** when the function is constructed.
+- A reference to the **environment** in which the function was created is carried along with the function.
+</div>
+<div class="col">
+Evaluating functions
+
+1. Create an environment that binds values to the argument names.
+2. The parent of this environment will be the one carried along with the function.
+3. Run the code in environment (1) (which provides access to the parent environment)
+4. Erase environment (1) but **return** a selected object as the **value** of that function. 
+
+</div>
+</div>
+
+## Your turn: Components of a function
+
+In your console, create some R function with three arguments and two lines of code. Bind it to the name `my_function`.
+
+Access the three components individually with:
+
+- `formals(my_function)`
+- `body(my_function)`
+- `environment(my_function)`
+
+What is the `class` of each of these components?
+
+What do these computations return?
+
+- `all.names(body(my_function))`
+- `all.vars(body(my_function))`
+
+## Persistent storage by functions
+
+Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.
+
+- In some languages, not R, there is something like a `static` or `persistent` declarative that creates persistent storage.
+- Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
+    - This is a risky technique. Functions that you've never heard of my alter the persistent objects in any way whatsoever.
+- In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses `function()` within the body of another function.
+
+## Example: a counter
+
+```{r}
+make_counter <- function(start = 0) {
+  val <- start
+  list(
+    incr = function() {val <<- val + 1},
+    decr = function() {val <<- val - 1},
+    reset = function(start = 0) {val <<- start},
+    value = function() val
+  )
+}
+```
+
+```{r}
+cars <- make_counter()
+trucks <- make_counter()
+cars$incr(); cars$incr(); trucks$incr(); cars$incr()
+cars$value()
+trucks$value()
+```
+
+## Other ways to capture unevaluated code
+
+```{r}
+my_code <- substitute(x <- 17)
+bigger_code <- substitute({
+  x <- 23
+  y <- 44
+})
+```
+
+The `<rlang>` package offers another system for doing this.
+
+## Your turn:
+
+```{r}
+my_code <- substitute(x <- 17)
+bigger_code <- substitute({
+  x <- 23
+  y <- 44
+})
+```
+
+1. Enter the above assignments in your console.
+2. What are the values of `x` and `y` *after* (1).
+3. Try `class()` and `all.vars()` on `my_code` and `bigger_code`
+4. Run `eval(my_code)`. What are the values of `x` and `y` now?
+5. Run `eval(bigger_code)`. What are the values of `x` and `y` now?
+
+
+## Back to the Knight Bus
+
+Shiny uses this technique in its "server" function.
+
+```r
+knight_bus <- function(input, output, session) {
+  f1 <- function() {
+    input$button == 10
+  }
+}
+```
+
+The function `f1` knows to look to it's birth environment for the value of `input`.
+

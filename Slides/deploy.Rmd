@@ -1,0 +1,26 @@
+## Get your directory in order
+
+1. Name of directory will be the name of the app
+2. The call to `shinyApp()` should be in a script `app.R`.
+3. Any other files used in the app should be:
+    a. a package that can be installed on the server
+    b. the app directory or subdirectories of it
+    c. available via the web
+    d. uploadable to app
+
+
+## Some server options ...
+
+1. Your institutional RStudio server may already be set up for deploying apps.
+2. Create your own server on [DigitalOcean](https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/)
+3. Use <shinyapps.io>
+
+## Setting up a <shinyapps.io> account
+
+- This is what I use, which is probably only a testament to how little systems skills are needed.
+- First level account is free.
+
+## Deploying from RStudio
+
+How to deploy from to <shinyapps.io>.
+

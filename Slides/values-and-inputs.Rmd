@@ -1,0 +1,56 @@
+---
+title: "Reactive values and inputs"
+---
+
+```{r  include=FALSE}
+library(shiny)
+library(rlang)
+```
+
+## You can change the value of an input
+
+... from the server. Use `update__`whatever`__()`
+
+Run plotDF app-1.R
+
+Many lines have been commented out. But notice that an error message appears in red, until the choices have been sorted out.
+
+1. Put a break point at line 31. 
+2. Operate the app.
+3. Figure out why the error message is being generated.
+4. What can you do about it?
+
+
+Ans to 3: the `input$response` and `input$explanatory` are not valid indices into the data frame.
+
+What to do?
+
+a. Put logic to return something reasonable when  the indices are not valid.
+    - But then you  have to deal with the "reasonable" output downstream.
+b. Block the reactive from running at all until the acceptable conditions are met.
+
+
+
+
+## Reactive values
+
+Reactive values live on the server
+
+Inputs live in the client
+
+When an input changes in the client, a message is sent to the server and the corresponding change is made to `input`.
+
+When an input is changed in the client, that message will be sent to the client, BUT the client will not write back to make the corresponding change in `input`.
+
+So you have to do it in the server yourself.
+
+## Project plot_DF app 2
+
+Add in  a reactive state to hold what the values of the inputs should  be!
+
+Changes in these are instantly available whenever needed.
+
+But they might not show up on the UI until later.
+
+
+

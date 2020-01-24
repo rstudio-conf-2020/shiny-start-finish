@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>MAIN.utf8.md</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="MAIN_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="MAIN_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal .slide-menu-button {
+      left: 105px !important;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="MAIN_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="MAIN_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<style>
+.container{
+    display: flex;
+}
+.colsmall {
+    flex: 0.5;
+}
+.col{
+    flex: 1;
+}
+.col2{
+    flex: 2;
+}
+.col3{
+    flex: 3;
+}
+.col4{
+    flex: 4;
+}
+</style>
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }
+</style>
+</section>
+<section id="section" class="title-slide slide level1" data-background-image="./images/title-slide.png"><h1> </h1></section>
+<section><section id="orientation" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Orientation</h1></section><section class="slide level2">
+
+<ol type="1">
+<li>Outline</li>
+<li>People</li>
+<li>Computer setup</li>
+<li>The workshop proper</li>
+</ol>
+</section></section>
+<section><section id="outline" class="title-slide slide level1"><h1>Outline</h1></section><section id="schedule" class="slide level2">
+<h2>Schedule</h2>
+<p>The workshop will be a mix:</p>
+<ol type="1">
+<li>Me talking and you asking questions or observations.</li>
+<li>Activities, called “<strong>Your turn</strong>”
+<ol type="a">
+<li>Questions for you to figure out</li>
+<li>Systems for you to design</li>
+<li><strong>Demos</strong> that you run, but don’t alter.</li>
+<li><strong>Projects</strong>, which are like demos, but you alter/fix them.</li>
+</ol></li>
+</ol>
+<p>As you undertake activites, please:</p>
+<ul>
+<li>engage your neighbors in them</li>
+<li>pull in a TA (or me) to the discussion</li>
+</ul>
+</section><section id="day-1" class="slide level2">
+<h2>Day 1</h2>
+<p>Breakfast available from 8:00am</p>
+<p>Time Activity 09:00 - 10:30 Session 1 10:30 - 11:00 Coffee break 11:00 - 12:30 Session 2 12:30 - 13:30 Lunch break 13:30 - 15:00 Session 3 15:00 - 15:30 Coffee break 15:30 - 17:00 Session 4</p>
+<ul>
+<li>From a report to an app</li>
+<li>Avoiding Shiny
+<ul>
+<li>brief introduction to packages</li>
+</ul></li>
+<li>Designing and implementing UIs
+<ul>
+<li>HTML and trees</li>
+<li>parsing UIs</li>
+</ul></li>
+<li>Reactive logic</li>
+<li>Debugging</li>
+<li>Prettifying: shinythemes</li>
+</ul>
+</section><section id="day-2" class="slide level2">
+<h2>Day 2</h2>
+<p>Breakfast available from 8:00am</p>
+<p>Time Activity 09:00 - 10:30 Session 1 10:30 - 11:00 Coffee break 11:00 - 12:30 Session 2 12:30 - 13:30 Lunch break 13:30 - 15:00 Session 3 15:00 - 15:30 Coffee break 15:30 - 16:45 Session 4 16:45 - 17:00 <a href="http://rstd.io/ws-survey">Provide feedback</a></p>
+<ul>
+<li>Client-side computing
+<ul>
+<li>leaflet</li>
+<li>ggvis</li>
+</ul></li>
+<li>Javascript: shinyjs</li>
+<li>Deployment
+<ul>
+<li>packages</li>
+<li>apps</li>
+</ul></li>
+<li>Persistent storage</li>
+<li>Using the query string</li>
+<li>Mobile and modal apps</li>
+</ul>
+</section><section id="logistics" class="slide level2">
+<h2>Logistics</h2>
+<ul>
+<li>Location: Continental Ballroom rooms 1-3, Ballroom floor</li>
+<li>WiFi: Network: rstudio20, password: tidyverse20</li>
+<li>GitHub site (short link): <a href="https://rstd.io/conf20-intro-shiny">https://rstd.io/conf20-intro-shiny</a></li>
+<li><a href="https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093">Community page</a><br />
+</li>
+<li>Lunch: Grand Ballroom A: 12:30 - 13:30</li>
+<li><a href="http://info.rstudio.com/Q0tN0sX0Ny2Sm0C6Y005sH0">Code of conduct</a></li>
+</ul>
+</section></section>
+<section><section id="people" class="title-slide slide level1"><h1>People</h1></section><section id="people-1" class="slide level2">
+<h2>People</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Danny Kaplan</th>
+<th>Sara Altman</th>
+<th>Dean Attali</th>
+<th>Randy Pruim</th>
+<th>Homer White</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>one</td>
+<td>two</td>
+<td><img data-src="images/dean_attali_2.jpg" /></td>
+<td>four</td>
+<td><img data-src="images/Homer_White.jpg" /></td>
+</tr>
+</tbody>
+</table>
+</section><section id="danny-kaplan" class="slide level2">
+<h2>Danny Kaplan</h2>
+<ul>
+<li>Professor of Applied Math and Statistics at Macalester College</li>
+<li>First use of R in a classroom in Western Hemisphere (likely)</li>
+<li>First use of RStudio beyond JJ and Joe</li>
+<li>First client for Shiny</li>
+<li>Textbook Author
+<ul>
+<li><a href="">Statistical Modeling: A Fresh Approach</a></li>
+<li><a href="">Data Computing</a></li>
+<li><a href="">Stats for Data Science</a></li>
+<li><a href="">Modern Data Science with R</a></li>
+<li><a href="">Compact Guide</a></li>
+</ul></li>
+</ul>
+</section><section id="sara-altman" class="slide level2">
+<h2>Sara Altman</h2>
+<p>Something about Sara</p>
+<style>
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+.col2{
+    flex: 2;
+}
+</style>
+</section><section id="dean-attali" class="slide level2">
+<h2>Dean Attali</h2>
+<div class="container">
+<div class="col">
+<p><img data-src="images/dean_attali.jpg" /></p>
+</div>
+<div class="col2">
+<ul>
+<li><em>“I love shiny so much that I decided to make that my job.”</em></li>
+<li>Creator of <a href="https://www.datacamp.com/courses/building-web-applications-in-r-with-shiny-case-studies">“Shiny Case Studies”</a> course — an interactive, online video course</li>
+<li>Second highest all-time answerer in the “shiny” tag on StackOverflow</li>
+<li><em>“If anybody needs any help with Shiny I’d be happy to talk.”</em></li>
+</ul>
+</div>
+</div>
+<p>Dean Attali, President &amp; CEO<br />
+AttaliTech Ltd, <a href="http://AttaliTech.com" class="uri">http://AttaliTech.com</a></p>
+</section><section id="randy-j.-pruim" class="slide level2">
+<h2>Randy J. Pruim</h2>
+<p>Something about Randy</p>
+</section><section id="homer-s.-white" class="slide level2">
+<h2>Homer S. White</h2>
+<div class="container">
+<div class="col">
+<p><img src="images/Homer_White.jpg" width="80%" /></p>
+</div>
+<div class="col2">
+<ul>
+<li>Chair and professor of mathematics and computer science at, Georgetown College, a small liberal arts college in Kentucky.<br />
+</li>
+<li>Teaches introductory computer science and data science with R</li>
+<li>Author of several R packages used in the teaching of undergraduate statistics</li>
+<li>Early enthusiast of Shiny.</li>
+</ul>
+</div>
+</div>
+<p>Contact: 502-863-8307 <code>Homer_White@georgetowncollege.edu</code></p>
+</section></section>
+<section id="section-1" class="title-slide slide level1" data-background-image="./images/sticky-notes.png"><h1> </h1></section>
+<section id="section-2" class="title-slide slide level1" data-background-image="./images/workshop-policies.png"><h1> </h1></section>
+<section><section id="computer-setup" class="title-slide slide level1"><h1>Computer Setup</h1></section><section id="computer-setup-1" class="slide level2">
+<h2>Computer Setup</h2>
+<p>You’ll need …</p>
+<ol type="1">
+<li>A <strong>development</strong> machine/server: RStudio</li>
+<li>A Shiny <strong>server</strong></li>
+</ol>
+</section><section id="development-organization" class="slide level2">
+<h2>Development organization</h2>
+<p>When running R on your own machine, the computer serving your app is your server.</p>
+<p><img data-src="images/computer-is-server.png" /></p>
+<p>Almost all your time will be spent in this configuration, but it is exceptional.</p>
+</section><section id="deployed-app-organization" class="slide level2">
+<h2>Deployed app organization</h2>
+<p><img data-src="images/server-organization.png" /></p>
+<p>Your development machine is not in the picture.</p>
+</section><section id="set-up-your-development-server-now" class="slide level2">
+<h2>Set up your development server now</h2>
+<div class="container">
+<div class="col">
+<p>Strongly recommended … RStudio.cloud</p>
+<ul>
+<li>This avoids possible problems with versions, installing packages, etc.</li>
+<li>Follow this link: <a href="https://rstudio.cloud/project/834721">rstudio.cloud/project/834721</a> NEED TO UPDATE?</li>
+</ul>
+</div>
+<div class="col">
+<p>If you must use your own machine …</p>
+<ul>
+<li>Make new project from github.com/dtkaplan/Shiny2020</li>
+<li>Be prepared to install packages. See <code>Packages-installed.R</code> in root directory of project.</li>
+</ul>
+</div>
+</div>
+<p>Navigate to <code>Projects/Project-1/app.R</code> NEED TO UPDATE?, open in editor, and run.</p>
+</section><section id="now-set-up-your-deployment-server" class="slide level2">
+<h2>Now, set up your <strong>deployment</strong> server</h2>
+<p>If you already have a Shiny server available, you can use that.</p>
+<p>Otherwise …</p>
+<p>Go to <code>shinyapps.io</code> and set up a free account.</p>
+<p>Use your Google credentials or something similar.</p>
+</section></section>
+<section><section id="file-organization" class="title-slide slide level1"><h1>File Organization</h1></section><section id="our-workshop-materials" class="slide level2">
+<h2>Our Workshop Materials</h2>
+<style>
+.container{
+    display: flex;
+}
+.colsmall {
+    flex: 0.5;
+}
+.col{
+    flex: 1;
+}
+.col2{
+    flex: 2;
+}
+.col3{
+    flex: 3;
+}
+.col4{
+    flex: 4;
+}
+</style>
+<style type="text/css">
+  .reveal p {
+    text-align: left;
+  }
+  .reveal ul {
+    display: block;
+  }
+  .reveal ol {
+    display: block;
+  }
+</style>
+<p>A single R project, available as</p>
+<ul>
+<li>A GitHub repo at <a href="https://github.com/rstudio-conf-2020/shiny-start-finish" class="uri">https://github.com/rstudio-conf-2020/shiny-start-finish</a> or the short-link <a href="https://rstd.io/conf20-intro-shiny">https://rstd.io/conf20-intro-shiny</a>.
+<ul>
+<li>always up to date</li>
+</ul></li>
+<li>An RStudio.cloud project clonable at <a href="https://rstudio.cloud/project/834721" class="uri">https://rstudio.cloud/project/834721</a>
+<ul>
+<li>once you clone this, it won’t be updated.</li>
+<li>you can clone a new one if you want.</li>
+</ul></li>
+</ul>
+</section><section id="the-workshops-r-project" class="slide level2">
+<h2>The workshop’s R project</h2>
+<ul>
+<li>Root directory
+<ul>
+<li><strong><code>Slides/</code></strong>
+<ul>
+<li>Whole collection in <code>MAIN.html</code>/<code>MAIN.Rmd</code></li>
+<li>Individual units in separate <code>.Rmd</code> files</li>
+</ul></li>
+<li><strong><code>Projects/</code></strong>
+<ul>
+<li>Separate directory for each project</li>
+<li>Some projects will span multiple sessions of this workshop, e.g. UI or server …</li>
+<li>Work in the directory itself, modifying the files as need be.</li>
+</ul></li>
+<li><strong><code>Sandbox/</code></strong>
+<ul>
+<li>For impulsive short demos</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="slides" class="slide level2">
+<h2><strong><code>Slides/</code></strong></h2>
+<p>Almost all the slides are in individual topic-oriented files.</p>
+<ul>
+<li>These are regular <code>.Rmd</code> files.</li>
+<li>You may find these easier to follow (in <code>.html</code>) and make notes in (in <code>.Rmd</code>).</li>
+<li>If you’re not sure which file something is in, look in <code>MAIN.Rmd</code> or <strong>ASK</strong>.</li>
+</ul>
+</section><section id="your-turn" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Open up the project.</li>
+<li>In <code>Sandbox/</code>, open a blank shiny app.</li>
+</ol>
+<p>If you don’t have a clear view of how to accomplish (2), ask a neighbor. But, as you’ll see, I’ll suggest another way.</p>
+</section><section id="your-turn-but-my-way" class="slide level2">
+<h2>Your turn … but my way</h2>
+<p>We’ll do this particular one in <strong><code>Sandbox/</code></strong></p>
+<ol type="1">
+<li>Open an ordinary R script file</li>
+<li>Type <code>shinyapp</code> and leave the cursor after the final <code>p</code></li>
+<li>Press Shift+Tab
+<ul>
+<li>This will expand <code>shinyapp</code> into starting code.</li>
+<li>This is called a “<a href="https://support.rstudio.com/hc/en-us/articles/204463668-Code-Snippets">snippet</a>”, but this is the only one we’ll use.</li>
+</ul></li>
+<li>Save the script (say, <code>newapp.R</code>?) in the <strong><code>Sandbox/</code></strong> directory and run it. It should be a working Shiny app, but not an interesting one.</li>
+<li>Stop the app by pressing <img data-src="images/stop.png" />.</li>
+</ol>
+</section><section id="why-this-way" class="slide level2">
+<h2>Why this way?</h2>
+<p><code>shinyapp</code> then Shift+Tab</p>
+<ol type="1">
+<li>Avoids having to delete the boilerplate contents of <code>ui.R</code> and <code>server.R</code>.</li>
+<li>Takes away some of the atmosphere of magic.</li>
+</ol>
+<p>As you’ll see, we will use magic as a metaphor, but nothing’s really magic, just choices made by the Shiny designers (esp. Joe Cheng) to exploit built-in features of R to do non-R-like things.</p>
+</section><section id="our-unusual-file-organization" class="slide level2">
+<h2>Our unusual file organization</h2>
+<p>We’re going to do things in what will be an unfamiliar way.</p>
+<ol type="1">
+<li>App <code>.R</code> files will be very short and can have any name, e.g. <code>app-first.R</code>, <code>app-second.R</code>, <code>calculator.R</code>, <code>chess.R</code>, …</li>
+<li>The guts of the app will be in other <code>.R</code> files, with names like <code>server-part-1.R</code> or <code>ui-keyboard.R</code>, etc.</li>
+</ol>
+<p>This will break up code into manageable chunks.</p>
+<p><em>Caveat for much later</em>: When we deploy the app to a server, we’ll have to put it in its own directory and call it <code>app.R</code>.</p>
+</section></section>
+<section><section id="what-is-a-shiny-app" class="title-slide slide level1"><h1>What is a shiny app?</h1></section><section id="every-shiny-app-is-a-webpage" class="slide level2">
+<h2>Every Shiny App is a webpage</h2>
+<div class="container">
+<div class="col">
+<p><img data-src="images/app-is-webpage.png" /></p>
+</div>
+<div class="col2">
+<p><strong>Included in the webpage:</strong></p>
+<ol type="a">
+<li>HTML &amp; CSS</li>
+<li>JavaScript</li>
+</ol>
+<p><strong>Behind the webpage:</strong></p>
+<ol type="a">
+<li>An R session (on a computer)</li>
+<li>(optionally) Persistent storage</li>
+</ol>
+</div>
+</div>
+</section><section id="creating-an-app-involves" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>Creating an App involves</h2>
+<p><strong>Behind the scenes</strong></p>
+<ol type="1">
+<li>Write basic software to make graphs, access persistent storage, …</li>
+</ol>
+<p><strong>From RStudio</strong></p>
+<ol start="2" type="1">
+<li>Construct a user interface with Shiny functions</li>
+<li>Connect (1) to (2) with <strong>reactive logic</strong></li>
+</ol>
+<p><strong>Deployment to server</strong></p>
+<p>Usually this is semi-automatic.</p>
+<p>In this workshop, you’ll use …</p>
+<ul>
+<li>shinyapps.io</li>
+<li>RStudio Connect</li>
+</ul>
+</section><section id="a-metaphor-the-wizarding-world" class="slide level2">
+<h2>A metaphor … <em>The Wizarding World</em></h2>
+<p>Two kinds of programming worlds in a Shiny app:</p>
+<div class="container">
+<div class="col">
+<ol type="1">
+<li><strong>Muggle</strong> world.
+<ul>
+<li>ordinary R programming: functions, packages, …</li>
+</ul></li>
+</ol>
+</div>
+<div class="col">
+<ol start="2" type="1">
+<li><strong>Wizard</strong> world.
+<ul>
+<li>reactives</li>
+<li>functions without arguments</li>
+<li>values that can’t be changed by normal assignment <code>&lt;-</code></li>
+<li>packaged in a “server” function (usually)</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<p>The wizard world can reach out to the Muggle world … but not <em>vice versa</em>.</p>
+</section></section>
+<section id="an-introductory-app" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>An introductory app</h1></section>
+<section><section id="writing-our-first-app" class="title-slide slide level1"><h1>Writing our First App</h1></section><section id="the-file-app.r" class="slide level2" style="color:blue;">
+<h2>The file, <code>app.R</code></h2>
+<p>Everything is in this one file, but there’s no requirement for that.</p>
+<p>Alternatives:</p>
+<ul>
+<li>separate <code>.R</code> files for the various components, sourced into <code>app.R</code></li>
+<li>functions provided by a package</li>
+<li>mix and match</li>
+</ul>
+</section><section id="app.r-is-an-ordinary-r-script" class="slide level2">
+<h2><code>app.R</code> is an ordinary R script</h2>
+<p>You can run in the normal ways, e.g. cmd-p, source-button, …</p>
+<p>Because of the call to <code>shinyApp()</code> (last line), the RStudio IDE gives you a “Run” button.</p>
+<p>But you can work with this file outside of RStudio if you wanted to.</p>
+</section><section id="start-in-the-muggle-world" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>Start in the Muggle world</h2>
+<div class="container">
+<div class="col">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">## Muggle World</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(DT)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">muggle_plot &lt;-<span class="st"> </span><span class="cf">function</span>(xvar, yvar) {</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="kw">ggplot</span>(</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">     diamonds <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sample_n</span>(<span class="dt">size =</span> <span class="dv">200</span>), </a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">     <span class="kw">aes</span>(<span class="dt">x =</span> <span class="op">!!</span>xvar,  <span class="dt">y  =</span> <span class="op">!!</span>yvar)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co"># test for Muggle functionality:</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="co"># muggle_plot(as.name(&quot;cut&quot;), </span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co">#             as.name(&quot;price&quot;))</span></a></code></pre></div>
+</div>
+<div class="col2">
+<ul>
+<li>Ordinary package loading with <code>library()</code>, then</li>
+<li>Defines a function, <code>muggle_plot()</code>.
+<ul>
+<li>since it’s in the Muggle world, it’s a perfectly ordinary function with arguments.</li>
+<li>I wrote it as a function because I know what’s coming.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>Even simple functions can be subtle (e.g. the <code>!!xvar</code>), so be sure to test and debug it in the Muggle world.</li>
+</ul>
+<p><strong>Your Turn</strong>: Evaluate the first several lines of <code>app.R</code>, then run the test of <code>muggle_plot()</code>.</p>
+</section><section id="specifications-for-user-interface" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>Specifications for User Interface</h2>
+<div class="container">
+<div class="colsmall">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">user_interface &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw">h2</span>(<span class="st">&quot;A very basic Shiny App&quot;</span>),</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="kw">p</span>(<span class="st">&quot;This app demonstrates the split </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">    between the Muggle and Wizard worlds&quot;</span>),</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="kw">actionButton</span>(<span class="st">&quot;go&quot;</span>, <span class="st">&quot;Go!&quot;</span>),</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">  <span class="kw">plotOutput</span>(<span class="st">&quot;main&quot;</span>),</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="kw">textOutput</span>(<span class="st">&quot;button_message&quot;</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">)</a></code></pre></div>
+</div>
+<div class="col4">
+<ul>
+<li>The functions <code>tagList()</code>, <code>h2()</code>, and <code>p()</code> are from the <code>&lt;htmltools&gt;</code> package.</li>
+<li>They are perfectly ordinary functions. They generate HTML – essentially a character string.</li>
+<li>The functions <code>actionButton()</code>, <code>plotOutput()</code>, and <code>textOutput()</code> are from the <code>&lt;shiny&gt;</code> package and are also perfectly ordinary functions. They also generate HTML.</li>
+</ul>
+</div>
+</div>
+<p><strong>Your turn</strong>: At the console, run one or more of the individual lines in the user interface. What does the result look like?</p>
+</section><section id="the-bridge-from-the-wizard-world-to-the-muggle-world" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>The bridge from the Wizard world to the Muggle world</h2>
+<p>I’m calling it <code>reactive_logic</code> but it’s usually called “server”.</p>
+<div class="container">
+<div class="col">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">reactive_logic &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  output<span class="op">$</span>main &lt;-<span class="st"> </span><span class="kw">renderPlot</span>(</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="kw">muggle_plot</span>(<span class="kw">as.name</span>(<span class="st">&quot;cut&quot;</span>), </a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">                <span class="kw">as.name</span>(<span class="st">&quot;price&quot;</span>))</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  )</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  output<span class="op">$</span>button_message &lt;-<span class="st"> </span><span class="kw">renderText</span>(</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="kw">paste</span>(<span class="st">&quot;You have pressed the button&quot;</span>, input<span class="op">$</span>go, </a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">          <span class="st">&quot;times.&quot;</span>)</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">  )</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">}</a></code></pre></div>
+</div>
+<div class="col3" style="font-size:90%">
+<ul>
+<li>arguments are always <code>input,  output, session</code></li>
+<li>the contents look ordinary, but they are highly stylized:
+<ul>
+<li>assignments to <code>output[[</code><em>name</em><code>]]</code></li>
+<li>calls <code>&lt;shiny&gt;</code> functions such as <code>render___()</code>. Others we will see: <code>observe()</code>, <code>react()</code>, <code>isolate()</code>, …</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p><strong>Your turn</strong>: At the console, run <code>renderText(&quot;hello&quot;)</code>. What’s the value of this expression? Are their side effects?</p>
+</section><section id="invoking-the-app" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>Invoking the app</h2>
+<div class="container">
+<div class="col">
+<p>A simple function call:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">shinyApp</span>(user_interface, reactive_logic)</a></code></pre></div>
+<p><strong>Your turn</strong>: Run it in the console.</p>
+</div>
+<div class="col">
+<p>Uses the objects we created: <code>user_interface</code> and <code>bridge</code>.</p>
+<p><strong>Your turn</strong>:</p>
+<ul>
+<li>What kind of objects are <code>user_interface</code> and <code>bridge</code>? Hint: Use <code>class()</code></li>
+<li>What kind of object is produced by <code>shinyApp()</code>? Hint: Name the object <code>hoo &lt;-</code> and look at the <code>class()</code>. Then “print” it.</li>
+</ul>
+</div>
+</div>
+</section><section id="modify-the-app" class="slide level2">
+<h2>Modify the App</h2>
+<p>Just to get an idea of what you already know.</p>
+<p><strong>Your turn</strong>:</p>
+<ol type="1">
+<li>Don’t display the button message until the button value is &gt; 2.</li>
+<li>Add <code>selectInput()</code>s for the x-variable and y-variables.</li>
+<li>(Aspirational) Connect the x- and y-selectors to the plot. <strong>Nota Bene: We haven’t yet covered how to do this.</strong></li>
+</ol>
+</section><section id="deploy-the-app" class="slide level2">
+<h2>Deploy the app</h2>
+<p>With the <code>app.R</code> file open for editing, press “Run App”</p>
+<p>You will be asked to set up some things relative to your <code>ShinyApps.io</code> account.</p>
+<p><strong>Your turn</strong>: Try to deploy the app. If you succeed, you can be a resource for your neighbor who didn’t have such good luck.</p>
+<p>If you don’t succeed, ask a TA for help during a break. We’re moving on and will return to deployment tomorrow.</p>
+</section></section>
+<section><section id="building-a-ui" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Building a UI</h1></section><section id="three-conceptual-levels" class="slide level2">
+<h2>Three conceptual levels</h2>
+<p>It’s helpful to divide the ideas behind implementing a UI into three conceptual levels.</p>
+<ol type="1">
+<li>Instantiating input and output widgets</li>
+<li>Frameworks for layout</li>
+<li>Organizing <em>within</em> framework elements</li>
+</ol>
+</section></section>
+<section><section id="widgets" class="title-slide slide level1"><h1>Widgets</h1></section><section id="project-1" class="slide level2" style="margin:0px;font-size:90%;">
+<h2>Project-1</h2>
+<p>The file <code>app.R</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">source</span>(<span class="st">&quot;muggle.R&quot;</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">source</span>(<span class="st">&quot;UI_starting.R&quot;</span>) <span class="co"># defines UI  &lt;-</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">Server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="kw">source</span>(<span class="st">&quot;Server.R&quot;</span>, <span class="dt">local =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw">shinyApp</span>(UI, Server)</a></code></pre></div>
+<p><strong>Your turn:</strong> Open <code>app.R</code> and run the app. Exercise the inputs around to confirm that they work.</p>
+</section><section id="the-ui" class="slide level2" style="margin:0px;font-size:80%;">
+<h2>The UI</h2>
+<div class="container">
+<div class="col2">
+<pre>
+UI <- tagList(
+  h1("A Bag of Widgets"),
+  p("Here are my widgets:"),
+  sliderInput("fred", "Value:", 
+              min=0, max=100, value=55),
+  selectInput("annie", "Pick an animal",
+              choices = c("antelope", "bear",
+                          "chicken", "dove")),
+  textOutput("felix"),
+  plotOutput("fiona")
+)
+</pre>
+</div>
+<div class="col">
+<p><img data-src="images/ui-taglist.png" /></p>
+</div>
+</div>
+<p><strong>Question</strong>: Why don’t we see the <code>textOutput()</code> and <code>plotOutput()</code>?</p>
+</section><section id="many-shiny-inputs" class="slide level2">
+<h2>Many Shiny inputs</h2>
+<div class="container">
+<div class="col">
+<p><img data-src="images/shiny-inputs-1.png" /></p>
+</div>
+<div class="col">
+<p><img data-src="images/shiny-inputs-2.png" /></p>
+</div>
+</div>
+</section><section id="ui-outputs" class="slide level2">
+<h2>UI Outputs</h2>
+<p><img data-src="images/ui-outputs.png" /></p>
+</section><section id="widgets-are-html" class="slide level2">
+<h2>Widgets are HTML</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">actionButton</span>(<span class="st">&quot;fred&quot;</span>, <span class="dt">label=</span><span class="st">&quot;?&quot;</span>)</a></code></pre></div>
+<pre><code>&lt;button id=&quot;fred&quot; type=&quot;button&quot; class=&quot;btn btn-default action-button&quot;&gt;?&lt;/button&gt;</code></pre>
+</section><section id="an-html-example" class="slide level2">
+<h2>An HTML Example</h2>
+<p>See Projects/Project-2-calculator</p>
+<p>UI defined in <code>keyboard.R</code></p>
+</section><section id="dont-forget-these-widgets" class="slide level2">
+<h2>Don’t forget these “widgets”</h2>
+<p><code>tags$p(...) tags$h1(...) tags$h2(...) tags$h3(...) tags$h4(...) tags$h5(...) tags$h6(...) tags$a(...) tags$br(...) tags$div(...) tags$span(...) tags$pre(...) tags$code(...) tags$img(...) tags$strong(...) tags$em(...) tags$hr(...)</code></p>
+<p>Or the wrappers, …</p>
+<p><code>p(...) h1(...) h2(...) h3(...) h4(...) h5(...) h6(...) a(...) br(...) div(...) span(...) pre(...) code(...) img(...) strong(...) em(...) hr(...)</code></p>
+</section></section>
+<section><section id="project-1-1" class="title-slide slide level1"><h1>Project 1</h1></section><section id="project-1-2" class="slide level2">
+<h2>Project 1</h2>
+<p><em>Remember, our first project was “Project 0”. Now we’re on to the real projects!</em></p>
+<p>Go to <code>Projects/Project-1-build-UI/</code></p>
+</section><section id="add-ui-inputs" class="slide level2">
+<h2>Add UI inputs</h2>
+<p>Edit <code>UI_starting.R</code> to add several of these widgets to your UI. Have fun with the choices. You can see code examples at <a href="https://shiny.rstudio.com/gallery/widget-gallery.html">https://shiny.rstudio.com/gallery/widget-gallery.html</a></p>
+<ul>
+<li>actionLink</li>
+<li>checkboxInput</li>
+<li>checkboxGroupInput</li>
+<li>radioButtons</li>
+<li>passwordInput</li>
+<li>textInput</li>
+</ul>
+<p>Verify that the UI works. How? Run the <code>app.R</code> file.</p>
+</section><section id="display-ui-input-values" class="slide level2">
+<h2>Display UI input values</h2>
+<p>Preface: The <code>glue()</code> function is a nice way to embed values in strings.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;The value of 3 + 7 is {3+7}.&quot;</span>)</a></code></pre></div>
+<pre><code>## The value of 3 + 7 is 10.</code></pre>
+<p><strong>TASK</strong>: Add an element to your server to display in <code>output$felix</code> a string with the values of the UI inputs you added. # Project 1</p>
+</section></section>
+<section><section id="frameworks-layouts" class="title-slide slide level1"><h1>Frameworks &amp; Layouts</h1></section><section id="frameworks" class="slide level2">
+<h2>Frameworks</h2>
+<p>Organizes UI elements.</p>
+<p>Allows sensible grouping of elements.</p>
+</section><section id="some-high-level-frameworks" class="slide level2">
+<h2>Some high-level frameworks</h2>
+<ul>
+<li><code>fluidPage()</code> –</li>
+<li><code>fixedPage()</code> – just rows and columns</li>
+<li><code>fullPage()</code> – fills up the browser window</li>
+<li><code>tagList()</code> – just sequential</li>
+<li><code>navbarPage()</code> – use with <code>tabPanel()</code> and <code>navbarMenu()</code></li>
+<li><code>miniUI::miniUI()</code> – for add-ins or mobile</li>
+<li><code>runtime::shiny</code> in an Rmd file – for reports</li>
+</ul>
+</section><section id="fluidpage" class="slide level2">
+<h2><code>fluidPage()</code></h2>
+<p>An organization using the <a href="https://getbootstrap.com/docs/4.4/">Bootstrap</a> CSS/JavaScript/HTML system.</p>
+<p>Define containers based on a 12-unit wide grid.</p>
+</section><section id="return-to-project-1" class="slide level2">
+<h2>Return to Project 1</h2>
+<p>We’re now going to throw away the original UI for Project 1.</p>
+<ul>
+<li>Look at <code>Muggle.R</code>. What kind of thing is <code>First</code>, <code>Second</code>, and so on in terms of user interfaces.</li>
+<li>Modify <code>app.R</code> file to source the UI defined in <code>UI-languages.R</code>.</li>
+<li>Notice that the highest level container in <code>UI-languages.R</code> is <code>tagList()</code>.
+<ul>
+<li>What do you expect to happen when–don’t do it yet!– you replace <code>tagList()</code> with <code>fluidPage()</code>? Talk to your neighbor about what you expect to put a stake in the ground.</li>
+<li>Now do the replacement.</li>
+<li>What changes in the display of the app? Is this what you expected? If not, speculate on what’s wrong?</li>
+</ul></li>
+</ul>
+</section><section id="need-to-use-the-grid-system" class="slide level2">
+<h2>Need to use the grid system!</h2>
+<p>Nothing much was different between <code>fluidPage()</code> and <code>tagList()</code> in the previous exercise:</p>
+<ol type="1">
+<li>Usual all-in-a-line layout.</li>
+<li>Fonts are different.</li>
+</ol>
+<p>In order to get things laid out, we need to specify rows and columns for the 12-unit Bootstrap grid.</p>
+<p>Use <code>fluidRow(...)</code> to group elements in a row.</p>
+<p>Use <code>column(width=..., ...)</code> to group elements in a column of the indicated width.</p>
+</section><section id="your-turn-1" class="slide level2">
+<h2>Your turn</h2>
+<p>Edit <code>UI-languages.R</code> to change the UI to this.</p>
+<p><img data-src="images/fluid-wide.png" /></p>
+</section><section id="the-tree" class="slide level2">
+<h2>The tree</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">UI &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">  <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">    <span class="kw">column</span>(<span class="dt">width  =</span> <span class="dv">4</span>, First, Second),</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">    <span class="kw">column</span>(<span class="dt">width =</span> <span class="dv">3</span>, Third)</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  ),</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="kw">fluidRow</span>(Fourth, Fifth),</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="dt">title =</span> <span class="st">&quot;Fluid!&quot;</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">)</a></code></pre></div>
+<p>Your turn: Draw this as a tree with <code>First</code>, <code>Second</code> as the leaves and UI layout statements as the nodes. Hint: The root is at <code>fluidPage()</code>.</p>
+<p>What’s up with <code>title = &quot;Fluid!&quot;</code>?</p>
+</section><section id="fluidpage-is-responsive" class="slide level2">
+<h2>fluidPage() is responsive</h2>
+<p>The layout depends on the width of the device.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Narrow window</th>
+<th>Wide window</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="images/fluid-narrow.png" /></td>
+<td><img data-src="images/fluid-wide.png" /></td>
+</tr>
+</tbody>
+</table>
+</section><section id="your-turn-a-new-tree" class="slide level2">
+<h2>Your turn: A new tree</h2>
+<p>Draw this interface as a tree. Remember, the nodes are UI layout functions (like <code>column()</code>) and the leaves are <code>First</code>, <code>Second</code> and so on.</p>
+<p><img data-src="images/fluid-3.png" /></p>
+<p>Modify <code>UI-languages.R</code> to implement this tree.</p>
+</section><section id="answer" class="slide level2">
+<h2>Answer:</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">UI &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">  <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">    <span class="kw">column</span>(<span class="dt">width  =</span> <span class="dv">4</span>, First, Second, Third),</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">    <span class="kw">column</span>(<span class="dt">width =</span> <span class="dv">6</span>,</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">      <span class="kw">column</span>(<span class="dt">width=</span><span class="dv">8</span>, Fourth), </a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">      <span class="kw">column</span>(<span class="dt">width=</span><span class="dv">3</span>, Fifth)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">    )</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">)</a></code></pre></div>
+</section><section id="your-turn-another-tree" class="slide level2">
+<h2>Your turn: Another tree</h2>
+<p><img data-src="images/fluid-4.png" /> Implement this UI. You’ll need to use both the <code>width</code> and <code>offset</code> arguments to <code>column()</code>.</p>
+</section><section id="answer-1" class="slide level2">
+<h2>Answer:</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">UI &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="kw">column</span>(<span class="dt">width  =</span> <span class="dv">4</span>, First, Second, Third),</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">    <span class="kw">column</span>(<span class="dt">width =</span> <span class="dv">6</span>, <span class="dt">offset =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">      <span class="kw">column</span>(<span class="dt">width=</span><span class="dv">8</span>,Fourth), </a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">      <span class="kw">column</span>(<span class="dt">width=</span><span class="dv">3</span>, <span class="dt">offset=</span><span class="dv">1</span>, Fifth)</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">    )</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">)</a></code></pre></div>
+</section><section id="convenience-ui-layout-functions" class="slide level2">
+<h2>Convenience UI layout functions</h2>
+<ul>
+<li><code>titlePanel()</code></li>
+<li><code>sidebarLayout()</code> with <code>sidebarPanel()</code> &amp; <code>mainPanel()</code></li>
+<li><code>tabsetPanel()</code> and <code>tabPanel()</code></li>
+<li><code>splitLayout()</code></li>
+<li><code>flowLayout()</code></li>
+<li><code>verticalLayout()</code></li>
+<li><code>wellPanel()</code></li>
+</ul>
+</section><section id="your-turn-make-this" class="slide level2">
+<h2>Your turn: Make this</h2>
+<p>Use <code>fluidPage()</code>, <code>titlePanel()</code>, and <code>wellPanel()</code></p>
+<p><img data-src="images/layout-exercise-A.png" /></p>
+</section><section id="the-tree-1" class="slide level2">
+<h2>The tree</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">UI &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">    <span class="kw">titlePanel</span>(<span class="st">&quot;My App&#39;s Title&quot;</span>),</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">    <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">      <span class="kw">column</span>(<span class="dt">width =</span> <span class="dv">4</span>, </a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">        <span class="kw">wellPanel</span>(</a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">          First, </a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">          <span class="kw">wellPanel</span>(</a>
+<a class="sourceLine" id="cb13-9" data-line-number="9">            Second), </a>
+<a class="sourceLine" id="cb13-10" data-line-number="10">          Third)),</a>
+<a class="sourceLine" id="cb13-11" data-line-number="11">      <span class="kw">column</span>(<span class="dt">width =</span> <span class="dv">8</span>, </a>
+<a class="sourceLine" id="cb13-12" data-line-number="12">        <span class="kw">wellPanel</span>(</a>
+<a class="sourceLine" id="cb13-13" data-line-number="13">          Fourth), </a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">        Fifth)</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15">  )</a>
+<a class="sourceLine" id="cb13-16" data-line-number="16">)</a></code></pre></div>
+</section><section id="your-turn-make-this-1" class="slide level2">
+<h2>Your turn: Make this</h2>
+<p>Use <code>fluidPage()</code>, <code>sidebarLayout()</code>, <code>sidebarPanel()</code>, mainPanel()<code>and</code>wellPanel()`</p>
+<p><img data-src="images/layout-exercise-B.png" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">UI &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">fluidPage</span>(</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">    <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">      <span class="kw">titlePanel</span>(<span class="st">&quot;My App&#39;s Title&quot;</span>),</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">      <span class="kw">sidebarLayout</span>(</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">        <span class="kw">sidebarPanel</span>(</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">          First, </a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">          <span class="kw">wellPanel</span>(Second)),</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">        <span class="kw">mainPanel</span>(</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">         <span class="kw">fluidRow</span>(</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">           <span class="kw">column</span>(Third, <span class="dt">width=</span><span class="dv">8</span>), </a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">           <span class="kw">column</span>(Fourth, <span class="dt">width=</span><span class="dv">4</span>)), </a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">         Fifth)</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">    )</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">  )</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">)</a></code></pre></div>
+</section><section id="high-level-layouts" class="slide level2">
+<h2>High-level layouts</h2>
+<ul>
+<li><code>tagList()</code> – just sequential</li>
+<li><code>fluidPage()</code> – Bootstrap grid</li>
+<li><code>navbarPage()</code> – use with <code>tabPanel()</code> and <code>navbarMenu()</code></li>
+<li><code>miniUI::miniUI()</code></li>
+</ul>
+</section><section id="navbarpage" class="slide level2">
+<h2>navbarPage</h2>
+<p><img data-src="images/layout-exercise-C.png" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">navbarPage</span>(</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="dt">title =</span> <span class="st">&quot;A navbarPage App&quot;</span>,</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="kw">tabPanel</span>(<span class="dt">title=</span><span class="st">&quot;Latin/Arabic&quot;</span>, First, Fourth),</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="kw">navbarMenu</span>(<span class="dt">title=</span><span class="st">&quot;Others&quot;</span>,</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">             <span class="kw">tabPanel</span>(<span class="dt">title=</span><span class="st">&quot;Ukrainian&quot;</span>, Fourth),</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">             <span class="kw">tabPanel</span>(<span class="dt">title =</span> <span class="st">&quot;Hebrew&quot;</span>, Second),</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">             <span class="kw">tabPanel</span>(<span class="dt">title =</span> <span class="st">&quot;Chinese&quot;</span>, Fifth)</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">             )</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">  )</a></code></pre></div>
+</section><section id="miniui" class="slide level2">
+<h2>miniUI</h2>
+<p><img data-src="images/layout-exercise-D.png" /></p>
+</section><section id="the-tree-2" class="slide level2">
+<h2>The tree</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">miniUI<span class="op">::</span><span class="kw">miniPage</span>(</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">    <span class="kw">miniTitleBar</span>(<span class="st">&quot;A miniPage App&quot;</span>),</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">    </a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">    <span class="kw">miniContentPanel</span>(Fourth),</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5">    <span class="kw">miniTabstripPanel</span>(</a>
+<a class="sourceLine" id="cb16-6" data-line-number="6">      <span class="kw">miniTabPanel</span>(<span class="dt">title =</span> <span class="st">&quot;Chinese&quot;</span>, </a>
+<a class="sourceLine" id="cb16-7" data-line-number="7">                   <span class="kw">miniButtonBlock</span>(</a>
+<a class="sourceLine" id="cb16-8" data-line-number="8">                     <span class="kw">actionButton</span>(<span class="st">&quot;reset&quot;</span>, <span class="st">&quot;Reset to defaults&quot;</span>),</a>
+<a class="sourceLine" id="cb16-9" data-line-number="9">                     <span class="kw">actionButton</span>(<span class="st">&quot;clear&quot;</span>, <span class="st">&quot;Clear all&quot;</span>)</a>
+<a class="sourceLine" id="cb16-10" data-line-number="10">                   ),</a>
+<a class="sourceLine" id="cb16-11" data-line-number="11">                   Fifth),</a>
+<a class="sourceLine" id="cb16-12" data-line-number="12">      <span class="kw">miniTabPanel</span>(<span class="dt">title =</span> <span class="st">&quot;Ukrainian&quot;</span>, </a>
+<a class="sourceLine" id="cb16-13" data-line-number="13">                   <span class="kw">miniTabstripPanel</span>(</a>
+<a class="sourceLine" id="cb16-14" data-line-number="14">                     <span class="kw">miniTabPanel</span>(<span class="dt">title=</span><span class="st">&quot;First&quot;</span>, First),</a>
+<a class="sourceLine" id="cb16-15" data-line-number="15">                     <span class="kw">miniTabPanel</span>(<span class="dt">title=</span><span class="st">&quot;Second&quot;</span>, Second)),</a>
+<a class="sourceLine" id="cb16-16" data-line-number="16">                   Third),</a>
+<a class="sourceLine" id="cb16-17" data-line-number="17">      <span class="kw">miniTabPanel</span>(<span class="dt">title =</span> <span class="st">&quot;Others&quot;</span>,</a>
+<a class="sourceLine" id="cb16-18" data-line-number="18">                   First,</a>
+<a class="sourceLine" id="cb16-19" data-line-number="19">                   Second,</a>
+<a class="sourceLine" id="cb16-20" data-line-number="20">                   Third)</a>
+<a class="sourceLine" id="cb16-21" data-line-number="21">    )</a></code></pre></div>
+</section><section id="exercise-n-1" class="slide level2">
+<h2>Exercise n-1</h2>
+<p>With your neighbor, draw the UI tree on paper.</p>
+<p><img data-src="#section-2" />(images/ggextra.png](<a href="https://daattali.com/shiny/ggExtra-ggMarginal-demo/" class="uri">https://daattali.com/shiny/ggExtra-ggMarginal-demo/</a>)</p>
+</section><section id="exercise-n" class="slide level2">
+<h2>Exercise n</h2>
+<p>Again, with your neighbor, draw the UI tree on paper.</p>
+<p><img data-src="#section-2" />(images/twin-cities-busses.png](<a href="https://shiny.rstudio.com/gallery/bus-dashboard.html" class="uri">https://shiny.rstudio.com/gallery/bus-dashboard.html</a>)</p>
+</section><section id="project-2" class="slide level2">
+<h2>Project 2</h2>
+</section><section id="project-2-calculator" class="slide level2">
+<h2>Project 2: Calculator</h2>
+<p>In the <code>Projects/Project-2-calculator</code> directory are several files.</p>
+<p>We’ll start with <code>app.R</code> and <code>keyboard.R</code>.</p>
+</section><section id="phase-i-extend-the-ui" class="slide level2">
+<h2>Phase I: Extend the UI</h2>
+<ol type="1">
+<li>Confirm that you can run <code>app.R</code> to create a UI as might be suitable for a calculator.</li>
+<li>Glance through the functions in <code>keyboard.R</code> to get an idea of how you might add new keys. (Hint: It’s not hard.)</li>
+<li>Add several keys: square-root, exp, ln, sin, …. Keep in mind, these keys don’t have to do anything yet except allow themselves to be pushed.</li>
+</ol>
+</section><section id="phase-ii-start-writing-the-server" class="slide level2">
+<h2>Phase II: Start writing the server</h2>
+<p>The file <code>server-starting.R</code> contains statements that call some of the Shiny functions to create reactives. These statements will be <code>source()</code>d into the <code>server()</code> function, as if they were typed there.</p>
+<p>To start the server:</p>
+<ol type="1">
+<li>Create a reactive value <code>entry_string</code>. This will store the number being created at the keyboard. Initialize it to a blank string: <code>&quot;&quot;</code>.
+<ul>
+<li>which of the Shiny functions to make reactives will you use?</li>
+</ul></li>
+<li>Arrange that the value of <code>entry_string</code> is at all times displayed in the <code>current</code> UI output widget.
+<ul>
+<li>which of the Shiny functions to make reactive displays will you use?</li>
+</ul></li>
+<li>Write an observer which, when the “one” button is pressed, concatenates a “1” to the <code>entry_string</code>.
+<ul>
+<li>Use <code>observeEvent()</code>.</li>
+</ul></li>
+<li>Write similar observers for the other 11 buttons in the 4x3 array of keyboard buttons.
+<ul>
+<li>the tricky one is for “delete”. <code>substr()</code> and <code>nchar()</code> will help.</li>
+</ul></li>
+</ol>
+</section><section id="phase-3-respond-to-the-operation-buttons" class="slide level2">
+<h2>Phase 3: Respond to the operation buttons</h2>
+<p>The file <code>server-ops.R</code> is intended to hold server commands to handle the operation button presses. It’s blank right now.</p>
+<p>Your task is to implement a system that will determine which operation button was pressed and store a corresponding identifying string in the reactive value named <code>last_op</code>.</p>
+</section><section id="when-last_op-changes" class="slide level2">
+<h2>When <code>last_op()</code> changes</h2>
+</section><section id="your-turn-taking-an-action-when-last_op-changes" class="slide level2">
+<h2>Your Turn: Taking an action when <code>last_op</code> changes</h2>
+<p>Read through <code>server-ops-soln.R</code> to see some ideas.</p>
+<ol type="1">
+<li>Make a note of what doesn’t make sense to you or why one reactive constructor is used rather than another.</li>
+<li>Let’s discuss and play with changes as they come up.</li>
+</ol>
+</section><section id="changes-that-dont-register" class="slide level2">
+<h2>Changes that don’t register</h2>
+<p>In <code>server-ops-soln.R</code> on lines 18, 20, 22, and so on, what’s going on? Why is <code>last_op()</code> being called twice, when only the second call really matters? What happens when the first call is deleted?</p>
+<p>Hint: 3 + 2 + 4</p>
+</section><section id="see-what-happens-if-we-change-observeevent-to-observe" class="slide level2">
+<h2>See what happens if we change observeEvent to observe</h2>
+<p>Talk about isolate.</p>
+</section></section>
+<section><section id="reactives" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Reactives</h1></section><section id="reactives-1" class="slide level2">
+<h2>Reactives</h2>
+<p>Reactives are R objects created by some of the functions from the <code>&lt;shiny&gt;</code> package:</p>
+<ul>
+<li><code>reactive()</code></li>
+<li><code>observer()</code></li>
+<li><code>reactiveEvent()</code></li>
+<li><code>observeEvent()</code></li>
+<li><code>reactiveVal()</code></li>
+<li><code>reactiveVals()</code></li>
+</ul>
+<p>You, the programmer, create these objects explicitly in your code.</p>
+</section><section id="inputs-and-outputs" class="slide level2">
+<h2>Inputs and Outputs</h2>
+<p>It’s helpful to imagine that reactives are also created by calls to constructors of inputs and outputs, such as</p>
+<ul>
+<li><code>selectInput()</code></li>
+<li><code>plotOutput()</code></li>
+<li>and so on</li>
+</ul>
+<p>ULTIMATELY, it’s the HTML that matters, not the calls to constructors.</p>
+<p>Elaboration: The constructors create HTML. When the UI HTML document is handled by <code>runApp()</code> it will create <code>reactive()</code>s for the inputs and <code>observer()</code>s for the output.</p>
+</section><section id="the-shiny-server" class="slide level2">
+<h2>The Shiny server</h2>
+<ul>
+<li>a process running in an R session.
+<ul>
+<li>might be on your machine</li>
+<li>another machine that serves up the HTML and responds to events.</li>
+</ul></li>
+<li>NOT the object conventionally called <code>server</code> which is just a function.</li>
+<li>It would be more fun if the function you create were called <code>Knight_Bus</code> rather than <code>server</code>.</li>
+</ul>
+</section><section id="the-knight-bus" class="slide level2">
+<h2>The Knight Bus</h2>
+<div class="container">
+<div class="col2">
+<p><a href="https://www.wizardingworld.com/writing-by-jk-rowling/the-knight-bus">JK Rowling writes</a>:</p>
+<p><smaller><em>The Knight Bus is a relatively modern invention in wizarding society, which sometimes (though it will rarely admit it) takes ideas from the Muggle world. The need for some form of transportation that could be used safely and discreetly by the underage or the infirm had been felt for a while …. Finally, Minister for Magic Dugald McPhail hit upon the idea of imitating the Muggles’ relatively new ‘bus service’ and in 1865, the Knight Bus hit the streets.</em></smaller></p>
+</div>
+<div class="col">
+<p><img data-src="images/knight_bus.jpg" /></p>
+</div>
+</div>
+</section><section id="comparison" class="slide level2">
+<h2>Comparison</h2>
+<div class="container">
+<div class="col">
+<p>The Knight Bus:</p>
+<ul>
+<li>a bus</li>
+<li>has three decks</li>
+<li>safely conveys wizards from the muggle world to the wizarding world.</li>
+</ul>
+</div>
+<div class="col">
+<p>The “server” function:</p>
+<ul>
+<li>a function</li>
+<li>has three arguments</li>
+<li>safely conveys <strong>code</strong> from the ordinary world of R scripts to the world of <code>runApp</code>.</li>
+</ul>
+</div>
+</div>
+<p><code>knight_bus &lt;- function(input, output, session) {</code><br />
+           … Your code here …<br />
+<code>}</code></p>
+</section><section id="passengers-on-the-knight-bus" class="slide level2">
+<h2>Passengers on the Knight Bus</h2>
+<p>These are entities carried into the Wizard world.</p>
+<p>Useful to think of <strong>three</strong> types of passengers</p>
+<table>
+<thead>
+<tr class="header">
+<th>inputs</th>
+<th>conductors</th>
+<th>observer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="images/input.png" /></td>
+<td><img data-src="images/conductor.png" /></td>
+<td><img data-src="images/observer.png" /></td>
+</tr>
+</tbody>
+</table>
+</section><section id="putting-wizards-on-the-bus" class="slide level2">
+<h2>Putting wizards on the bus</h2>
+<table>
+<thead>
+<tr class="header">
+<th>inputs</th>
+<th>conductors</th>
+<th>observer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="images/input.png" /></td>
+<td><img data-src="images/conductor.png" /></td>
+<td><img data-src="images/observer.png" /></td>
+</tr>
+<tr class="even">
+<td><code>actionButton()</code></td>
+<td><code>reactiveVal()</code></td>
+<td><code>textOutput()</code></td>
+</tr>
+<tr class="odd">
+<td>and such</td>
+<td><code>reactive()</code></td>
+<td><code>observe()</code></td>
+</tr>
+<tr class="even">
+<td> </td>
+<td><code>reactiveEvent()</code></td>
+<td><code>observeEvent()</code></td>
+</tr>
+</tbody>
+</table>
+<p>OUT OF PLACE: Always use curly braces. This helps identify the source code position for debugging.</p>
+</section><section id="the-wizard-world" class="slide level2">
+<h2>The wizard world</h2>
+<p>Wizards have two kinds of <em>state</em>:</p>
+<ol type="1">
+<li>Their value, e.g. <code>input$x_var</code>, a plot, a table</li>
+<li>Their <strong>validity</strong>
+<ul>
+<li>valid, invalidated, suspended</li>
+</ul></li>
+</ol>
+<p>Wizards have <em>connections</em>:</p>
+<ul>
+<li>An input only has <em>outward</em> connections.</li>
+<li>An observer only has <em>inward</em> connections.</li>
+<li>A conductor has both <em>inward</em> and <em>outward</em> connections.</li>
+</ul>
+</section><section id="connections" class="slide level2">
+<h2>Connections</h2>
+<p>The reactive model is driven by connections that you, the programmer, made between passengers.</p>
+<p>You define/establish a connection <strong>only</strong> at the <em>recipient</em>.</p>
+<p>Example: See app at <code>Demos/pythagorean-1.R</code></p>
+</section><section id="pythagorean-1.r-inputs" class="slide level2">
+<h2><code>pythagorean-1.R</code>: Inputs</h2>
+<p>Create the inputs</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">  ...</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="kw">numericInput</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;Leg A:&quot;</span>, <span class="dt">value =</span> <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Leg B:&quot;</span>, <span class="dt">value =</span> <span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">  ...</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">)</a></code></pre></div>
+</section><section id="pythagorean-1.r-outputs" class="slide level2">
+<h2><code>pythagorean-1.R</code>: Outputs</h2>
+<p>Describe the outputs</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>({</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="kw">sqrt</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">  })</a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">}</a></code></pre></div>
+<p>Mentioning <code>input$A</code> and <code>input$B</code> will create a connection when the app is run.</p>
+</section><section id="pythagorean-1.r-conductors" class="slide level2">
+<h2><code>pythagorean-1.R</code>: Conductors</h2>
+<p>There are none.</p>
+<p><strong>Your turn:</strong> How can you be sure there are no conductors?</p>
+<!-- Ans: no calls to `reactive()` or `reactiveEvent()` or `reactiveVal()`, ...  -->
+</section><section id="the-shiny-evaluation-cycle" class="slide level2">
+<h2>The Shiny evaluation cycle</h2>
+<ol type="1">
+<li>Wait, until something changes, e.g. an input.</li>
+<li>Send message to the input’s <strong>next of kin</strong>, invalidating them.
+<ul>
+<li>Each of next of kin then invalidate their own next of kin.</li>
+<li>As each message is sent, the recipient is struck off the sender’s next-of-kin list.</li>
+</ul></li>
+<li>When all the messages in (2) have been sent … there is very likely one or more outputs that have been invalidated.
+<ul>
+<li>Run the instructions for each of those invalidated outputs, one output at a time.</li>
+<li>Each call to a <em>conductor</em> or <em>input</em> will produce a value <strong>and</strong> add a connection on the <em>conductor</em>’s or <em>input</em>’s next of kin list.</li>
+</ul></li>
+<li>Back to (1)</li>
+</ol>
+</section><section id="making-a-connection" class="slide level2">
+<h2>Making a connection</h2>
+<p>When a downstream reactive makes a call to a <em>conductor</em> or an <em>input</em>, that call is arranged to carry the ID of the caller.</p>
+<p>Receiving the call, the <em>conductor</em> or <em>input</em> …</p>
+<ol type="1">
+<li>Adds the ID of the caller to a list: <strong>Next of kin</strong>. (Dark arrow)</li>
+<li><em>If the recipient is a conductor</em> … carry out its own calls and calculations, potentially creating new connections. This creates a value.
+<ul>
+<li>Inputs don’t have to do this. The user sets the value.</li>
+<li>Conductors cache their values, which is what they will return if they are called when in a valid state.</li>
+</ul></li>
+<li>Return the value to <em>conductor</em> or <em>observer</em> that made the call in the first place.</li>
+</ol>
+</section><section id="using-a-connection-invalidating" class="slide level2">
+<h2>Using a connection: invalidating</h2>
+<p>An <em>input</em> or <em>conductor</em> can be invalidated</p>
+<ul>
+<li>input: the user interacts with the app</li>
+<li>conductor: something changes upstream</li>
+</ul>
+<p>Once invalidated, the node</p>
+<ol type="1">
+<li>Sends a message to each <strong>next of kin</strong> that it is now invalid.</li>
+<li>Deletes that node from the next of kin list. (Like checking off a to-do list.)</li>
+</ol>
+</section><section id="finished-invalidating" class="slide level2">
+<h2>Finished invalidating?</h2>
+<p>When all the <strong>next of kin</strong> have been (recursively) invalidated, Shiny starts the next part of the cycle.</p>
+<ol type="1">
+<li>Pick a random observer that is invalid.</li>
+<li>Evaluate the instruction code for that observer.
+<ul>
+<li>Whenever the code calls a <em>conductor</em> or <em>input</em>, make a <strong>new</strong> connection. And so on up the tree.</li>
+</ul></li>
+<li>When instruction code is complete, mark the observer as <em>valid</em>.</li>
+<li>Back to step (1). If there are no invalid observers left, the cycle is complete and there is nothing more to do: Idle.</li>
+</ol>
+</section><section id="pythagorean-1.r-watching-the-action" class="slide level2">
+<h2><code>pythagorean-1.R</code>: Watching the action</h2>
+<ol start="0" type="1">
+<li>Open the file.</li>
+<li>Press the Run App button</li>
+<li>Make a couple of changes to the inputs and observe the changes to the output.</li>
+<li><img data-src="images/stop.png" /> Stop the app process</li>
+</ol>
+<p>Back in the console … Let’s go to the videotape!</p>
+<ol start="4" type="1">
+<li><code>reactlogShow()</code></li>
+</ol>
+</section><section id="using-reactlogshow" class="slide level2">
+<h2>Using <code>reactlogShow()</code></h2>
+<p>Dark lines show connections that have become apparent when “calculating” a node.</p>
+<p>Light lines are connections that have not yet become apparent.<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Let’s rewind to the beginning.</p>
+<p>Then one step at a time, and narrate.</p>
+</section><section id="adding-a-conductor-pythagorean-2.r" class="slide level2">
+<h2>Adding a conductor: <code>pythagorean-2.R</code></h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label =</span> <span class="st">&quot;C2&quot;</span>)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>())) </a>
+<a class="sourceLine" id="cb19-4" data-line-number="4">}</a></code></pre></div>
+<p>Run the app and <code>reactlogShow()</code></p>
+</section><section id="adding-another-conductor-phythagorean-3.r" class="slide level2">
+<h2>Adding another conductor: <code>phythagorean-3.R</code></h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label=</span><span class="st">&quot;C2&quot;</span>)</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  C  &lt;-<span class="st"> </span><span class="kw">reactive</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>()), <span class="dt">label =</span> <span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">C</span>())</a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">}</a></code></pre></div>
+</section><section id="make-a-cycle-and-show-the-reactivity-log" class="slide level2">
+<h2>Make a cycle and show the reactivity log</h2>
+<p>Perhaps hadley’s celsius/fahrenheit</p>
+</section><section id="note-want-a-reactive-to-run" class="slide level2">
+<h2>Note: Want a reactive to run?</h2>
+<p>Write an observer that does nothing but calls that reactive.</p>
+</section><section id="isolate" class="slide level2">
+<h2>Isolate</h2>
+<p>What isolate does.</p>
+</section><section id="should-you-use-reactive-or-observer" class="slide level2">
+<h2>Should you use <code>reactive()</code> or <code>observer()</code>?</h2>
+<p>Inputs and outputs are obvious.</p>
+<p>What about <code>reactiveVal()</code> – use only in an <code>observer()</code></p>
+<p>Whatever you might do in an observer, you could also do in an output renderXXXX</p>
+<p>Joe Cheng’s haiku:</p>
+<blockquote>
+<p>Keep your side effects<br />
+Outside your reactives<br />
+Or I will kill you</p>
+</blockquote>
+</section><section id="when-should-you-use-eventreactive-or-observeevent" class="slide level2">
+<h2>When should you use <code>eventReactive()</code> or <code>observeEvent()</code>?</h2>
+<p>Once you’ve made this choice, – or their isolated equivalents, <code>eventReactive()</code> or <code>observeEvent()</code></p>
+<p><code>validate()</code> and <code>req()</code></p>
+</section><section id="actions-and-side-effects" class="slide level2">
+<h2>Actions and side effects</h2>
+<p>Reactive: Calculate a value <strong>without</strong> side effects. Or cache a value.</p>
+<p>Observer: Peform <strong>actions</strong>, with side effects. What kind of side effects. Note that observers can’t be hidden behind a tab, so they will always run. If you don’t have side effects in an observer, there’s no reason for it.</p>
+<ul>
+<li>writing to disk, upload to server, …</li>
+<li>setting reactiveValues – never do this in a reactive.</li>
+<li>set other input values. updateXXX should only be in an observer. You can’t rely on a reactive to execute.</li>
+</ul>
+</section></section>
+<section><section id="move-this-to-a-new-show-functions-and-expressions" class="title-slide slide level1"><h1>MOVE THIS TO A NEW SHOW: FUNCTIONS AND EXPRESSIONS</h1></section><section id="reminders-about-r-functions" class="slide level2">
+<h2>Reminders about R functions</h2>
+<p>Functions are containers for R code.<a href="#/fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<div class="container">
+<div class="col">
+<p>Constructing functions</p>
+<ul>
+<li>usually, the container is created by the keyword <code>function</code></li>
+<li><strong>arguments</strong> are in parentheses.</li>
+<li>R code placed in the curly brackets defines the <strong>body</strong> of the function.
+<ul>
+<li>The code in the body is <strong>not evaluated</strong> when the function is constructed.</li>
+</ul></li>
+<li>A reference to the <strong>environment</strong> in which the function was created is carried along with the function.</li>
+</ul>
+</div>
+<div class="col">
+<p>Evaluating functions</p>
+<ol type="1">
+<li>Create an environment that binds values to the argument names.</li>
+<li>The parent of this environment will be the one carried along with the function.</li>
+<li>Run the code in environment (1) (which provides access to the parent environment)</li>
+<li>Erase environment (1) but <strong>return</strong> a selected object as the <strong>value</strong> of that function.</li>
+</ol>
+</div>
+</div>
+</section><section id="your-turn-components-of-a-function" class="slide level2">
+<h2>Your turn: Components of a function</h2>
+<p>In your console, create some R function with three arguments and two lines of code. Bind it to the name <code>my_function</code>.</p>
+<p>Access the three components individually with:</p>
+<ul>
+<li><code>formals(my_function)</code></li>
+<li><code>body(my_function)</code></li>
+<li><code>environment(my_function)</code></li>
+</ul>
+<p>What is the <code>class</code> of each of these components?</p>
+<p>What do these computations return?</p>
+<ul>
+<li><code>all.names(body(my_function))</code></li>
+<li><code>all.vars(body(my_function))</code></li>
+</ul>
+</section><section id="persistent-storage-by-functions" class="slide level2">
+<h2>Persistent storage by functions</h2>
+<p>Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.</p>
+<ul>
+<li>In some languages, not R, there is something like a <code>static</code> or <code>persistent</code> declarative that creates persistent storage.</li>
+<li>Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
+<ul>
+<li>This is a risky technique. Functions that you’ve never heard of my alter the persistent objects in any way whatsoever.</li>
+</ul></li>
+<li>In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses <code>function()</code> within the body of another function.</li>
+</ul>
+</section><section id="example-a-counter" class="slide level2">
+<h2>Example: a counter</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">make_counter &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">  val &lt;-<span class="st"> </span>start</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">  <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">    <span class="dt">incr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">+</span><span class="st"> </span><span class="dv">1</span>},</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">    <span class="dt">decr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">-</span><span class="st"> </span><span class="dv">1</span>},</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">    <span class="dt">reset =</span> <span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {val &lt;&lt;-<span class="st"> </span>start},</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">    <span class="dt">value =</span> <span class="cf">function</span>() val</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">cars &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">trucks &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">cars<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>(); trucks<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>()</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">cars<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">trucks<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</section><section id="other-ways-to-capture-unevaluated-code" class="slide level2">
+<h2>Other ways to capture unevaluated code</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">})</a></code></pre></div>
+<p>The <code>&lt;rlang&gt;</code> package offers another system for doing this.</p>
+</section><section id="your-turn-2" class="slide level2">
+<h2>Your turn:</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">})</a></code></pre></div>
+<ol type="1">
+<li>Enter the above assignments in your console.</li>
+<li>What are the values of <code>x</code> and <code>y</code> <em>after</em> (1).</li>
+<li>Try <code>class()</code> and <code>all.vars()</code> on <code>my_code</code> and <code>bigger_code</code></li>
+<li>Run <code>eval(my_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
+<li>Run <code>eval(bigger_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
+</ol>
+</section><section id="back-to-the-knight-bus" class="slide level2">
+<h2>Back to the Knight Bus</h2>
+<p>Shiny uses this technique in its “server” function.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">knight_bus &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">  f1 &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">    input<span class="op">$</span>button <span class="op">==</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">}</a></code></pre></div>
+<p>The function <code>f1</code> knows to look to it’s birth environment for the value of <code>input</code>.</p>
+</section></section>
+<section><section id="project-3-plot-a-data-frame" class="title-slide slide level1"><h1>Project 3: Plot a data frame</h1></section><section id="orientation-to-the-project" class="slide level2">
+<h2>Orientation to the project</h2>
+<p>This is to be an app where you can select a data frame from a set of choices, then select a response and explanatory variable. The app will:</p>
+<ol type="1">
+<li>Plot out the data frame: response vs explanatory</li>
+<li>Show the head of the data frame.</li>
+<li>Print out a regression report</li>
+<li>Show the codebook for the selected data</li>
+</ol>
+</section><section id="a-starting-app" class="slide level2">
+<h2>A starting app</h2>
+<p>A working, but incomplete version of the app is in</p>
+<p><code>Projects/Project-5-DF/app-0.R</code></p>
+</section><section id="your-turn-re-organize-code" class="slide level2">
+<h2>Your turn: re-organize code</h2>
+<p>The app is already a bit crowded. So …</p>
+<ol type="1">
+<li>Pull out the UI into a file <code>UI.R</code> and the server into <code>Server.R</code>.</li>
+<li>Source these into <code>app-0.R</code> in the appropriate place.
+<ul>
+<li>The <code>Server.R</code> sourcing is tricky.</li>
+</ul></li>
+<li>Make sure it still runs!</li>
+</ol>
+</section><section id="task-1-examine-the-ui" class="slide level2">
+<h2>Task 1: Examine the UI</h2>
+<ol type="1">
+<li>What about the <code>selectInput()</code>s makes it so that the app starts with a little message (e.g., “<em>Choose data frame</em>”) instead of a selected value?
+<ul>
+<li>Find where in the documentation for <code>selectInput()</code> this feature is described.</li>
+</ul></li>
+<li>The app is to display the data in 4 different ways. (See above.) Four output widgets have been provided.
+<ul>
+<li>Do the output widgets have a sensible type?</li>
+</ul></li>
+</ol>
+</section><section id="task-2-tabify-the-app" class="slide level2">
+<h2>Task 2: Tabify the app</h2>
+<p>Too ugly to have all four output displays one after the other. Re-arrange things to:</p>
+<ol type="1">
+<li>Put each output widget in its own tab, with an informative label.</li>
+<li>Put the inputs in the same tab as the table display.</li>
+<li>Make sure the tab in (2) is displayed at start-up.</li>
+</ol>
+</section><section id="the-reactive-logic" class="slide level2">
+<h2>The reactive logic</h2>
+<p>I’ve provided you with two components of the reactive logic.</p>
+<ol type="1">
+<li>A reactive: <code>Raw_data()</code> that uses one of the inputs to provide an appropriate data frame.</li>
+<li>A renderer for <code>outputCodebook</code>. This uses the name of the <code>input$frame</code> to fetch the documentation. (It’s a little involved; that’s why I’ve given it to you.)</li>
+</ol>
+<p>When you choose a data frame, the codebook should be available in its tab.</p>
+</section><section id="task-3-a-small-extension" class="slide level2">
+<h2>Task 3: A small extension</h2>
+<p>Your task now is to fill in appropriate choices for the <code>response</code> and <code>explanatory</code> input widgets.</p>
+<p>Hints: Use <code>updateSelectInput()</code>. The choice names will be <code>names(Raw_data())</code>. Think about whether this operation should be in a <code>reactive()</code> or an <code>observer()</code>.</p>
+<!-- Answer: an observer(), because the action desired is a side effect -->
+</section><section id="task-4-showing-the-data" class="slide level2">
+<h2>Task 4: Showing the data</h2>
+<p>Add appropriate server logic to</p>
+<ol type="1">
+<li>Display the head of the selected data in the table.</li>
+<li>Plot the response versus the explanatory variable.</li>
+</ol>
+<p>Keep in mind that only the response and explanatory variables are to be shown.</p>
+<p>Question: You’ll be using <code>renderXXX()</code> to make the actual displays. Is there something in common that could be handled well by a <code>reactive()</code>?</p>
+</section><section id="task-5-show-a-summary-of-the-model" class="slide level2">
+<h2>Task 5: Show a summary of the model</h2>
+<p>Display a summary of the linear model <code>response ~ explanatory</code> in the appropriate tab.</p>
+<p>Hints:</p>
+<ul>
+<li><code>paste()</code> is a good way to construct the formula.</li>
+<li>The text form of <code>summary(lm(...))</code> can be had with <code>capture.output()</code>.</li>
+<li><code>renderVerbatimText()</code> really wants to work with a single string, not a string vector.</li>
+</ul>
+</section><section id="task-6-annoying-errors" class="slide level2">
+<h2>Task 6: Annoying errors</h2>
+<p>You might see a console error: “undefined columns selected” and a little flash of a red error message just before the table is displayed.</p>
+<p>Kill these.</p>
+<p>Hint: Block the evaluation of the problematic reactive until all the inputs it needs are valid.</p>
+</section><section id="endless-tasks" class="slide level2">
+<h2>Endless tasks</h2>
+<p>As you play with the app, you’ll see additional problems, such as:</p>
+<ol type="a">
+<li>not so nice that the response and explanatory variables are the same when the selectors are updated.
+<ul>
+<li>arrange things so that no assignment to response and explanatory is made until the user does so herself.</li>
+<li>exclude the selected response variable from the set of choices allowed for the explanatory.</li>
+</ul></li>
+<li>when the response variable is not numeric, <code>lm()</code> complains. In such a case, arrange for the response variable to be binary: the most common level and “others”. Also, arrange the model to do logistic regression.</li>
+</ol>
+</section></section>
+<section><section id="debugging" class="title-slide slide level1"><h1>Debugging</h1></section><section id="debugging-1" class="slide level2">
+<h2>Debugging</h2>
+<p>Basic methods:</p>
+<ol type="1">
+<li>Add <code>message()</code></li>
+<li>Add <code>browser()</code> (within a reactive or observer in the server function)</li>
+<li>Put a breakpoint (within a reactive or observer)</li>
+</ol>
+</section><section id="more-advanced" class="slide level2">
+<h2>More advanced</h2>
+<ul>
+<li><p><a href="https://github.com/daattali/advanced-shiny/tree/master/debug-value">display objects in a tab</a></p></li>
+<li><p>put a command input in your app, evaluating it in the server and displaying the result.</p></li>
+<li><p>putting a console in your app! shinyjs::runcode, but see <a href="https://github.com/daattali/advanced-shiny/blob/master/run-arbitrary-code/app.R">this github site</a> for the actual code, so that you can display the output in a text field.</p></li>
+</ul>
+<p>General article: <a href="https://shiny.rstudio.com/articles/debugging.html" class="uri">https://shiny.rstudio.com/articles/debugging.html</a></p>
+</section><section id="view-reactivity" class="slide level2">
+<h2>View reactivity</h2>
+<p>NEED TO MAKE A NICE EXAMPLE, where a connection is not being made. Maybe Pythagorus, but where we forgot to connect to B.</p>
+</section><section id="load-testing" class="slide level2">
+<h2>Load testing</h2>
+</section></section>
+<section><section id="project-2-return" class="title-slide slide level1"><h1>Project 2 return</h1></section><section id="augment-the-server-for-project-2-calculator" class="slide level2">
+<h2>Augment the server for Project-2-calculator</h2>
+</section></section>
+<section><section id="avoiding-loops-updating-inputs" class="title-slide slide level1"><h1>Avoiding loops: Updating inputs</h1></section><section id="you-can-change-the-value-of-an-input" class="slide level2">
+<h2>You can change the value of an input</h2>
+<p>… from the server. Use <code>update__</code>whatever<code>__()</code></p>
+<p>Run plotDF app-1.R</p>
+<p>Many lines have been commented out. But notice that an error message appears in red, until the choices have been sorted out.</p>
+<ol type="1">
+<li>Put a break point at line 31.</li>
+<li>Operate the app.</li>
+<li>Figure out why the error message is being generated.</li>
+<li>What can you do about it?</li>
+</ol>
+<p>Ans to 3: the <code>input$response</code> and <code>input$explanatory</code> are not valid indices into the data frame.</p>
+<p>What to do?</p>
+<ol type="a">
+<li>Put logic to return something reasonable when the indices are not valid.
+<ul>
+<li>But then you have to deal with the “reasonable” output downstream.</li>
+</ul></li>
+<li>Block the reactive from running at all until the acceptable conditions are met.</li>
+</ol>
+</section><section id="reactive-values" class="slide level2">
+<h2>Reactive values</h2>
+<p>Reactive values live on the server</p>
+<p>Inputs live in the client</p>
+<p>When an input changes in the client, a message is sent to the server and the corresponding change is made to <code>input</code>.</p>
+<p>When an input is changed in the client, that message will be sent to the client, BUT the client will not write back to make the corresponding change in <code>input</code>.</p>
+<p>So you have to do it in the server yourself.</p>
+</section><section id="project-plot_df-app-2" class="slide level2">
+<h2>Project plot_DF app 2</h2>
+<p>Add in a reactive state to hold what the values of the inputs should be!</p>
+<p>Changes in these are instantly available whenever needed.</p>
+<p>But they might not show up on the UI until later.</p>
+</section></section>
+<section><section id="project-3-server-components" class="title-slide slide level1"><h1>Project 3: server components</h1></section><section id="orientation-to-the-project-1" class="slide level2">
+<h2>Orientation to the project</h2>
+<p>This is to be an app where you can select a data frame from a set of choices, then select a response and explanatory variable. The app will:</p>
+<ol type="1">
+<li>Plot out the data frame: response vs explanatory</li>
+<li>Show the head of the data frame.</li>
+<li>Print out a regression report</li>
+<li>Show the codebook for the selected data</li>
+</ol>
+</section><section id="a-starting-app-1" class="slide level2">
+<h2>A starting app</h2>
+<p>A working, but incomplete version of the app is in</p>
+<p><code>Projects/Project-5-DF/app-0.R</code></p>
+</section><section id="your-turn-re-organize-code-1" class="slide level2">
+<h2>Your turn: re-organize code</h2>
+<p>The app is already a bit crowded. So …</p>
+<ol type="1">
+<li>Pull out the UI into a file <code>UI.R</code> and the server into <code>Server.R</code>.</li>
+<li>Source these into <code>app-0.R</code> in the appropriate place.
+<ul>
+<li>The <code>Server.R</code> sourcing is tricky.</li>
+</ul></li>
+<li>Make sure it still runs!</li>
+</ol>
+</section><section id="task-1-examine-the-ui-1" class="slide level2">
+<h2>Task 1: Examine the UI</h2>
+<ol type="1">
+<li>What about the <code>selectInput()</code>s makes it so that the app starts with a little message (e.g., “<em>Choose data frame</em>”) instead of a selected value?
+<ul>
+<li>Find where in the documentation for <code>selectInput()</code> this feature is described.</li>
+</ul></li>
+<li>The app is to display the data in 4 different ways. (See above.) Four output widgets have been provided.
+<ul>
+<li>Do the output widgets have a sensible type?</li>
+</ul></li>
+</ol>
+</section><section id="task-2-tabify-the-app-1" class="slide level2">
+<h2>Task 2: Tabify the app</h2>
+<p>Too ugly to have all four output displays one after the other. Re-arrange things to:</p>
+<ol type="1">
+<li>Put each output widget in its own tab, with an informative label.</li>
+<li>Put the inputs in the same tab as the table display.</li>
+<li>Make sure the tab in (2) is displayed at start-up.</li>
+</ol>
+</section><section id="the-reactive-logic-1" class="slide level2">
+<h2>The reactive logic</h2>
+<p>I’ve provided you with two components of the reactive logic.</p>
+<ol type="1">
+<li>A reactive: <code>Raw_data()</code> that uses one of the inputs to provide an appropriate data frame.</li>
+<li>A renderer for <code>outputCodebook</code>. This uses the name of the <code>input$frame</code> to fetch the documentation. (It’s a little involved; that’s why I’ve given it to you.)</li>
+</ol>
+<p>When you choose a data frame, the codebook should be available in its tab.</p>
+</section><section id="task-3-a-small-extension-1" class="slide level2">
+<h2>Task 3: A small extension</h2>
+<p>Your task now is to fill in appropriate choices for the <code>response</code> and <code>explanatory</code> input widgets.</p>
+<p>Hints: Use <code>updateSelectInput()</code>. The choice names will be <code>names(Raw_data())</code>. Think about whether this operation should be in a <code>reactive()</code> or an <code>observer()</code>.</p>
+<!-- Answer: an observer(), because the action desired is a side effect -->
+</section><section id="task-4-showing-the-data-1" class="slide level2">
+<h2>Task 4: Showing the data</h2>
+<p>Add appropriate server logic to</p>
+<ol type="1">
+<li>Display the head of the selected data in the table.</li>
+<li>Plot the response versus the explanatory variable.</li>
+</ol>
+<p>Keep in mind that only the response and explanatory variables are to be shown.</p>
+<p>Question: You’ll be using <code>renderXXX()</code> to make the actual displays. Is there something in common that could be handled well by a <code>reactive()</code>?</p>
+</section><section id="task-5-show-a-summary-of-the-model-1" class="slide level2">
+<h2>Task 5: Show a summary of the model</h2>
+<p>Display a summary of the linear model <code>response ~ explanatory</code> in the appropriate tab.</p>
+<p>Hints:</p>
+<ul>
+<li><code>paste()</code> is a good way to construct the formula.</li>
+<li>The text form of <code>summary(lm(...))</code> can be had with <code>capture.output()</code>.</li>
+<li><code>renderVerbatimText()</code> really wants to work with a single string, not a string vector.</li>
+</ul>
+</section><section id="task-6-annoying-errors-1" class="slide level2">
+<h2>Task 6: Annoying errors</h2>
+<p>You might see a console error: “undefined columns selected” and a little flash of a red error message just before the table is displayed.</p>
+<p>Kill these.</p>
+<p>Hint: Block the evaluation of the problematic reactive until all the inputs it needs are valid.</p>
+</section><section id="endless-tasks-1" class="slide level2">
+<h2>Endless tasks</h2>
+<p>As you play with the app, you’ll see additional problems, such as:</p>
+<ol type="a">
+<li>not so nice that the response and explanatory variables are the same when the selectors are updated.
+<ul>
+<li>arrange things so that no assignment to response and explanatory is made until the user does so herself.</li>
+<li>exclude the selected response variable from the set of choices allowed for the explanatory.</li>
+</ul></li>
+<li>when the response variable is not numeric, <code>lm()</code> complains. In such a case, arrange for the response variable to be binary: the most common level and “others”. Also, arrange the model to do logistic regression.</li>
+</ol>
+</section></section>
+<section id="shiny-documents" class="title-slide slide level1"><h1>Shiny documents</h1></section>
+<section id="flexdashboards" class="title-slide slide level1"><h1>Flexdashboards</h1></section>
+<section id="tuesday" class="title-slide slide level1"><h1>TUESDAY</h1></section>
+<section><section id="deploy" class="title-slide slide level1"><h1>Deploy</h1></section><section id="get-your-directory-in-order" class="slide level2">
+<h2>Get your directory in order</h2>
+<ol type="1">
+<li>Name of directory will be the name of the app</li>
+<li>The call to <code>shinyApp()</code> should be in a script <code>app.R</code>.</li>
+<li>Any other files used in the app should be:
+<ol type="a">
+<li>a package that can be installed on the server</li>
+<li>the app directory or subdirectories of it</li>
+<li>available via the web</li>
+<li>uploadable to app</li>
+</ol></li>
+</ol>
+</section><section id="some-server-options" class="slide level2">
+<h2>Some server options …</h2>
+<ol type="1">
+<li>Your institutional RStudio server may already be set up for deploying apps.</li>
+<li>Create your own server on <a href="https://deanattali.com/2015/05/09/setup-rstudio-shiny-server-digital-ocean/">DigitalOcean</a></li>
+<li>Use &lt;shinyapps.io&gt;</li>
+</ol>
+</section><section id="setting-up-a-shinyapps.io-account" class="slide level2">
+<h2>Setting up a &lt;shinyapps.io&gt; account</h2>
+<ul>
+<li>This is what I use, which is probably only a testament to how little systems skills are needed.</li>
+<li>First level account is free.</li>
+</ul>
+</section><section id="deploying-from-rstudio" class="slide level2">
+<h2>Deploying from RStudio</h2>
+<p>How to deploy from to &lt;shinyapps.io&gt;.</p>
+</section></section>
+<section id="learnr-tutorials" class="title-slide slide level1"><h1>Learnr tutorials</h1></section>
+<section><section id="persistent-storage" class="title-slide slide level1"><h1>Persistent storage</h1></section><section id="persistent-storage-1" class="slide level2">
+<h2>Persistent storage</h2>
+<p>When do we need persistent storage?</p>
+<ul>
+<li>logging or recording events</li>
+</ul>
+<p>Example: A scoring system for tutorials.</p>
+</section><section id="how-to" class="slide level2">
+<h2>How to?</h2>
+<p><a href="https://deanattali.com/blog/shiny-persistent-data-storage/#gsheets">See Dean’s tutorial</a></p>
+</section></section>
+<section><section id="prettifying-your-app" class="title-slide slide level1"><h1>Prettifying your app</h1></section><section id="example-fancy-font" class="slide level2">
+<h2>Example: Fancy font</h2>
+<p>See demo in <code>Projects/Demos/Prettifying</code></p>
+</section><section id="css" class="slide level2">
+<h2>CSS</h2>
+<p>Provides a means to set the style of any element in your app.</p>
+<div class="container">
+<div class="col">
+<ol type="1">
+<li>Use <code>style=</code> attribute when creating a tag.</li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">tags<span class="op">$</span><span class="kw">h1</span>(<span class="st">&quot;Title&quot;</span>, <span class="dt">style=</span><span class="st">&quot;color:red;&quot;</span>)</a></code></pre></div>
+<ol start="2" type="1">
+<li>Link to an external CSS file</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">    tags<span class="op">$</span><span class="kw">link</span>(</a>
+<a class="sourceLine" id="cb30-3" data-line-number="3">       <span class="dt">rel =</span> <span class="st">&quot;stylesheet&quot;</span>,</a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">       <span class="dt">type  =</span> <span class="st">&quot;text/css&quot;</span>,</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5">       <span class="dt">href =</span> <span class="st">&quot;mycss.css&quot;</span></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">    )</a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">)</a></code></pre></div>
+</div>
+<div class="col">
+<ol start="3" type="1">
+<li>Put a style tag in the header</li>
+</ol>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">  tags<span class="op">$</span><span class="kw">style</span>(</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">    <span class="kw">HTML</span>(<span class="st">&quot;p { color:red;}&quot;</span>)</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  )</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">)</a></code></pre></div>
+<ol start="4" type="1">
+<li>Call <code>includeCSS(&quot;mycss.css&quot;)</code> in your UI
+<ul>
+<li>File should be in your app directory.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section><section id="theme-css-files" class="slide level2">
+<h2>Theme CSS files</h2>
+<p>Many at <a href="https://bootswatch.com/" class="uri">https://bootswatch.com/</a></p>
+<ul>
+<li>download <code>.css</code> file</li>
+<li>change name if you like</li>
+<li>put in your <code>www</code> directory</li>
+<li>use one of the above techniques to include it in your app.</li>
+</ul>
+</section><section id="your-turn-3" class="slide level2">
+<h2>Your turn</h2>
+<ol type="1">
+<li>Copy the <code>.css</code> files from <code>Projects/Demos/www</code> into one of your other apps.</li>
+<li>Insert one of the CSS files into your UI.</li>
+<li>Try another!</li>
+<li>Go to <a href="https://bootswatch.com" class="uri">https://bootswatch.com</a> and get yet another app.</li>
+</ol>
+</section><section id="pro-tips-for-selectinput-move-this" class="slide level2">
+<h2>Pro tips for <code>selectInput()</code> MOVE THIS</h2>
+<ul>
+<li>You can have lists within lists.</li>
+</ul>
+<p>You can set the initial choice to null, but display a short instruction.</p>
+<p><code>selectInput(&quot;fred&quot;, &quot;&quot;, choices = c(&quot;Choose df&quot; = &quot;&quot;))</code></p>
+<p>We’ll use this in Project-5-PlotDF</p>
+</section><section id="project-2-return-1" class="slide level2">
+<h2>Project 2: Return</h2>
+<p>Let’s make the buttons prettier in the calculator.</p>
+<ol type="1">
+<li>Add a class (of your own naming) to the buttons.
+<ul>
+<li>Where do you do this?</li>
+</ul></li>
+<li>Add CSS that refers to that class.</li>
+</ol>
+</section><section id="shinywidgets" class="slide level2">
+<h2>ShinyWidgets</h2>
+</section><section id="modals" class="slide level2">
+<h2>Modals</h2>
+</section><section id="tooltips" class="slide level2">
+<h2>Tooltips</h2>
+<p>Add to any UI constructor `title=“My tooltip here!”.</p>
+<p>Your turn: Try it.</p>
+<h3 id="others">Others</h3>
+<p>&lt;bit.ly/shiny-quickstart-1&gt;</p>
+<p>Themes: See themes section in <a href="https://shiny.rstudio.com/articles/layout-guide.html" class="uri">https://shiny.rstudio.com/articles/layout-guide.html</a></p>
+</section></section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>But the visualizer knows that they will eventually be used.<a href="#/fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>There are others, see <code>quote()</code>, <code>expression</code>, and <code>parse</code>.<a href="#/fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="MAIN_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="MAIN_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        chalkboard: {
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/search/search.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'MAIN_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

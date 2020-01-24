@@ -10,6 +10,8 @@ Basic methods:
 
 - [display objects in a tab](https://github.com/daattali/advanced-shiny/tree/master/debug-value)
 
+- put a command input in your app, evaluating it in the server and displaying the result.
+
 - putting a console in your app! shinyjs::runcode, but see [this github  site](https://github.com/daattali/advanced-shiny/blob/master/run-arbitrary-code/app.R) for the actual code, so that you can display the output in a text field.
 
 General article: <https://shiny.rstudio.com/articles/debugging.html>

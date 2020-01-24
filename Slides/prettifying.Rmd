@@ -1,0 +1,101 @@
+---
+title: "Prettifying your app"
+---
+
+## Example: Fancy font
+
+See demo in `Projects/Demos/Prettifying`
+
+
+## CSS
+
+Provides a means to set the style of any element in your app.
+
+<div class="container">
+<div class="col">
+
+1. Use `style=` attribute when creating a tag.
+```r
+tags$h1("Title", style="color:red;")
+```
+
+2. Link to an external CSS file
+```r
+tags$head(
+    tags$link(
+       rel = "stylesheet",
+       type  = "text/css",
+       href = "mycss.css"
+    )
+)
+```
+</div>
+<div class="col">
+3. Put a style tag in  the  header
+```r
+tags$head(
+  tags$style(
+    HTML("p { color:red;}")
+  )
+)
+```
+
+4. Call `includeCSS("mycss.css")` in your UI
+    - File should be in  your app directory.
+</div>
+</div>
+
+## Theme CSS files
+
+Many at <https://bootswatch.com/>
+
+- download `.css` file 
+- change name if you like
+- put in your `www` directory
+- use one of the above techniques to include it in  your  app.
+
+## Your turn
+
+1. Copy the `.css` files from `Projects/Demos/www` into one of your other apps.
+2. Insert one of  the CSS files into your UI.
+3. Try another!
+4. Go to <https://bootswatch.com> and get yet another app.
+
+
+## Pro tips for `selectInput()` MOVE THIS
+
+* You can have lists within lists.
+
+
+You can set the initial choice to null, but display a short instruction.
+
+`selectInput("fred", "", choices = c("Choose df" = ""))`
+
+We'll use this in Project-5-PlotDF
+
+
+## Project 2: Return
+
+Let's make the buttons prettier in the calculator.
+
+1. Add a class (of your own naming) to the buttons.
+    - Where do you do this?
+2. Add CSS that refers to that class.
+
+## ShinyWidgets
+
+## Modals
+
+## Tooltips
+
+Add to any UI constructor `title="My tooltip here!".
+
+Your turn: Try it.
+
+### Others
+
+<bit.ly/shiny-quickstart-1>
+
+
+Themes: See themes section in https://shiny.rstudio.com/articles/layout-guide.html
+

@@ -1,0 +1,13 @@
+## Persistent storage
+
+When do we need persistent storage?
+
+- logging or recording events
+
+Example: A scoring system for tutorials.
+
+
+## How to?
+
+
+[See Dean's tutorial](https://deanattali.com/blog/shiny-persistent-data-storage/#gsheets)
