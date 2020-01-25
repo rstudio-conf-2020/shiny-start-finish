@@ -38,16 +38,20 @@ Your (lack of) previous experience with Shiny is not an issue. If you have exper
 
 2. Read the [general information](https://docs.google.com/document/d/1_-uhk9dQt_LhpdUrmrCMgcznS79xyZ6EDQHrY1rhfhI/edit) for workshop participants posted by RStudio. 
 
-4. Shortly before the workshop starts, open up a new project in `rstudio.cloud` by following this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256). 
+3. Shortly before the workshop starts, open up a new project in `rstudio.cloud` by following this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256). 
     - You may be prompted to set up an account, which is free. If you already have an account, use that.
     - Your `rstudio.cloud` project is yours and you can leave it for future reference or delete it after the workshop: your choice.
     - Packages will be pre-installed on `rstudio.cloud`
     
-5. (An alternative to (2) if you want to use your own RStudio system--e.g. a laptop or an institutional server.) First, think again; it's probably  easier to use the `rstudio.cloud` server. [.. pause while contemplating ...] OK, we understand.
+4. (An alternative to (3) if you want to use your own RStudio system--e.g. a laptop or an institutional server.) First, think again; it's probably  easier to use the `rstudio.cloud` server. [.. pause while contemplating ...] OK, we understand.
     - Scroll up on this GitHub page to the green "clone or download" button. Copy the link and use it on your system to create a new project with "New project/Version control system/GitHub".
     - When your project is created, look at the file `packages-for-workshop.R`. Install any packages there that you don't already have installed. 
 
-6. If you don't already have a system for deploying apps, or if you don't know what that means,  go to `shinyapps.io` and set  up a free account. Keep track of your account ID etc., you'll need it for the workshop.
+6. One topic of the workshop is deploying apps. If you don't already have a system for deploying apps, or if you don't know what that means, there are two easy options: 
+
+a. Go to `shinyapps.io` and set  up a free account. Keep track of your account ID etc., you'll need it for the workshop.
+b. RStudio has set up a Connect server for our workshop. This will disappear soon after the workshop, but it is better than (a) in that you can deploy as many apps as you like. Go to <https://workshops.rstudio.com/rsconnect> and "Sign up". Again, keep track of your account name and password.
+
 
 ## Schedule
 
@@ -69,7 +73,7 @@ Your (lack of) previous experience with Shiny is not an issue. If you have exper
 | :------------ | :--------------- |
 | 09:00 - 10:30 | Documents & dashboards  | <!--learnr here -->
 | 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:00 | Deployment     | <!-- including persistent storage -->
+| 11:00 - 12:00 | Deployment       | <!-- including persistent storage -->
 | 12:00 - 13:30 | *Lunch break*    |
 | 13:30 - 15:00 | Modules          |
 | 15:00 - 15:30 | *Coffee break*   |

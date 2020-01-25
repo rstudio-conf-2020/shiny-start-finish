@@ -1,7 +1,7 @@
 library(shiny)
 
 source("Muggle.R")
-source("UI_fluid_page.R") # defines ui  <-
+source("UI_starting.R") # defines ui  <-
 
 
 server <- function(input, output, session) {

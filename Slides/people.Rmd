@@ -2,7 +2,7 @@
 
 Danny Kaplan | Sara Altman | Dean Attali | Randy Pruim | Homer White
 -------------|-------------|-------------|-------------|-------------|
-one | two | ![](images/dean_attali_2.jpg) | four | ![](images/Homer_White.jpg)
+![](images/Danny_2019_headshot_thumbnail.jpeg) | ![](images/sara.png) | ![](images/dean_attali_2.jpg) | ![](images/randy.jpg) | ![](images/Homer_White.jpg)
 
 Danny Kaplan
 ---
@@ -37,6 +37,17 @@ Something about Sara
 }
 </style>
 
+
+<div class="container">
+<div class = "col">
+![](images/sara.png)
+</div>
+<div class = "col">
+* I teach an introductory, project-based data science class at Stanford 
+* I create open materials and tools for learning and teaching data science and R
+</div>
+</div>
+
 Dean Attali
 ---
 
@@ -60,7 +71,22 @@ AttaliTech Ltd, <http://AttaliTech.com>
 Randy J. Pruim
 ---
 
-Something about Randy
+<div class="container">
+<div class="col">
+![](images/randy.jpg)
+
+</div>
+<div class="col">
+* Professor of Mathematics and Statistics at Calvin University
+* Has been teaching with R since 2002
+* Once knew every Rstudio employee by name — all three of them
+* Maintainer of several R packages, including mosaic and ggformula
+* Textbook author
+    * Foundations and Applications of Statistics: An Introduction Using R
+    * Gems of Theoretical Computer Science
+    
+</div>
+</div>
 
 Homer S. White
 ---

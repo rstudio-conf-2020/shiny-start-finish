@@ -4,7 +4,6 @@ library(shinyWidgets)
 source("muggle.R")
 
 ui <- fluidPage(
-  includeCSS("vehicles.css"),
   source("UI-counter.R") # defines counter_ui
 )
 

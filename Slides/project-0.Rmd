@@ -136,11 +136,11 @@ shinyApp(user_interface, reactive_logic)
 **Your turn**: Run it in  the console.
 </div>
 <div class="col">
-Uses the  objects we created: `user_interface` and `bridge`.
+Uses the  objects we created: `user_interface` and `reactive_logic`.
 
 **Your turn**:
 
-- What kind of objects are `user_interface` and `bridge`?
+- What kind of objects are `user_interface` and `reactive_logic`?
     Hint: Use `class()`
 - What kind of object is produced by `shinyApp()`?
     Hint: Name the object `hoo <-` and  look at the `class()`. Then  "print" it.
