@@ -155,3 +155,20 @@ apps/dashboards/flexdashboard_01.Rmd
 ```
 
 
+
+# Shiny Modules {data-background-image="./images/cityscape.png"}
+
+## Motivation
+
+Do Task 1 in `project-4-modules.html`. 
+
+This will set us up for understanding Shiny modules.
+
+
+```{r child="modules.Rmd"}
+```
+
+# Project 4
+
+```{r child="project-4-modules.Rmd"}
+```

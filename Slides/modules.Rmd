@@ -1,0 +1,172 @@
+## Shiny Modules
+
+Shiny provides a simple but effective system called "modules" to help address two important situations:
+
+1. Including multiples of the same basic functionality in one app.
+
+2. Distributing Shiny functionality to be used by you or others in new apps.
+
+## Multiples of the same basic functionality
+
+*Example*: An app that lets you compare different products (à la Amazon's shopping pages). Each product has the same layout of information, order buttons, etc., but the contents are different.
+
+*Unscalable approach*: You can use the tools previously introduced in this workshop to build the UI for a single product. Then duplicate this for each additional product.
+
+BUT ... You'll have to be careful to assign distinct names to the input and output widgets for different products. And your server code will need different names for the parallel *reactives* and *observers*. 
+
+## Providing app functionality for new apps
+
+**Example**: I work as part of a project to help two-year college instructors learn to work with computing and data. They are often untrained in computing and shy about teaching with, say, an R console in front of a class. I write little data analysis apps that each handle specific elements of statistial methodology. All these apps have in common selecting and displaying data (like our Project 3).
+
+*Unscalable approach*: Provide `.R` files with the reactive logic to be sourced into the `function(input, output, session)` definition. 
+
+But ... I don't know yet what other reactive logic the new app will have. So how do I avoid name conflicts?
+
+## The Shiny Module approach
+
+1. Create UI components *inside* a function that can be called many times to implement many copies of the components. Within each call, provide a unique name to each component.
+2. Create server components *inside* a function that can be called many times to ... well, the same as in (1).
+
+## Implementing a Shiny module
+
+There are only *two* functions that are key to building a module:
+
+- `NS()` handles the construction of unique names for UI components.
+- `callModule()` which does the same thing for the reactive entities, matching them up to the unique names provided by `ns()`.
+
+## What you do
+
+Write a muggle file that provides two functions:
+
+1. A UI builder
+2. A builder for reactive entities. 
+
+These *must* have a particular form.
+
+## The UI builder
+
+Ordinary, non-module style
+```{r eval=FALSE}
+ui_components <- tagList(
+  selectInput("shape", "Shape:",
+    choice = c("Gauss", "unif", "exp")),
+  sliderInput("x", "Value:", min=0, max=10, value=0),
+  plotOutput("density")
+)
+```
+
+Module style
+```{r}
+density_UI <- function(id) {
+  ns <- NS(id) # Creates function to customize names
+  tagList(
+    selectInput(ns("shape"), "Shape:",
+                choice = c("Gauss", "unif", "exp")),
+    sliderInput(ns("x"), "Value:", min=0, max=10, value=0),
+    plotOutput(ns("density"))
+  )
+}
+```
+
+## `NS()` does what? `ns()` does what?
+
+`NS()` is a perfectly ordinary muggle function.
+
+Your turn:
+
+1. Try out `NS()` in the console, say `NS("fred")`.
+    - What kind of thing is returned?
+2. Again, in the console, bind a name to the output of `NS("fred")`, say `ns <- NS("fred")`.
+3. Use `ns()`, that is, `ns("density")`
+    - What do you get from this?
+    
+`NS()` is a function that returns a function.
+
+## A module server builder
+
+Very much the same as we have been doing all along.
+
+```{r}
+density <- function(input, output, session) {
+  rvals <- reactive({rnorm(1000) + input$x})
+  output$plot <- renderPlot({histogram(rvals)})
+}
+```
+
+Important note: The above code doesn't make the reactive and observer elements. Instead, it is a function that *will make them* when called appropriately.
+
+## Using the module server builder 
+
+*If we were not building modules*, we might use functions like `density_UI()` and `density()` directly in an app, like this:
+
+```{r eval=FALSE}
+ui <- tagList(... other UI stuff ...,     
+              density_UI("fred"))
+server <- function(input, output, session) {
+  density(input, output, session)
+  ... other reactive definitions ...
+}
+shinyApp(ui, server)
+```
+
+- Problem 1: `density_UI("fred")` creates UI elements with `fred-` prepended to the name. 
+- Problem 2: `density(input, output, session)` does **not** prepend `fred-` to the names of the inputs or reactive elements.
+
+## `callModule()` to the rescue
+
+To use the functions `density_UI()` and `density()` as a module, we need to coordinate the name spaces.
+
+`callModule()` does this.
+
+```{r eval=FALSE}
+ui <- tagList(... other UI stuff ...,     
+              density_UI("fred"))
+server <- function(input, output, session) {
+  callModule(density, "fred")
+  ... other reactive definitions ...
+}
+shinyApp(ui, server)
+```
+
+It's your job to use `"fred"` consistently.
+
+## A multiple-use pattern
+
+```{r eval=FALSE}
+ui <- tagList(... other UI stuff ...,     
+              density_UI("fred"),
+              density_UI("ginger"))
+server <- function(input, output, session) {
+  callModule(density, "fred")
+  callModule(density, "ginger")
+  ... other reactive definitions ...
+}
+shinyApp(ui, server)
+```
+
+## Accessing Fred and Ginger's reactives
+
+Functions like `density()` can return values after they create the reactive entities. 
+
+This enables you to provide other reactive entities access to the reactives in Fred or Ginger.
+
+```{r eval=FALSE}
+density <- function(input, output, session) {
+  rvals <- reactive({rnorm(1000) + input$x})
+  ... other stuff in your module
+  return(list(rvals, ... and any others you want.))
+}
+```
+
+Then,
+```{r eval = FALSE}
+server <- function(input, output, session) {
+  Freds_reactives <- callModule(density, "fred")
+  Gingers_reactives <- callModule(density, "ginger")
+  
+  # Calculate the sum of Fred and Gingers random values
+  new_reactive <- reactive({
+    Freds_reactives$rvals() + Gingers_reactives$rvals()
+  })
+}
+```

@@ -508,8 +508,8 @@ style.innerHTML = style_script;
 document.getElementsByTagName('head')[0].appendChild(style);
 </script>
 
-    <link href="MAIN_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-    <link href="MAIN_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+    <link href="MAIN_files/font-awesome-5.3.1/css/all.min.css" rel="stylesheet" />
+    <link href="MAIN_files/font-awesome-5.3.1/css/v4-shims.min.css" rel="stylesheet" />
 </head>
 <body>
   <div class="reveal">
@@ -2197,6 +2197,240 @@ Or I will kill you</p>
 <h3 id="others">Others</h3>
 <p>&lt;bit.ly/shiny-quickstart-1&gt;</p>
 <p>Themes: See themes section in <a href="https://shiny.rstudio.com/articles/layout-guide.html" class="uri">https://shiny.rstudio.com/articles/layout-guide.html</a></p>
+</section></section>
+<section><section id="shiny-modules" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Shiny Modules</h1></section><section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<p>Do Task 1 in <code>project-4-modules.html</code>.</p>
+<p>This will set us up for understanding Shiny modules.</p>
+</section><section id="shiny-modules-1" class="slide level2">
+<h2>Shiny Modules</h2>
+<p>Shiny provides a simple but effective system called “modules” to help address two important situations:</p>
+<ol type="1">
+<li><p>Including multiples of the same basic functionality in one app.</p></li>
+<li><p>Distributing Shiny functionality to be used by you or others in new apps.</p></li>
+</ol>
+</section><section id="multiples-of-the-same-basic-functionality" class="slide level2">
+<h2>Multiples of the same basic functionality</h2>
+<p><em>Example</em>: An app that lets you compare different products (à la Amazon’s shopping pages). Each product has the same layout of information, order buttons, etc., but the contents are different.</p>
+<p><em>Unscalable approach</em>: You can use the tools previously introduced in this workshop to build the UI for a single product. Then duplicate this for each additional product.</p>
+<p>BUT … You’ll have to be careful to assign distinct names to the input and output widgets for different products. And your server code will need different names for the parallel <em>reactives</em> and <em>observers</em>.</p>
+</section><section id="providing-app-functionality-for-new-apps" class="slide level2">
+<h2>Providing app functionality for new apps</h2>
+<p><strong>Example</strong>: I work as part of a project to help two-year college instructors learn to work with computing and data. They are often untrained in computing and shy about teaching with, say, an R console in front of a class. I write little data analysis apps that each handle specific elements of statistial methodology. All these apps have in common selecting and displaying data (like our Project 3).</p>
+<p><em>Unscalable approach</em>: Provide <code>.R</code> files with the reactive logic to be sourced into the <code>function(input, output, session)</code> definition.</p>
+<p>But … I don’t know yet what other reactive logic the new app will have. So how do I avoid name conflicts?</p>
+</section><section id="the-shiny-module-approach" class="slide level2">
+<h2>The Shiny Module approach</h2>
+<ol type="1">
+<li>Create UI components <em>inside</em> a function that can be called many times to implement many copies of the components. Within each call, provide a unique name to each component.</li>
+<li>Create server components <em>inside</em> a function that can be called many times to … well, the same as in (1).</li>
+</ol>
+</section><section id="implementing-a-shiny-module" class="slide level2">
+<h2>Implementing a Shiny module</h2>
+<p>There are only <em>two</em> functions that are key to building a module:</p>
+<ul>
+<li><code>NS()</code> handles the construction of unique names for UI components.</li>
+<li><code>callModule()</code> which does the same thing for the reactive entities, matching them up to the unique names provided by <code>ns()</code>.</li>
+</ul>
+</section><section id="what-you-do" class="slide level2">
+<h2>What you do</h2>
+<p>Write a muggle file that provides two functions:</p>
+<ol type="1">
+<li>A UI builder</li>
+<li>A builder for reactive entities.</li>
+</ol>
+<p>These <em>must</em> have a particular form.</p>
+</section><section id="the-ui-builder" class="slide level2">
+<h2>The UI builder</h2>
+<p>Ordinary, non-module style</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">ui_components &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="kw">selectInput</span>(<span class="st">&quot;shape&quot;</span>, <span class="st">&quot;Shape:&quot;</span>,</a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="kw">sliderInput</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">  <span class="kw">plotOutput</span>(<span class="st">&quot;density&quot;</span>)</a>
+<a class="sourceLine" id="cb32-6" data-line-number="6">)</a></code></pre></div>
+<p>Module style</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">density_UI &lt;-<span class="st"> </span><span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">  ns &lt;-<span class="st"> </span><span class="kw">NS</span>(id) <span class="co"># Creates function to customize names</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">  <span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">    <span class="kw">selectInput</span>(<span class="kw">ns</span>(<span class="st">&quot;shape&quot;</span>), <span class="st">&quot;Shape:&quot;</span>,</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">                <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">    <span class="kw">sliderInput</span>(<span class="kw">ns</span>(<span class="st">&quot;x&quot;</span>), <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">    <span class="kw">plotOutput</span>(<span class="kw">ns</span>(<span class="st">&quot;density&quot;</span>))</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb33-9" data-line-number="9">}</a></code></pre></div>
+</section><section id="ns-does-what-ns-does-what" class="slide level2">
+<h2><code>NS()</code> does what? <code>ns()</code> does what?</h2>
+<p><code>NS()</code> is a perfectly ordinary muggle function.</p>
+<p>Your turn:</p>
+<ol type="1">
+<li>Try out <code>NS()</code> in the console, say <code>NS(&quot;fred&quot;)</code>.
+<ul>
+<li>What kind of thing is returned?</li>
+</ul></li>
+<li>Again, in the console, bind a name to the output of <code>NS(&quot;fred&quot;)</code>, say <code>ns &lt;- NS(&quot;fred&quot;)</code>.</li>
+<li>Use <code>ns()</code>, that is, <code>ns(&quot;density&quot;)</code>
+<ul>
+<li>What do you get from this?</li>
+</ul></li>
+</ol>
+<p><code>NS()</code> is a function that returns a function.</p>
+</section><section id="a-module-server-builder" class="slide level2">
+<h2>A module server builder</h2>
+<p>Very much the same as we have been doing all along.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">  output<span class="op">$</span>plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({<span class="kw">histogram</span>(rvals)})</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">}</a></code></pre></div>
+<p>Important note: The above code doesn’t make the reactive and observer elements. Instead, it is a function that <em>will make them</em> when called appropriately.</p>
+</section><section id="using-the-module-server-builder" class="slide level2">
+<h2>Using the module server builder</h2>
+<p><em>If we were not building modules</em>, we might use functions like <code>density_UI()</code> and <code>density()</code> directly in an app, like this:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">  <span class="kw">density</span>(input, output, session)</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+<ul>
+<li>Problem 1: <code>density_UI(&quot;fred&quot;)</code> creates UI elements with <code>fred-</code> prepended to the name.</li>
+<li>Problem 2: <code>density(input, output, session)</code> does <strong>not</strong> prepend <code>fred-</code> to the names of the inputs or reactive elements.</li>
+</ul>
+</section><section id="callmodule-to-the-rescue" class="slide level2">
+<h2><code>callModule()</code> to the rescue</h2>
+<p>To use the functions <code>density_UI()</code> and <code>density()</code> as a module, we need to coordinate the name spaces.</p>
+<p><code>callModule()</code> does this.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+<p>It’s your job to use <code>&quot;fred&quot;</code> consistently.</p>
+</section><section id="a-multiple-use-pattern" class="slide level2">
+<h2>A multiple-use pattern</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>),</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">              <span class="kw">density_UI</span>(<span class="st">&quot;ginger&quot;</span>))</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">  <span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+</section><section id="accessing-fred-and-gingers-reactives" class="slide level2">
+<h2>Accessing Fred and Ginger’s reactives</h2>
+<p>Functions like <code>density()</code> can return values after they create the reactive entities.</p>
+<p>This enables you to provide other reactive entities access to the reactives in Fred or Ginger.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">  ... other stuff <span class="cf">in</span> your module</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">  <span class="kw">return</span>(<span class="kw">list</span>(rvals, ... and any others you want.))</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">}</a></code></pre></div>
+<p>Then,</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">  Freds_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">  Gingers_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">  <span class="co"># Calculate the sum of Fred and Gingers random values</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">  new_reactive &lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb39-7" data-line-number="7">    Freds_reactives<span class="op">$</span><span class="kw">rvals</span>() <span class="op">+</span><span class="st"> </span>Gingers_reactives<span class="op">$</span><span class="kw">rvals</span>()</a>
+<a class="sourceLine" id="cb39-8" data-line-number="8">  })</a>
+<a class="sourceLine" id="cb39-9" data-line-number="9">}</a></code></pre></div>
+</section></section>
+<section><section id="project-4" class="title-slide slide level1"><h1>Project 4</h1></section><section id="project-4-modules" class="slide level2">
+<h2>Project 4: Modules</h2>
+<p>In this project, you are going to build an app that will help in counting the vehicles pass by on your street. Each time a vehicle goes by, you will press the appropriate button to increment the count.</p>
+<p>For each vehicle this will be</p>
+<ul>
+<li>a button with an icon showing the kind of vehicle</li>
+<li>a count of how many have been seen so far</li>
+<li>a button that let’s you undo a mistaken press</li>
+</ul>
+<p>It should look like this:</p>
+<p><span> <button class="action-button bttn bttn-simple bttn-md bttn-primary bttn-no-outline" id="up" type="button" style="color: blue;"> <i class="fa fa-bicycle"></i> </button> <span style="font-size: 20px;"> <span>3 seen</span> </span> <button class="action-button bttn bttn-simple bttn-sm bttn-warning bttn-no-outline" id="down" type="button" style="color: red;"> <i class="fa fa-eye-slash"></i> </button> </span></p>
+</section><section id="starting-files" class="slide level2">
+<h2>Starting files</h2>
+<p>In <code>Projects/Project-4-modules/</code> there are four <code>.R</code> files to get you started.</p>
+<ul>
+<li><code>app.R</code> is the usual structure for this workshop’s apps, with</li>
+<li><code>muggle.R</code> where you can put whatever Muggle code you want to write</li>
+<li><code>UI-counter.R</code> which defines a UI for one vehicle type</li>
+<li><code>server-components.R</code> which contains the server components relating to the vehicle in the example UI.</li>
+</ul>
+</section><section id="task-1-you-can-see-where-this-is-heading" class="slide level2">
+<h2>Task 1: You can see where this is heading</h2>
+<p>First, I want you to appreciate the problem that Shiny modules address. To this end …</p>
+<ol type="1">
+<li>Copy the UI for the for the bicycle and customize it to be a car. (The relevant icon name is <code>&quot;car&quot;</code>!) Keep in mind that you don’t want to have the same ID for different buttons.</li>
+<li>In <code>server-components.R</code>, “copy” the components so that you have a counter and corresponding <code>observeEvent()</code>s to keep track of the count of cars.</li>
+<li>Spend the time to get this to work. It’s worthwhile because you will have to address the same challenges that Shiny modules helps take care of for you.</li>
+</ol>
+</section><section id="task-2-build-a-module" class="slide level2">
+<h2>Task 2: Build a module</h2>
+<p>In <code>muggle.R</code>, write the two functions that describe a module. Let’s call them:</p>
+<p><code>vehicle_UI()</code> and <code>vehicle(input, output, session)</code>.</p>
+<p>The <code>vehicle(...)</code> function should return a reactive with the present count for its vehicle type.</p>
+</section><section id="some-transportation-icons" class="slide level2">
+<h2>Some transportation icons:</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Vehicle</th>
+<th style="text-align: left;">icon name</th>
+<th style="text-align: left;">icon</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">automobile</td>
+<td style="text-align: left;"><code>&quot;car&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-car"></i></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">bike</td>
+<td style="text-align: left;"><code>&quot;bicycle&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-bicycle"></i></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">truck</td>
+<td style="text-align: left;"><code>&quot;truck&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-truck"></i></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">bus</td>
+<td style="text-align: left;"><code>&quot;bus&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-bus"></i></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">motorcycle</td>
+<td style="text-align: left;"><code>&quot;motorcycle&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-motorcycle"></i></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">helicopter</td>
+<td style="text-align: left;"><code>&quot;helicopter&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-helicopter"></i></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">airplane</td>
+<td style="text-align: left;"><code>&quot;plane&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-plane"></i></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">wheelchair</td>
+<td style="text-align: left;"><code>&quot;wheelchair&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-wheelchair"></i></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Mary Poppins</td>
+<td style="text-align: left;"><code>&quot;umbrella&quot;</code></td>
+<td style="text-align: left;"><i class="fa fa-umbrella"></i></td>
+</tr>
+</tbody>
+</table>
 </section></section>
 <section class="footnotes">
 <hr />

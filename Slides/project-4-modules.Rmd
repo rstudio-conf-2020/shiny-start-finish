@@ -1,0 +1,68 @@
+## Project 4: Modules 
+
+```{r include=FALSE}
+library(shiny)
+```
+
+In this project, you are going to build an app that will help in counting the vehicles pass by on your street. Each time a vehicle goes by, you will press the appropriate button to increment the count.
+
+For each vehicle this will be
+
+- a button with an icon showing the kind of vehicle
+- a count of how many have been seen so far
+- a button that let's you undo a mistaken press
+
+It should look like this:
+
+<span>
+  <button class="action-button bttn bttn-simple bttn-md bttn-primary bttn-no-outline" id="up" type="button" style="color: blue;">
+    <i class="fa fa-bicycle"></i>
+  </button>
+  <span style="font-size: 20px;">
+    <span>3 seen</span>
+  </span>
+  <button class="action-button bttn bttn-simple bttn-sm bttn-warning bttn-no-outline" id="down" type="button" style="color: red;">
+    <i class="fa fa-eye-slash"></i>
+  </button>
+</span>
+
+## Starting files
+
+In `Projects/Project-4-modules/` there are four `.R` files to get you started.
+
+- `app.R` is the usual structure for this workshop's apps, with
+- `muggle.R` where you can put whatever Muggle code you want to write
+- `UI-counter.R` which defines a UI for one vehicle type
+- `server-components.R` which contains the server components relating to the vehicle in the example UI.
+
+## Task 1: You can see where this is heading
+
+First, I want you to appreciate the problem that Shiny modules address. To this end ...
+
+1. Copy the UI for the for the bicycle and customize it to be a car. (The relevant icon name is `"car"`!) Keep in mind that you don't want to have the same ID for different buttons.
+2. In `server-components.R`, "copy" the components so that you have a counter and corresponding `observeEvent()`s to keep track of the count of cars.
+3. Spend the time to get this to work. It's worthwhile because you will have to address the same challenges that Shiny modules helps take care of for you.
+
+## Task 2: Build a module
+
+In `muggle.R`, write the two functions that describe a module. Let's call them:
+
+`vehicle_UI()` and `vehicle(input, output, session)`.
+
+The `vehicle(...)` function should return a reactive with the present count for its vehicle type.
+
+## Some transportation icons:
+
+Vehicle    | icon name        | icon
+----------:|:-----------------|:-----
+automobile | `"car"`          | `r icon("car")`
+bike       | `"bicycle"   `   | `r icon("bicycle")`
+truck      | `"truck"`        | `r icon("truck")`
+bus        | `"bus"`          | `r icon("bus")`
+motorcycle | `"motorcycle"`   | `r icon("motorcycle")`
+helicopter | `"helicopter"`   | `r icon("helicopter")`
+airplane   | `"plane"`        | `r icon("plane")`
+wheelchair | `"wheelchair"`   | `r icon("wheelchair")`
+Mary Poppins | `"umbrella"`   | `r icon("umbrella")`
+
+
