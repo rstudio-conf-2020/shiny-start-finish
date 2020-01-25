@@ -8,6 +8,7 @@ package_list <- c(
   "shinyWidgets",    # workshop specific
   "shinyjs",         # workshop specific
   "miniUI",          # workshop specific
+  "learnr",          # workshop specific
   "revealjs",        # just for compiling slide collection
   "mosaic"           # some data sets, etc
   )
