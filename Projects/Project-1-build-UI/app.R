@@ -5,7 +5,7 @@ source("UI_starting.R") # defines ui  <-
 
 
 server <- function(input, output, session) {
-  source("Server.R", local = TRUE)
+  source("Knight_bus.R", local = TRUE)
 }
 
 shinyApp(UI, server)
