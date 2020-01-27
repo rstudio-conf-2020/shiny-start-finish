@@ -1,0 +1,89 @@
+---
+title: "Dashboard Value Boxes"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    navbar:
+      - { title: "About", href: "https://example.com/about" }
+      - { title: "StatPREP", href: "https//statprep.org"}
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+# these computing functions are only toy examples
+computeArticles = function(...) return(45)
+computeComments = function(...) return(126)
+computeSpam = function(...) return(15)
+Latin <- "First, Quisque porttitor porttitor felis vitae dapibus. Curabitur dignissim quis mi dapibus pulvinar."
+Hebrew <- "Second, אם אתה הולך להשתמש במקטעים של של Lorem Ipsum אתה צריך להיות בטוח שאין משהו מביך חבוי בתוך הטקסט. כל מחוללי הטקסט ש"
+Ukrainian  <- "Third, Вже давно відомо, що читабельний зміст буде заважати зосередитись людині, яка оцінює композицію сторінки."
+Arabic <- "Fourth,هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام"
+Chinese  <- "Fifth, 如今互联网提供各种各样版本的Lorem Ipsum段落，但是大多数都多多少少出于刻意幽默或者其他随机插入的荒谬单词而被篡改过了。"
+
+```
+
+# First page {data-icon=fa-umbrella}
+
+
+##  Two tabs {.tabset}
+
+### Tab Latin
+
+`r Latin`
+
+### Tab Ukrainian
+
+`r Ukrainian`
+
+## Row
+
+### Articles per Day
+
+```{r}
+articles = computeArticles()
+valueBox(articles, icon = "fa-pencil")
+```
+
+### Comments per Day
+
+```{r}
+comments = computeComments()
+valueBox(comments, icon = "fa-comments")
+```
+
+### Spam per Day
+
+```{r}
+spam = computeSpam()
+valueBox(
+  spam, icon = "fa-trash",
+  color = ifelse(spam > 10, "warning", "primary")
+)
+```
+
+# Second page
+
+## This text doesn't matter
+
+### But this does
+
+Third-level headers get incorporated into the box. 
+
+Or, if you want no title, use the directive `{.no-title}` in the 3rd-level section line.
+
+A box can be as simple as text.
+
+### Gauge
+
+```{r}
+gauge(91, min = 0, max = 100, symbol = '%', 
+      gaugeSectors(
+        success = c(80, 100), 
+        warning = c(40, 79), 
+        danger = c(0, 39)
+      )
+)
+```
+
+> A caption for the gauge

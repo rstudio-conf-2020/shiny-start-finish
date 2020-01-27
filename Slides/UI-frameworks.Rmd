@@ -244,7 +244,9 @@ With your neighbor, draw the UI tree on paper.
 
 ## Exercise n
 
-Again, with your neighbor, draw the UI tree on paper.
+The [*Economist*'s Big Mac index visualizer](https://www.economist.com/news/2020/01/15/the-big-mac-index) isn't written as a Shiny app  (I think!), but sketch out how you would write a Shiny app to mimic it. 
+
+## If you haven't had enough ...
 
 ![](images/twin-cities-busses.png](https://shiny.rstudio.com/gallery/bus-dashboard.html)
 

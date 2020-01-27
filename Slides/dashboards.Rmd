@@ -1,0 +1,28 @@
+## Dashboards
+
+```{r include=TRUE}
+library(flexdashboard)
+```
+
+I'll approach this from the perspective of making a small display for a phone. That means a display less than 768 pixels in height.
+
+In Chrome,  CMD-OPT-I brings up the console.
+
+## Value boxes
+
+```{r eval = FALSE}
+spam <- 17
+valueBox(
+  spam, icon = "fa-trash",
+  color = ifelse(spam > 10, "warning", "primary")
+)
+```
+
+## Flexdashboard
+
+- More or less ordinary document
+
+- Columns denoted by level-2 header
+    - Use `{data-width=650}` directives to set width
+- Items in column by level-3 header
+ 
