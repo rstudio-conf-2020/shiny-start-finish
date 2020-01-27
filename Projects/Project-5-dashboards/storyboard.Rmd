@@ -13,18 +13,14 @@ library(plotly)
 library(shiny)
 ```
 
-### Once upon a time ...
+### Once upon a time in a land far, far away ... There lived a dragon.![](images/Black_dragon_preloader.jpg) {width="100px"}
 
-```{r}
-```
-
-Once upon a time, in a land far, far away. There lived a dragon.
 
 ![A fire-breathing dragon](https://vignette.wikia.nocookie.net/emporea/images/d/d9/Black_dragon_preloader.jpg/revision/latest/scale-to-width-down/430?cb=20160216171424)
 
-*** 
+---
 
-#### Comments
+Comments
 
 a. Dragons are not real animals. 
     - There are electric eels, but I don't know about any fire-breathing animals.
@@ -33,13 +29,11 @@ a. We need to be more specific about the year. Once-upon-a-time is too vague.
     - Suggestion 2: Roman Era. But did they have dragons?
     - But not a lava-filled pre-historic time. 
 
-### The Princess
-
-`The princess loved unicorns, but not princes.
+### ... and, of course, a princess.  The princess loved unicorns, but not princes.
 
 ![A unicorn](https://i.pinimg.com/originals/00/20/8a/00208aa103b9f215e87ad0ba4e221746.png)
 
-*** 
+---
 
 #### Marketing rationale
 
@@ -53,17 +47,16 @@ Loving unicorns is actually pretty common. I've known little girls who loved uni
     - We need a unicorn in a genuine historical setting.
 * Get a landscape unicorn picture. This one hides the narrative.
 
------
 
-Note that the caption is being displayed at the bottom. Do we want this?
-
-### ... and she loved to eat ...
+### ... and she loved to eat ... Big Macs
 
 ![](https://cdn.instructables.com/FYJ/GFKS/J7RS7L2O/FYJGFKSJ7RS7L2O.LARGE.jpg?auto=webp&width=827)
 
-***
+---
 
-Big Macs. But in order to be able to feed the ~~dragon~~ unicorn, they need to be cheap. So where to set this drama?
+####  Excellent product placement opportunity
+
+In order to be able to feed the ~~dragon~~ unicorn, Big Macs need to be cheap. So where to set this drama?
 
 ```{r, out.width = "90%"}
 Big_mac <- read_csv("data/big-mac-index.csv")

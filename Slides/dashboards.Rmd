@@ -1,12 +1,64 @@
 ## Dashboards
 
 ```{r include=TRUE}
+library(shiny)
 library(flexdashboard)
 ```
 
-I'll approach this from the perspective of making a small display for a phone. That means a display less than 768 pixels in height.
 
-In Chrome,  CMD-OPT-I brings up the console.
+
+## Preliminaries
+
+Nota Bene: The RStudio viewer does not display dashboards correctly. So use a web browser.
+
+If  your target is not a "normal"-size display (technical: 768 pixels or more in height), use the browser in emulation mode.
+     - In Chrome, CMD-OPT-I brings up the console.
+
+## [Flexdashboard](https://bookdown.org/yihui/rmarkdown/dashboards.html)
+
+
+
+Set things up in YAML:
+
+```
+---
+title: "Dashboard Value Boxes"
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    navbar:
+      - { title: "About", href: "https://example.com/about" }
+      - { title: "StatPREP", href: "https//statprep.org"}
+---
+```
+
+## Layout
+
+The navbar is described in the YAML. But everything else is ordinary headings.
+
+`flexdashboard::flex_dashboard()` is an R/Markdown renderer that treats headings specially.
+
+- *First Level* (`#`) -- a page 
+    - navigation menu with buttons for each tab
+    - button label is text of header
+    
+    
+- Second Level (`##`) -- a row in a page. (Note: because YAML specified `orientation: rows`. Default is columns.)
+    - header text doesn't matter
+
+- *Third level* (`###`) -- a box in a row
+    - header text becomes a label, maybe integrated into a widget.
+
+
+## Attributes
+
+- First level: (`#`)
+    - use `data-icon=fa-umbrella` attribute to set logo (if any). Note: `fa-` prefix is used, unlike with the `icon()` function in Shiny.
+
+- Second level: (`##`)
+    - A narrow column `{data-width=350}`
+    - Third-level elements should be in tabs: `{.tabset}`
+
 
 ## Value boxes
 
@@ -18,11 +70,75 @@ valueBox(
 )
 ```
 
-## Flexdashboard
+## Icons from [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free)
 
-- More or less ordinary document
+1500+ free icons
 
-- Columns denoted by level-2 header
-    - Use `{data-width=650}` directives to set width
-- Items in column by level-3 header
+`r icon("anchor")`   `r icon("angry")`   `r icon("ankh")`  `r icon("balance-scale")`   `r icon("band-aid")`   `r icon("battery-half")`    icon("credit-card")`   
+
+## Valid statuses
+
+Essentially, a small library of colors intended to be use symantically:
+
+- `primary` Blue (sometimes dark blue)
+- `success` Green
+- `info` Blue
+- `warning` Orange
+- `danger` Red
+
+
+
+## Another dashboard format: `<shinydashboard>`
+
+Unlike flexdashboards which is based on markdown, shinydashboard is based on the html-based construction kit that we used in  `fluidPage()`, etc.
+
+New elements:
+
+- Top level: `dashboardPage()`
+- Next level: 
+     - `dashboardHeader()`
+     - `dashboardBody()`
+     - `dashboardSidebar()`
+
+- Containers
+    - `fluidRow()`
+    - `dropdownMenu()` holds
+        - `messageItem()`s: from, message, icon, time, href
+        - `taskItem()`s: text, value, color, href
+        - `notificationItem()`s: text, icon, status, href
+     
+- Potentially recursive structures
+    - `box()` -- a container based on Bootstrap 12-grid
+        - can be collapsed
+    - `tabBox()` -- contains `tabPanel()`s
+
+- Terminal elements (aka "leaves)
+    - `valueBox()`, `valueBoxOutput(id)`, `renderValueBox(valueBox())`
+    - `infoBox()`, `infoBoxOutput(id)`, `renderInfoBox(valueBox())` 
+
+
+
+
+##  Another format: [Storyboards](https://bookdown.org/yihui/rmarkdown/layout.html#story-boards)
+
+I don't see many of these, but they are straightforward. 
+
+YAML:
+
+```
+---
+title: "A Walk through Wonderland"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+```
  
+## Storyboard items
+
+- Each item is a third-level header (`###`)
+- The header text becomes the content of the board
+- The content becomes the big display associated with that board
+- Optionally, a `---` produces a side display
+
+Example: `Projects/Project-5-dashboards/storyboard.Rmd`

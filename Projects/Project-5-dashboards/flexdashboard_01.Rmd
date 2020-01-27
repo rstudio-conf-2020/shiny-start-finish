@@ -9,53 +9,40 @@ runtime: shiny
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-library(tidyverse)
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
+# Page  1
 
-### Scatterplot of weight and miles per gallon
+Some text at the start of page 1
 
-```{r}
-mpg_subset <- reactive({
-  mtcars %>%
-    filter(
-      hp >= input$hp[1],
-      hp <= input$hp[2],
-      cyl %in% input$cyl
-    )
-})
+##  Column 1
 
-renderPlot({
-  ggplot(mpg_subset(), aes(x = wt, y = mpg, color = factor(cyl))) +
-    geom_point()
-})
-```
+Note the YAML `orientation:` directive, which for this  document is set for columns.
 
-Column {data-width=350}
------------------------------------------------------------------------
+### Boxes
 
-### Inputs
+This is a box
 
-```{r}
-checkboxGroupInput("cyl", "Cylinders", choices = c("4", "6", "8"),
-                   selected = c("4", "6", "8"), inline = TRUE
-                   )
+### another box
 
-sliderInput("hp", "Horsepower",
-            min = min(mtcars$hp), max = max(mtcars$hp),
-            value = range(mtcars$hp)
-            )
-```
+And this is another box
 
-### Histogram of weight
+## Column 2
 
-```{r}
-renderPlot({
-  
-  ggplot(mpg_subset(), aes(x = wt)) +
-    geom_histogram(binwidth = 0.25)
+### I am a box, not a column
 
-})
-```
+Boxes, like this, have contents. but columns and pages just organize boxes.
+
+## Column 3
+
+The text at the beginning of the column.
+
+# Page 2
+
+This is what the text in page 2 says.
+
+### Quiz
+
+Is this text being entered under a level-1, -2, or -3 header?
+
+
