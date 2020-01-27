@@ -55,7 +55,7 @@ output:
 
 # An introductory app {data-background-image="./images/cityscape.png"}
 
-```{r child="Project-0.Rmd"}
+```{r child="project-0.Rmd"}
 ```
 
 
