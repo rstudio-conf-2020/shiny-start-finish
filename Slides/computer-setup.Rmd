@@ -28,7 +28,7 @@ Your development machine is not in the picture.
 Strongly recommended ... RStudio.cloud
 
 - This avoids possible problems with versions, installing packages, etc.
-- Follow this link: [rstudio.cloud/project/834721](https://rstudio.cloud/project/834721)  NEED TO UPDATE?
+- Follow this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/834721)  NEED TO UPDATE?
 </div>
 <div class="col">
 If you must use your own machine ...
@@ -39,7 +39,7 @@ If you must use your own machine ...
 </div>
 
 
-Navigate to `Projects/Project-1/app.R` NEED TO UPDATE?, open in editor, and run.
+Navigate to `Projects/Project-1-build-UI/app.R`, open in editor, and run.
 
 ## Now, set up your **deployment** server
 
