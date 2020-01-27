@@ -28,7 +28,7 @@ Your development machine is not in the picture.
 Strongly recommended ... RStudio.cloud
 
 - This avoids possible problems with versions, installing packages, etc.
-- Follow this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/834721)  NEED TO UPDATE?
+- Follow this link: [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256)
 </div>
 <div class="col">
 If you must use your own machine ...
