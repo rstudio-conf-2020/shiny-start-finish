@@ -20,7 +20,7 @@ Reactives are R objects created by some of the functions from the `<shiny>` pack
 
 You, the programmer, create these objects explicitly in your code.
 
-## Inputs and Outputs
+## Inputs and Outputs {style="margin:10px;font-size:80%;"}
 
 It's helpful to imagine that reactives are also created by calls to constructors of inputs and outputs, such as
 

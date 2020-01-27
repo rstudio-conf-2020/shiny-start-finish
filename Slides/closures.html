@@ -365,7 +365,7 @@ summary {
 </div>
 
 
-<div id="function-environment-closure" class="section level2">
+<div id="function-environment-closure" class="section level2" style="margin:10px;font-size:80%;">
 <h2>Function + Environment = “<em>closure</em>”</h2>
 <p>Functions are containers for R code.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <div class="container">
@@ -408,7 +408,7 @@ summary {
 <li><code>all.vars(body(my_function))</code></li>
 </ul>
 </div>
-<div id="persistent-storage-by-functions" class="section level2">
+<div id="persistent-storage-by-functions" class="section level2" style="margin:0px;font-size:80%;">
 <h2>Persistent storage by functions</h2>
 <p>Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.</p>
 <ul>
@@ -420,7 +420,7 @@ summary {
 <li>In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses <code>function()</code> within the body of another function.</li>
 </ul>
 </div>
-<div id="example-a-counter" class="section level2">
+<div id="example-a-counter" class="section level2" style="margin:0px;font-size:90%;">
 <h2>Example: a counter</h2>
 <pre class="r"><code>make_counter &lt;- function(start = 0) {
   val &lt;- start
@@ -457,7 +457,7 @@ bigger_code &lt;- substitute({
 })</code></pre>
 <ol style="list-style-type: decimal">
 <li>Enter the above assignments in your console.</li>
-<li>What are the values of <code>x</code> and <code>y</code> <em>after</em> (1).</li>
+<li>What are the values of <code>x</code> and <code>y</code> <em>afterward</em>?</li>
 <li>Try <code>class()</code> and <code>all.vars()</code> on <code>my_code</code> and <code>bigger_code</code></li>
 <li>Run <code>eval(my_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
 <li>Run <code>eval(bigger_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>

@@ -1,4 +1,4 @@
-## Function + Environment = "*closure*"
+## Function + Environment = "*closure*" {style="margin:10px;font-size:80%;"}
 
 Functions are containers for R code.^[There are others, see `quote()`, `expression`, and `parse`.]
 
@@ -40,7 +40,7 @@ What do these computations return?
 - `all.names(body(my_function))`
 - `all.vars(body(my_function))`
 
-## Persistent storage by functions
+## Persistent storage by functions {style="margin:0px;font-size:80%;"}
 
 Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.
 
@@ -49,7 +49,7 @@ Often, especially in Shiny, a function will make reference to objects that remai
     - This is a risky technique. Functions that you've never heard of my alter the persistent objects in any way whatsoever.
 - In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses `function()` within the body of another function.
 
-## Example: a counter
+## Example: a counter {style="margin:0px;font-size:90%;"}
 
 ```{r}
 make_counter <- function(start = 0) {
@@ -94,7 +94,7 @@ bigger_code <- substitute({
 ```
 
 1. Enter the above assignments in your console.
-2. What are the values of `x` and `y` *after* (1).
+2. What are the values of `x` and `y` *afterward*?
 3. Try `class()` and `all.vars()` on `my_code` and `bigger_code`
 4. Run `eval(my_code)`. What are the values of `x` and `y` now?
 5. Run `eval(bigger_code)`. What are the values of `x` and `y` now?

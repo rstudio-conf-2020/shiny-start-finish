@@ -379,7 +379,7 @@ summary {
 </ul>
 <p>You, the programmer, create these objects explicitly in your code.</p>
 </div>
-<div id="inputs-and-outputs" class="section level2">
+<div id="inputs-and-outputs" class="section level2" style="margin:10px;font-size:80%;">
 <h2>Inputs and Outputs</h2>
 <p>It’s helpful to imagine that reactives are also created by calls to constructors of inputs and outputs, such as</p>
 <ul>
@@ -675,122 +675,10 @@ Or I will kill you</p>
 <li>set other input values. updateXXX should only be in an observer. You can’t rely on a reactive to execute.</li>
 </ul>
 </div>
-<div id="move-this-to-a-new-show-functions-and-expressions" class="section level1">
-<h1>MOVE THIS TO A NEW SHOW: FUNCTIONS AND EXPRESSIONS</h1>
-<div id="reminders-about-r-functions" class="section level2">
-<h2>Reminders about R functions</h2>
-<p>Functions are containers for R code.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div class="container">
-<div class="col">
-<p>Constructing functions</p>
-<ul>
-<li>usually, the container is created by the keyword <code>function</code></li>
-<li><strong>arguments</strong> are in parentheses.</li>
-<li>R code placed in the curly brackets defines the <strong>body</strong> of the function.
-<ul>
-<li>The code in the body is <strong>not evaluated</strong> when the function is constructed.</li>
-</ul></li>
-<li>A reference to the <strong>environment</strong> in which the function was created is carried along with the function.</li>
-</ul>
-</div>
-<div class="col">
-<p>Evaluating functions</p>
-<ol style="list-style-type: decimal">
-<li>Create an environment that binds values to the argument names.</li>
-<li>The parent of this environment will be the one carried along with the function.</li>
-<li>Run the code in environment (1) (which provides access to the parent environment)</li>
-<li>Erase environment (1) but <strong>return</strong> a selected object as the <strong>value</strong> of that function.</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="your-turn-components-of-a-function" class="section level2">
-<h2>Your turn: Components of a function</h2>
-<p>In your console, create some R function with three arguments and two lines of code. Bind it to the name <code>my_function</code>.</p>
-<p>Access the three components individually with:</p>
-<ul>
-<li><code>formals(my_function)</code></li>
-<li><code>body(my_function)</code></li>
-<li><code>environment(my_function)</code></li>
-</ul>
-<p>What is the <code>class</code> of each of these components?</p>
-<p>What do these computations return?</p>
-<ul>
-<li><code>all.names(body(my_function))</code></li>
-<li><code>all.vars(body(my_function))</code></li>
-</ul>
-</div>
-<div id="persistent-storage-by-functions" class="section level2">
-<h2>Persistent storage by functions</h2>
-<p>Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.</p>
-<ul>
-<li>In some languages, not R, there is something like a <code>static</code> or <code>persistent</code> declarative that creates persistent storage.</li>
-<li>Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
-<ul>
-<li>This is a risky technique. Functions that you’ve never heard of my alter the persistent objects in any way whatsoever.</li>
-</ul></li>
-<li>In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses <code>function()</code> within the body of another function.</li>
-</ul>
-</div>
-<div id="example-a-counter" class="section level2">
-<h2>Example: a counter</h2>
-<pre class="r"><code>make_counter &lt;- function(start = 0) {
-  val &lt;- start
-  list(
-    incr = function() {val &lt;&lt;- val + 1},
-    decr = function() {val &lt;&lt;- val - 1},
-    reset = function(start = 0) {val &lt;&lt;- start},
-    value = function() val
-  )
-}</code></pre>
-<pre class="r"><code>cars &lt;- make_counter()
-trucks &lt;- make_counter()
-cars$incr(); cars$incr(); trucks$incr(); cars$incr()
-cars$value()</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>trucks$value()</code></pre>
-<pre><code>## [1] 1</code></pre>
-</div>
-<div id="other-ways-to-capture-unevaluated-code" class="section level2">
-<h2>Other ways to capture unevaluated code</h2>
-<pre class="r"><code>my_code &lt;- substitute(x &lt;- 17)
-bigger_code &lt;- substitute({
-  x &lt;- 23
-  y &lt;- 44
-})</code></pre>
-<p>The <code>&lt;rlang&gt;</code> package offers another system for doing this.</p>
-</div>
-<div id="your-turn" class="section level2">
-<h2>Your turn:</h2>
-<pre class="r"><code>my_code &lt;- substitute(x &lt;- 17)
-bigger_code &lt;- substitute({
-  x &lt;- 23
-  y &lt;- 44
-})</code></pre>
-<ol style="list-style-type: decimal">
-<li>Enter the above assignments in your console.</li>
-<li>What are the values of <code>x</code> and <code>y</code> <em>after</em> (1).</li>
-<li>Try <code>class()</code> and <code>all.vars()</code> on <code>my_code</code> and <code>bigger_code</code></li>
-<li>Run <code>eval(my_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
-<li>Run <code>eval(bigger_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
-</ol>
-</div>
-<div id="back-to-the-knight-bus" class="section level2">
-<h2>Back to the Knight Bus</h2>
-<p>Shiny uses this technique in its “server” function.</p>
-<pre class="r"><code>knight_bus &lt;- function(input, output, session) {
-  f1 &lt;- function() {
-    input$button == 10
-  }
-}</code></pre>
-<p>The function <code>f1</code> knows to look to it’s birth environment for the value of <code>input</code>.</p>
-</div>
-</div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>But the visualizer knows that they will eventually be used.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>There are others, see <code>quote()</code>, <code>expression</code>, and <code>parse</code>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
