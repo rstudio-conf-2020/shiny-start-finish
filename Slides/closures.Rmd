@@ -1,0 +1,117 @@
+## Function + Environment = "*closure*"
+
+Functions are containers for R code.^[There are others, see `quote()`, `expression`, and `parse`.]
+
+<div class="container">
+<div class="col">
+Constructing functions
+
+- usually, the container is created by the keyword `function`
+- **arguments** are in parentheses.
+- R code placed in the curly brackets defines the **body** of the function.
+    - The code in the body is **not evaluated** when the function is constructed.
+- A reference to the **environment** in which the function was created is carried along with the function.
+</div>
+<div class="col">
+Evaluating functions
+
+1. Create an environment that binds values to the argument names.
+2. The parent of this environment will be the one carried along with the function.
+3. Run the code in environment (1) (which provides access to the parent environment)
+4. Erase environment (1) but **return** a selected object as the **value** of that function. 
+
+</div>
+</div>
+
+## Your turn: Components of a function
+
+In your console, create some R function with three arguments and two lines of code. Bind it to the name `my_function`.
+
+Access the three components individually with:
+
+- `formals(my_function)`
+- `body(my_function)`
+- `environment(my_function)`
+
+What is the `class` of each of these components?
+
+What do these computations return?
+
+- `all.names(body(my_function))`
+- `all.vars(body(my_function))`
+
+## Persistent storage by functions
+
+Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.
+
+- In some languages, not R, there is something like a `static` or `persistent` declarative that creates persistent storage.
+- Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
+    - This is a risky technique. Functions that you've never heard of my alter the persistent objects in any way whatsoever.
+- In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses `function()` within the body of another function.
+
+## Example: a counter
+
+```{r}
+make_counter <- function(start = 0) {
+  val <- start
+  list(
+    incr = function() {val <<- val + 1},
+    decr = function() {val <<- val - 1},
+    reset = function(start = 0) {val <<- start},
+    value = function() val
+  )
+}
+```
+
+```{r}
+cars <- make_counter()
+trucks <- make_counter()
+cars$incr(); cars$incr(); trucks$incr(); cars$incr()
+cars$value()
+trucks$value()
+```
+
+## Other ways to capture unevaluated code
+
+```{r}
+my_code <- substitute(x <- 17)
+bigger_code <- substitute({
+  x <- 23
+  y <- 44
+})
+```
+
+The `<rlang>` package offers another system for doing this.
+
+## Your turn:
+
+```{r}
+my_code <- substitute(x <- 17)
+bigger_code <- substitute({
+  x <- 23
+  y <- 44
+})
+```
+
+1. Enter the above assignments in your console.
+2. What are the values of `x` and `y` *after* (1).
+3. Try `class()` and `all.vars()` on `my_code` and `bigger_code`
+4. Run `eval(my_code)`. What are the values of `x` and `y` now?
+5. Run `eval(bigger_code)`. What are the values of `x` and `y` now?
+
+
+## Back to the Knight Bus
+
+Shiny uses this technique in its "server" function.
+
+```r
+knight_bus <- function(input, output, session) {
+  f1 <- function() {
+    input$button == 10
+  }
+}
+```
+
+The function `f1` knows to look to it's birth environment for the value of `input`.
+
+`shinyApp()` sets this up.

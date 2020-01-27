@@ -68,7 +68,7 @@ Dean Attali
 Dean Attali, President & CEO     
 AttaliTech Ltd, <http://AttaliTech.com>
 
-Randy J. Pruim
+Randy J. Pruim {style="margin:0px;font-size:80%;"}
 ---
 
 <div class="container">

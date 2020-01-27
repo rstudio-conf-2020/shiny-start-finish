@@ -578,45 +578,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <li>engage your neighbors in them</li>
 <li>pull in a TA (or me) to the discussion</li>
 </ul>
-</section><section id="day-1" class="slide level2">
-<h2>Day 1</h2>
-<p>Breakfast available from 8:00am</p>
-<p>Time Activity 09:00 - 10:30 Session 1 10:30 - 11:00 Coffee break 11:00 - 12:30 Session 2 12:30 - 13:30 Lunch break 13:30 - 15:00 Session 3 15:00 - 15:30 Coffee break 15:30 - 17:00 Session 4</p>
-<ul>
-<li>From a report to an app</li>
-<li>Avoiding Shiny
-<ul>
-<li>brief introduction to packages</li>
-</ul></li>
-<li>Designing and implementing UIs
-<ul>
-<li>HTML and trees</li>
-<li>parsing UIs</li>
-</ul></li>
-<li>Reactive logic</li>
-<li>Debugging</li>
-<li>Prettifying: shinythemes</li>
-</ul>
-</section><section id="day-2" class="slide level2">
-<h2>Day 2</h2>
-<p>Breakfast available from 8:00am</p>
-<p>Time Activity 09:00 - 10:30 Session 1 10:30 - 11:00 Coffee break 11:00 - 12:30 Session 2 12:30 - 13:30 Lunch break 13:30 - 15:00 Session 3 15:00 - 15:30 Coffee break 15:30 - 16:45 Session 4 16:45 - 17:00 <a href="http://rstd.io/ws-survey">Provide feedback</a></p>
-<ul>
-<li>Client-side computing
-<ul>
-<li>leaflet</li>
-<li>ggvis</li>
-</ul></li>
-<li>Javascript: shinyjs</li>
-<li>Deployment
-<ul>
-<li>packages</li>
-<li>apps</li>
-</ul></li>
-<li>Persistent storage</li>
-<li>Using the query string</li>
-<li>Mobile and modal apps</li>
-</ul>
+</section><section id="schedule-1" class="slide level2">
+<h2>Schedule</h2>
+<p>See the GitHub repo for the course, <a href="https://github.com/rstudio-conf-2020/shiny-start-finish">here</a>.</p>
 </section><section id="logistics" class="slide level2">
 <h2>Logistics</h2>
 <ul>
@@ -643,10 +607,10 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </thead>
 <tbody>
 <tr class="odd">
-<td>one</td>
-<td>two</td>
+<td><img data-src="images/Danny_2019_headshot_thumbnail.jpeg" /></td>
+<td><img data-src="images/sara.png" /></td>
 <td><img data-src="images/dean_attali_2.jpg" /></td>
-<td>four</td>
+<td><img data-src="images/randy.jpg" /></td>
 <td><img data-src="images/Homer_White.jpg" /></td>
 </tr>
 </tbody>
@@ -681,6 +645,17 @@ document.getElementsByTagName('head')[0].appendChild(style);
     flex: 2;
 }
 </style>
+<div class="container">
+<div class="col">
+<p><img data-src="images/sara.png" /></p>
+</div>
+<div class="col">
+<ul>
+<li>I teach an introductory, project-based data science class at Stanford</li>
+<li>I create open materials and tools for learning and teaching data science and R</li>
+</ul>
+</div>
+</div>
 </section><section id="dean-attali" class="slide level2">
 <h2>Dean Attali</h2>
 <div class="container">
@@ -698,9 +673,26 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </div>
 <p>Dean Attali, President &amp; CEO<br />
 AttaliTech Ltd, <a href="http://AttaliTech.com" class="uri">http://AttaliTech.com</a></p>
-</section><section id="randy-j.-pruim" class="slide level2">
+</section><section id="randy-j.-pruim" class="slide level2" style="margin:0px;font-size:80%;">
 <h2>Randy J. Pruim</h2>
-<p>Something about Randy</p>
+<div class="container">
+<div class="col">
+<p><img data-src="images/randy.jpg" /></p>
+</div>
+<div class="col">
+<ul>
+<li>Professor of Mathematics and Statistics at Calvin University</li>
+<li>Has been teaching with R since 2002</li>
+<li>Once knew every Rstudio employee by name — all three of them</li>
+<li>Maintainer of several R packages, including mosaic and ggformula</li>
+<li>Textbook author
+<ul>
+<li>Foundations and Applications of Statistics: An Introduction Using R</li>
+<li>Gems of Theoretical Computer Science</li>
+</ul></li>
+</ul>
+</div>
+</div>
 </section><section id="homer-s.-white" class="slide level2">
 <h2>Homer S. White</h2>
 <div class="container">
@@ -1050,10 +1042,10 @@ AttaliTech Ltd, <a href="http://AttaliTech.com" class="uri">http://AttaliTech.co
 <p><strong>Your turn</strong>: Run it in the console.</p>
 </div>
 <div class="col">
-<p>Uses the objects we created: <code>user_interface</code> and <code>bridge</code>.</p>
+<p>Uses the objects we created: <code>user_interface</code> and <code>reactive_logic</code>.</p>
 <p><strong>Your turn</strong>:</p>
 <ul>
-<li>What kind of objects are <code>user_interface</code> and <code>bridge</code>? Hint: Use <code>class()</code></li>
+<li>What kind of objects are <code>user_interface</code> and <code>reactive_logic</code>? Hint: Use <code>class()</code></li>
 <li>What kind of object is produced by <code>shinyApp()</code>? Hint: Name the object <code>hoo &lt;-</code> and look at the <code>class()</code>. Then “print” it.</li>
 </ul>
 </div>
@@ -1168,7 +1160,7 @@ UI <- tagList(
 <p>Preface: The <code>glue()</code> function is a nice way to embed values in strings.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;The value of 3 + 7 is {3+7}.&quot;</span>)</a></code></pre></div>
 <pre><code>## The value of 3 + 7 is 10.</code></pre>
-<p><strong>TASK</strong>: Add an element to your server to display in <code>output$felix</code> a string with the values of the UI inputs you added. # Project 1</p>
+<p><strong>TASK</strong>: Add an element to your server to display in <code>output$felix</code> a string with the values of the UI inputs you added.</p>
 </section></section>
 <section><section id="frameworks-layouts" class="title-slide slide level1"><h1>Frameworks &amp; Layouts</h1></section><section id="frameworks" class="slide level2">
 <h2>Frameworks</h2>
@@ -1380,7 +1372,9 @@ UI <- tagList(
 <p><img data-src="#section-2" />(images/ggextra.png](<a href="https://daattali.com/shiny/ggExtra-ggMarginal-demo/" class="uri">https://daattali.com/shiny/ggExtra-ggMarginal-demo/</a>)</p>
 </section><section id="exercise-n" class="slide level2">
 <h2>Exercise n</h2>
-<p>Again, with your neighbor, draw the UI tree on paper.</p>
+<p>The <a href="https://www.economist.com/news/2020/01/15/the-big-mac-index"><em>Economist</em>’s Big Mac index visualizer</a> isn’t written as a Shiny app (I think!), but sketch out how you would write a Shiny app to mimic it.</p>
+</section><section id="if-you-havent-had-enough" class="slide level2">
+<h2>If you haven’t had enough …</h2>
 <p><img data-src="#section-2" />(images/twin-cities-busses.png](<a href="https://shiny.rstudio.com/gallery/bus-dashboard.html" class="uri">https://shiny.rstudio.com/gallery/bus-dashboard.html</a>)</p>
 </section><section id="project-2" class="slide level2">
 <h2>Project 2</h2>
@@ -1438,7 +1432,109 @@ UI <- tagList(
 <h2>See what happens if we change observeEvent to observe</h2>
 <p>Talk about isolate.</p>
 </section></section>
-<section><section id="reactives" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Reactives</h1></section><section id="reactives-1" class="slide level2">
+<section><section id="reactives" class="title-slide slide level1" data-background-image="./images/cityscape.png"><h1>Reactives</h1></section><section id="function-environment-closure" class="slide level2">
+<h2>Function + Environment = “<em>closure</em>”</h2>
+<p>Functions are containers for R code.<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<div class="container">
+<div class="col">
+<p>Constructing functions</p>
+<ul>
+<li>usually, the container is created by the keyword <code>function</code></li>
+<li><strong>arguments</strong> are in parentheses.</li>
+<li>R code placed in the curly brackets defines the <strong>body</strong> of the function.
+<ul>
+<li>The code in the body is <strong>not evaluated</strong> when the function is constructed.</li>
+</ul></li>
+<li>A reference to the <strong>environment</strong> in which the function was created is carried along with the function.</li>
+</ul>
+</div>
+<div class="col">
+<p>Evaluating functions</p>
+<ol type="1">
+<li>Create an environment that binds values to the argument names.</li>
+<li>The parent of this environment will be the one carried along with the function.</li>
+<li>Run the code in environment (1) (which provides access to the parent environment)</li>
+<li>Erase environment (1) but <strong>return</strong> a selected object as the <strong>value</strong> of that function.</li>
+</ol>
+</div>
+</div>
+</section><section id="your-turn-components-of-a-function" class="slide level2">
+<h2>Your turn: Components of a function</h2>
+<p>In your console, create some R function with three arguments and two lines of code. Bind it to the name <code>my_function</code>.</p>
+<p>Access the three components individually with:</p>
+<ul>
+<li><code>formals(my_function)</code></li>
+<li><code>body(my_function)</code></li>
+<li><code>environment(my_function)</code></li>
+</ul>
+<p>What is the <code>class</code> of each of these components?</p>
+<p>What do these computations return?</p>
+<ul>
+<li><code>all.names(body(my_function))</code></li>
+<li><code>all.vars(body(my_function))</code></li>
+</ul>
+</section><section id="persistent-storage-by-functions" class="slide level2">
+<h2>Persistent storage by functions</h2>
+<p>Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.</p>
+<ul>
+<li>In some languages, not R, there is something like a <code>static</code> or <code>persistent</code> declarative that creates persistent storage.</li>
+<li>Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
+<ul>
+<li>This is a risky technique. Functions that you’ve never heard of my alter the persistent objects in any way whatsoever.</li>
+</ul></li>
+<li>In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses <code>function()</code> within the body of another function.</li>
+</ul>
+</section><section id="example-a-counter" class="slide level2">
+<h2>Example: a counter</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">make_counter &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2">  val &lt;-<span class="st"> </span>start</a>
+<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb17-4" data-line-number="4">    <span class="dt">incr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">+</span><span class="st"> </span><span class="dv">1</span>},</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5">    <span class="dt">decr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">-</span><span class="st"> </span><span class="dv">1</span>},</a>
+<a class="sourceLine" id="cb17-6" data-line-number="6">    <span class="dt">reset =</span> <span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {val &lt;&lt;-<span class="st"> </span>start},</a>
+<a class="sourceLine" id="cb17-7" data-line-number="7">    <span class="dt">value =</span> <span class="cf">function</span>() val</a>
+<a class="sourceLine" id="cb17-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb17-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">cars &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">trucks &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">cars<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>(); trucks<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>()</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">cars<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">trucks<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</section><section id="other-ways-to-capture-unevaluated-code" class="slide level2">
+<h2>Other ways to capture unevaluated code</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">})</a></code></pre></div>
+<p>The <code>&lt;rlang&gt;</code> package offers another system for doing this.</p>
+</section><section id="your-turn-2" class="slide level2">
+<h2>Your turn:</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">})</a></code></pre></div>
+<ol type="1">
+<li>Enter the above assignments in your console.</li>
+<li>What are the values of <code>x</code> and <code>y</code> <em>after</em> (1).</li>
+<li>Try <code>class()</code> and <code>all.vars()</code> on <code>my_code</code> and <code>bigger_code</code></li>
+<li>Run <code>eval(my_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
+<li>Run <code>eval(bigger_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
+</ol>
+</section><section id="back-to-the-knight-bus" class="slide level2">
+<h2>Back to the Knight Bus</h2>
+<p>Shiny uses this technique in its “server” function.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">knight_bus &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">  f1 &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">    input<span class="op">$</span>button <span class="op">==</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">}</a></code></pre></div>
+<p>The function <code>f1</code> knows to look to it’s birth environment for the value of <code>input</code>.</p>
+<p><code>shinyApp()</code> sets this up.</p>
+</section><section id="reactives-1" class="slide level2">
 <h2>Reactives</h2>
 <p>Reactives are R objects created by some of the functions from the <code>&lt;shiny&gt;</code> package:</p>
 <ul>
@@ -1583,20 +1679,20 @@ UI <- tagList(
 </section><section id="pythagorean-1.r-inputs" class="slide level2">
 <h2><code>pythagorean-1.R</code>: Inputs</h2>
 <p>Create the inputs</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">  ...</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">  <span class="kw">numericInput</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;Leg A:&quot;</span>, <span class="dt">value =</span> <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">  <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Leg B:&quot;</span>, <span class="dt">value =</span> <span class="dv">4</span>),</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">  ...</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">  ...</a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">  <span class="kw">numericInput</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;Leg A:&quot;</span>, <span class="dt">value =</span> <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">  <span class="kw">numericInput</span>(<span class="st">&quot;B&quot;</span>, <span class="st">&quot;Leg B:&quot;</span>, <span class="dt">value =</span> <span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">  ...</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">)</a></code></pre></div>
 </section><section id="pythagorean-1.r-outputs" class="slide level2">
 <h2><code>pythagorean-1.R</code>: Outputs</h2>
 <p>Describe the outputs</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>({</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3">    <span class="kw">sqrt</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4">  })</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>({</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">    <span class="kw">sqrt</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">  })</a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">}</a></code></pre></div>
 <p>Mentioning <code>input$A</code> and <code>input$B</code> will create a connection when the app is run.</p>
 </section><section id="pythagorean-1.r-conductors" class="slide level2">
 <h2><code>pythagorean-1.R</code>: Conductors</h2>
@@ -1671,23 +1767,23 @@ UI <- tagList(
 </section><section id="using-reactlogshow" class="slide level2">
 <h2>Using <code>reactlogShow()</code></h2>
 <p>Dark lines show connections that have become apparent when “calculating” a node.</p>
-<p>Light lines are connections that have not yet become apparent.<a href="#/fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Light lines are connections that have not yet become apparent.<a href="#/fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>Let’s rewind to the beginning.</p>
 <p>Then one step at a time, and narrate.</p>
 </section><section id="adding-a-conductor-pythagorean-2.r" class="slide level2">
 <h2>Adding a conductor: <code>pythagorean-2.R</code></h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label =</span> <span class="st">&quot;C2&quot;</span>)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>())) </a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label =</span> <span class="st">&quot;C2&quot;</span>)</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>())) </a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">}</a></code></pre></div>
 <p>Run the app and <code>reactlogShow()</code></p>
 </section><section id="adding-another-conductor-phythagorean-3.r" class="slide level2">
 <h2>Adding another conductor: <code>phythagorean-3.R</code></h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label=</span><span class="st">&quot;C2&quot;</span>)</a>
-<a class="sourceLine" id="cb20-3" data-line-number="3">  C  &lt;-<span class="st"> </span><span class="kw">reactive</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>()), <span class="dt">label =</span> <span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb20-4" data-line-number="4">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">C</span>())</a>
-<a class="sourceLine" id="cb20-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">  C2 &lt;-<span class="st"> </span><span class="kw">reactive</span>(input<span class="op">$</span>A<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>B<span class="op">^</span><span class="dv">2</span>, <span class="dt">label=</span><span class="st">&quot;C2&quot;</span>)</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">  C  &lt;-<span class="st"> </span><span class="kw">reactive</span>(<span class="kw">sqrt</span>(<span class="kw">C2</span>()), <span class="dt">label =</span> <span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  output<span class="op">$</span>C &lt;-<span class="st"> </span><span class="kw">renderText</span>(<span class="kw">C</span>())</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">}</a></code></pre></div>
 </section><section id="make-a-cycle-and-show-the-reactivity-log" class="slide level2">
 <h2>Make a cycle and show the reactivity log</h2>
 <p>Perhaps hadley’s celsius/fahrenheit</p>
@@ -1721,108 +1817,6 @@ Or I will kill you</p>
 <li>setting reactiveValues – never do this in a reactive.</li>
 <li>set other input values. updateXXX should only be in an observer. You can’t rely on a reactive to execute.</li>
 </ul>
-</section></section>
-<section><section id="move-this-to-a-new-show-functions-and-expressions" class="title-slide slide level1"><h1>MOVE THIS TO A NEW SHOW: FUNCTIONS AND EXPRESSIONS</h1></section><section id="reminders-about-r-functions" class="slide level2">
-<h2>Reminders about R functions</h2>
-<p>Functions are containers for R code.<a href="#/fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div class="container">
-<div class="col">
-<p>Constructing functions</p>
-<ul>
-<li>usually, the container is created by the keyword <code>function</code></li>
-<li><strong>arguments</strong> are in parentheses.</li>
-<li>R code placed in the curly brackets defines the <strong>body</strong> of the function.
-<ul>
-<li>The code in the body is <strong>not evaluated</strong> when the function is constructed.</li>
-</ul></li>
-<li>A reference to the <strong>environment</strong> in which the function was created is carried along with the function.</li>
-</ul>
-</div>
-<div class="col">
-<p>Evaluating functions</p>
-<ol type="1">
-<li>Create an environment that binds values to the argument names.</li>
-<li>The parent of this environment will be the one carried along with the function.</li>
-<li>Run the code in environment (1) (which provides access to the parent environment)</li>
-<li>Erase environment (1) but <strong>return</strong> a selected object as the <strong>value</strong> of that function.</li>
-</ol>
-</div>
-</div>
-</section><section id="your-turn-components-of-a-function" class="slide level2">
-<h2>Your turn: Components of a function</h2>
-<p>In your console, create some R function with three arguments and two lines of code. Bind it to the name <code>my_function</code>.</p>
-<p>Access the three components individually with:</p>
-<ul>
-<li><code>formals(my_function)</code></li>
-<li><code>body(my_function)</code></li>
-<li><code>environment(my_function)</code></li>
-</ul>
-<p>What is the <code>class</code> of each of these components?</p>
-<p>What do these computations return?</p>
-<ul>
-<li><code>all.names(body(my_function))</code></li>
-<li><code>all.vars(body(my_function))</code></li>
-</ul>
-</section><section id="persistent-storage-by-functions" class="slide level2">
-<h2>Persistent storage by functions</h2>
-<p>Often, especially in Shiny, a function will make reference to objects that remain extant between calls to the function.</p>
-<ul>
-<li>In some languages, not R, there is something like a <code>static</code> or <code>persistent</code> declarative that creates persistent storage.</li>
-<li>Beginning programmers often create objects in the Global environment that will be available to any function to access and mutate.
-<ul>
-<li>This is a risky technique. Functions that you’ve never heard of my alter the persistent objects in any way whatsoever.</li>
-</ul></li>
-<li>In R, reliable persistent storage is often created by exploiting the function creation system. This technique uses <code>function()</code> within the body of another function.</li>
-</ul>
-</section><section id="example-a-counter" class="slide level2">
-<h2>Example: a counter</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">make_counter &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">  val &lt;-<span class="st"> </span>start</a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">  <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb21-4" data-line-number="4">    <span class="dt">incr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">+</span><span class="st"> </span><span class="dv">1</span>},</a>
-<a class="sourceLine" id="cb21-5" data-line-number="5">    <span class="dt">decr =</span> <span class="cf">function</span>() {val &lt;&lt;-<span class="st"> </span>val <span class="op">-</span><span class="st"> </span><span class="dv">1</span>},</a>
-<a class="sourceLine" id="cb21-6" data-line-number="6">    <span class="dt">reset =</span> <span class="cf">function</span>(<span class="dt">start =</span> <span class="dv">0</span>) {val &lt;&lt;-<span class="st"> </span>start},</a>
-<a class="sourceLine" id="cb21-7" data-line-number="7">    <span class="dt">value =</span> <span class="cf">function</span>() val</a>
-<a class="sourceLine" id="cb21-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb21-9" data-line-number="9">}</a></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">cars &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">trucks &lt;-<span class="st"> </span><span class="kw">make_counter</span>()</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3">cars<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>(); trucks<span class="op">$</span><span class="kw">incr</span>(); cars<span class="op">$</span><span class="kw">incr</span>()</a>
-<a class="sourceLine" id="cb22-4" data-line-number="4">cars<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
-<pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">trucks<span class="op">$</span><span class="kw">value</span>()</a></code></pre></div>
-<pre><code>## [1] 1</code></pre>
-</section><section id="other-ways-to-capture-unevaluated-code" class="slide level2">
-<h2>Other ways to capture unevaluated code</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
-<a class="sourceLine" id="cb26-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5">})</a></code></pre></div>
-<p>The <code>&lt;rlang&gt;</code> package offers another system for doing this.</p>
-</section><section id="your-turn-2" class="slide level2">
-<h2>Your turn:</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">my_code &lt;-<span class="st"> </span><span class="kw">substitute</span>(x &lt;-<span class="st"> </span><span class="dv">17</span>)</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">bigger_code &lt;-<span class="st"> </span><span class="kw">substitute</span>({</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="dv">23</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">  y &lt;-<span class="st"> </span><span class="dv">44</span></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5">})</a></code></pre></div>
-<ol type="1">
-<li>Enter the above assignments in your console.</li>
-<li>What are the values of <code>x</code> and <code>y</code> <em>after</em> (1).</li>
-<li>Try <code>class()</code> and <code>all.vars()</code> on <code>my_code</code> and <code>bigger_code</code></li>
-<li>Run <code>eval(my_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
-<li>Run <code>eval(bigger_code)</code>. What are the values of <code>x</code> and <code>y</code> now?</li>
-</ol>
-</section><section id="back-to-the-knight-bus" class="slide level2">
-<h2>Back to the Knight Bus</h2>
-<p>Shiny uses this technique in its “server” function.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">knight_bus &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">  f1 &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">    input<span class="op">$</span>button <span class="op">==</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">  }</a>
-<a class="sourceLine" id="cb28-5" data-line-number="5">}</a></code></pre></div>
-<p>The function <code>f1</code> knows to look to it’s birth environment for the value of <code>input</code>.</p>
 </section></section>
 <section><section id="project-3-plot-a-data-frame" class="title-slide slide level1"><h1>Project 3: Plot a data frame</h1></section><section id="orientation-to-the-project" class="slide level2">
 <h2>Orientation to the project</h2>
@@ -1941,7 +1935,7 @@ Or I will kill you</p>
 <section><section id="project-2-return" class="title-slide slide level1"><h1>Project 2 return</h1></section><section id="augment-the-server-for-project-2-calculator" class="slide level2">
 <h2>Augment the server for Project-2-calculator</h2>
 </section></section>
-<section><section id="avoiding-loops-updating-inputs" class="title-slide slide level1"><h1>Avoiding loops: Updating inputs</h1></section><section id="you-can-change-the-value-of-an-input" class="slide level2">
+<section><section id="avoiding-reactive-loops-updating-inputs" class="title-slide slide level1"><h1>Avoiding reactive loops: Updating inputs</h1></section><section id="you-can-change-the-value-of-an-input" class="slide level2">
 <h2>You can change the value of an input</h2>
 <p>… from the server. Use <code>update__</code>whatever<code>__()</code></p>
 <p>Run plotDF app-1.R</p>
@@ -2067,8 +2061,136 @@ Or I will kill you</p>
 </ol>
 </section></section>
 <section id="shiny-documents" class="title-slide slide level1"><h1>Shiny documents</h1></section>
-<section id="flexdashboards" class="title-slide slide level1"><h1>Flexdashboards</h1></section>
-<section id="tuesday" class="title-slide slide level1"><h1>TUESDAY</h1></section>
+<section><section id="dashboards" class="title-slide slide level1"><h1>Dashboards</h1></section><section id="dashboards-1" class="slide level2">
+<h2>Dashboards</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">library</span>(flexdashboard)</a></code></pre></div>
+</section><section id="preliminaries" class="slide level2">
+<h2>Preliminaries</h2>
+<p>Nota Bene: The RStudio viewer does not display dashboards correctly. So use a web browser.</p>
+<p>If your target is not a “normal”-size display (technical: 768 pixels or more in height), use the browser in emulation mode. - In Chrome, CMD-OPT-I brings up the console.</p>
+</section><section id="flexdashboard" class="slide level2">
+<h2><a href="https://bookdown.org/yihui/rmarkdown/dashboards.html">Flexdashboard</a></h2>
+<p>Set things up in YAML:</p>
+<pre><code>---
+title: &quot;Dashboard Value Boxes&quot;
+output:
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    navbar:
+      - { title: &quot;About&quot;, href: &quot;https://example.com/about&quot; }
+      - { title: &quot;StatPREP&quot;, href: &quot;https//statprep.org&quot;}
+---</code></pre>
+</section><section id="layout" class="slide level2">
+<h2>Layout</h2>
+<p>The navbar is described in the YAML. But everything else is ordinary headings.</p>
+<p><code>flexdashboard::flex_dashboard()</code> is an R/Markdown renderer that treats headings specially.</p>
+<ul>
+<li><em>First Level</em> (<code>#</code>) – a page
+<ul>
+<li>navigation menu with buttons for each tab</li>
+<li>button label is text of header</li>
+</ul></li>
+<li>Second Level (<code>##</code>) – a row in a page. (Note: because YAML specified <code>orientation: rows</code>. Default is columns.)
+<ul>
+<li>header text doesn’t matter</li>
+</ul></li>
+<li><em>Third level</em> (<code>###</code>) – a box in a row
+<ul>
+<li>header text becomes a label, maybe integrated into a widget.</li>
+</ul></li>
+</ul>
+</section><section id="attributes" class="slide level2">
+<h2>Attributes</h2>
+<ul>
+<li>First level: (<code>#</code>)
+<ul>
+<li>use <code>data-icon=fa-umbrella</code> attribute to set logo (if any). Note: <code>fa-</code> prefix is used, unlike with the <code>icon()</code> function in Shiny.</li>
+</ul></li>
+<li>Second level: (<code>##</code>)
+<ul>
+<li>A narrow column <code>{data-width=350}</code></li>
+<li>Third-level elements should be in tabs: <code>{.tabset}</code></li>
+</ul></li>
+</ul>
+</section><section id="value-boxes" class="slide level2">
+<h2>Value boxes</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">spam &lt;-<span class="st"> </span><span class="dv">17</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">valueBox</span>(</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  spam, <span class="dt">icon =</span> <span class="st">&quot;fa-trash&quot;</span>,</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">  <span class="dt">color =</span> <span class="kw">ifelse</span>(spam <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, <span class="st">&quot;warning&quot;</span>, <span class="st">&quot;primary&quot;</span>)</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">)</a></code></pre></div>
+</section><section id="icons-from-font-awesome" class="slide level2">
+<h2>Icons from <a href="https://fontawesome.com/icons?d=gallery&amp;m=free">Font Awesome</a></h2>
+<p>1500+ free icons</p>
+<p><i class="fa fa-anchor"></i>   <i class="fa fa-angry"></i>   <i class="fa fa-ankh"></i>  <i class="fa fa-balance-scale"></i>   <i class="fa fa-band-aid"></i>   <i class="fa fa-battery-half"></i>    icon(“credit-card”)`   </p>
+</section><section id="valid-statuses" class="slide level2">
+<h2>Valid statuses</h2>
+<p>Essentially, a small library of colors intended to be use symantically:</p>
+<ul>
+<li><code>primary</code> Blue (sometimes dark blue)</li>
+<li><code>success</code> Green</li>
+<li><code>info</code> Blue</li>
+<li><code>warning</code> Orange</li>
+<li><code>danger</code> Red</li>
+</ul>
+</section><section id="another-dashboard-format-shinydashboard" class="slide level2">
+<h2>Another dashboard format: <code>&lt;shinydashboard&gt;</code></h2>
+<p>Unlike flexdashboards which is based on markdown, shinydashboard is based on the html-based construction kit that we used in <code>fluidPage()</code>, etc.</p>
+<p>New elements:</p>
+<ul>
+<li>Top level: <code>dashboardPage()</code></li>
+<li>Next level:
+<ul>
+<li><code>dashboardHeader()</code></li>
+<li><code>dashboardBody()</code></li>
+<li><code>dashboardSidebar()</code></li>
+</ul></li>
+<li>Containers
+<ul>
+<li><code>fluidRow()</code></li>
+<li><code>dropdownMenu()</code> holds
+<ul>
+<li><code>messageItem()</code>s: from, message, icon, time, href</li>
+<li><code>taskItem()</code>s: text, value, color, href</li>
+<li><code>notificationItem()</code>s: text, icon, status, href</li>
+</ul></li>
+</ul></li>
+<li>Potentially recursive structures
+<ul>
+<li><code>box()</code> – a container based on Bootstrap 12-grid
+<ul>
+<li>can be collapsed</li>
+</ul></li>
+<li><code>tabBox()</code> – contains <code>tabPanel()</code>s</li>
+</ul></li>
+<li>Terminal elements (aka &quot;leaves)
+<ul>
+<li><code>valueBox()</code>, <code>valueBoxOutput(id)</code>, <code>renderValueBox(valueBox())</code></li>
+<li><code>infoBox()</code>, <code>infoBoxOutput(id)</code>, <code>renderInfoBox(valueBox())</code></li>
+</ul></li>
+</ul>
+</section><section id="another-format-storyboards" class="slide level2">
+<h2>Another format: <a href="https://bookdown.org/yihui/rmarkdown/layout.html#story-boards">Storyboards</a></h2>
+<p>I don’t see many of these, but they are straightforward.</p>
+<p>YAML:</p>
+<pre><code>---
+title: &quot;A Walk through Wonderland&quot;
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---</code></pre>
+</section><section id="storyboard-items" class="slide level2">
+<h2>Storyboard items</h2>
+<ul>
+<li>Each item is a third-level header (<code>###</code>)</li>
+<li>The header text becomes the content of the board</li>
+<li>The content becomes the big display associated with that board</li>
+<li>Optionally, a <code>---</code> produces a side display</li>
+</ul>
+<p>Example: <code>Projects/Project-5-dashboards/storyboard.Rmd</code></p>
+</section></section>
+<section id="tuesday" class="title-slide slide level1" data-background-image="./images/title-slide.png"><h1>TUESDAY</h1></section>
 <section><section id="deploy" class="title-slide slide level1"><h1>Deploy</h1></section><section id="get-your-directory-in-order" class="slide level2">
 <h2>Get your directory in order</h2>
 <ol type="1">
@@ -2122,27 +2244,27 @@ Or I will kill you</p>
 <ol type="1">
 <li>Use <code>style=</code> attribute when creating a tag.</li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">tags<span class="op">$</span><span class="kw">h1</span>(<span class="st">&quot;Title&quot;</span>, <span class="dt">style=</span><span class="st">&quot;color:red;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">tags<span class="op">$</span><span class="kw">h1</span>(<span class="st">&quot;Title&quot;</span>, <span class="dt">style=</span><span class="st">&quot;color:red;&quot;</span>)</a></code></pre></div>
 <ol start="2" type="1">
 <li>Link to an external CSS file</li>
 </ol>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">    tags<span class="op">$</span><span class="kw">link</span>(</a>
-<a class="sourceLine" id="cb30-3" data-line-number="3">       <span class="dt">rel =</span> <span class="st">&quot;stylesheet&quot;</span>,</a>
-<a class="sourceLine" id="cb30-4" data-line-number="4">       <span class="dt">type  =</span> <span class="st">&quot;text/css&quot;</span>,</a>
-<a class="sourceLine" id="cb30-5" data-line-number="5">       <span class="dt">href =</span> <span class="st">&quot;mycss.css&quot;</span></a>
-<a class="sourceLine" id="cb30-6" data-line-number="6">    )</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">    tags<span class="op">$</span><span class="kw">link</span>(</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">       <span class="dt">rel =</span> <span class="st">&quot;stylesheet&quot;</span>,</a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">       <span class="dt">type  =</span> <span class="st">&quot;text/css&quot;</span>,</a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">       <span class="dt">href =</span> <span class="st">&quot;mycss.css&quot;</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">    )</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">)</a></code></pre></div>
 </div>
 <div class="col">
 <ol start="3" type="1">
 <li>Put a style tag in the header</li>
 </ol>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">  tags<span class="op">$</span><span class="kw">style</span>(</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">    <span class="kw">HTML</span>(<span class="st">&quot;p { color:red;}&quot;</span>)</a>
-<a class="sourceLine" id="cb31-4" data-line-number="4">  )</a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">tags<span class="op">$</span><span class="kw">head</span>(</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">  tags<span class="op">$</span><span class="kw">style</span>(</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3">    <span class="kw">HTML</span>(<span class="st">&quot;p { color:red;}&quot;</span>)</a>
+<a class="sourceLine" id="cb35-4" data-line-number="4">  )</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">)</a></code></pre></div>
 <ol start="4" type="1">
 <li>Call <code>includeCSS(&quot;mycss.css&quot;)</code> in your UI
 <ul>
@@ -2243,22 +2365,22 @@ Or I will kill you</p>
 </section><section id="the-ui-builder" class="slide level2">
 <h2>The UI builder</h2>
 <p>Ordinary, non-module style</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">ui_components &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="kw">selectInput</span>(<span class="st">&quot;shape&quot;</span>, <span class="st">&quot;Shape:&quot;</span>,</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">  <span class="kw">sliderInput</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
-<a class="sourceLine" id="cb32-5" data-line-number="5">  <span class="kw">plotOutput</span>(<span class="st">&quot;density&quot;</span>)</a>
-<a class="sourceLine" id="cb32-6" data-line-number="6">)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">ui_components &lt;-<span class="st"> </span><span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="kw">selectInput</span>(<span class="st">&quot;shape&quot;</span>, <span class="st">&quot;Shape:&quot;</span>,</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">    <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="kw">sliderInput</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  <span class="kw">plotOutput</span>(<span class="st">&quot;density&quot;</span>)</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">)</a></code></pre></div>
 <p>Module style</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">density_UI &lt;-<span class="st"> </span><span class="cf">function</span>(id) {</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">  ns &lt;-<span class="st"> </span><span class="kw">NS</span>(id) <span class="co"># Creates function to customize names</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3">  <span class="kw">tagList</span>(</a>
-<a class="sourceLine" id="cb33-4" data-line-number="4">    <span class="kw">selectInput</span>(<span class="kw">ns</span>(<span class="st">&quot;shape&quot;</span>), <span class="st">&quot;Shape:&quot;</span>,</a>
-<a class="sourceLine" id="cb33-5" data-line-number="5">                <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
-<a class="sourceLine" id="cb33-6" data-line-number="6">    <span class="kw">sliderInput</span>(<span class="kw">ns</span>(<span class="st">&quot;x&quot;</span>), <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
-<a class="sourceLine" id="cb33-7" data-line-number="7">    <span class="kw">plotOutput</span>(<span class="kw">ns</span>(<span class="st">&quot;density&quot;</span>))</a>
-<a class="sourceLine" id="cb33-8" data-line-number="8">  )</a>
-<a class="sourceLine" id="cb33-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">density_UI &lt;-<span class="st"> </span><span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">  ns &lt;-<span class="st"> </span><span class="kw">NS</span>(id) <span class="co"># Creates function to customize names</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">  <span class="kw">tagList</span>(</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">    <span class="kw">selectInput</span>(<span class="kw">ns</span>(<span class="st">&quot;shape&quot;</span>), <span class="st">&quot;Shape:&quot;</span>,</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">                <span class="dt">choice =</span> <span class="kw">c</span>(<span class="st">&quot;Gauss&quot;</span>, <span class="st">&quot;unif&quot;</span>, <span class="st">&quot;exp&quot;</span>)),</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">    <span class="kw">sliderInput</span>(<span class="kw">ns</span>(<span class="st">&quot;x&quot;</span>), <span class="st">&quot;Value:&quot;</span>, <span class="dt">min=</span><span class="dv">0</span>, <span class="dt">max=</span><span class="dv">10</span>, <span class="dt">value=</span><span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">    <span class="kw">plotOutput</span>(<span class="kw">ns</span>(<span class="st">&quot;density&quot;</span>))</a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">  )</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">}</a></code></pre></div>
 </section><section id="ns-does-what-ns-does-what" class="slide level2">
 <h2><code>NS()</code> does what? <code>ns()</code> does what?</h2>
 <p><code>NS()</code> is a perfectly ordinary muggle function.</p>
@@ -2278,21 +2400,21 @@ Or I will kill you</p>
 </section><section id="a-module-server-builder" class="slide level2">
 <h2>A module server builder</h2>
 <p>Very much the same as we have been doing all along.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb34-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3">  output<span class="op">$</span>plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({<span class="kw">histogram</span>(rvals)})</a>
-<a class="sourceLine" id="cb34-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
+<a class="sourceLine" id="cb38-3" data-line-number="3">  output<span class="op">$</span>plot &lt;-<span class="st"> </span><span class="kw">renderPlot</span>({<span class="kw">histogram</span>(rvals)})</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">}</a></code></pre></div>
 <p>Important note: The above code doesn’t make the reactive and observer elements. Instead, it is a function that <em>will make them</em> when called appropriately.</p>
 </section><section id="using-the-module-server-builder" class="slide level2">
 <h2>Using the module server builder</h2>
 <p><em>If we were not building modules</em>, we might use functions like <code>density_UI()</code> and <code>density()</code> directly in an app, like this:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
-<a class="sourceLine" id="cb35-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb35-4" data-line-number="4">  <span class="kw">density</span>(input, output, session)</a>
-<a class="sourceLine" id="cb35-5" data-line-number="5">  ... other reactive definitions ...</a>
-<a class="sourceLine" id="cb35-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb35-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb39-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">  <span class="kw">density</span>(input, output, session)</a>
+<a class="sourceLine" id="cb39-5" data-line-number="5">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb39-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
 <ul>
 <li>Problem 1: <code>density_UI(&quot;fred&quot;)</code> creates UI elements with <code>fred-</code> prepended to the name.</li>
 <li>Problem 2: <code>density(input, output, session)</code> does <strong>not</strong> prepend <code>fred-</code> to the names of the inputs or reactive elements.</li>
@@ -2301,44 +2423,44 @@ Or I will kill you</p>
 <h2><code>callModule()</code> to the rescue</h2>
 <p>To use the functions <code>density_UI()</code> and <code>density()</code> as a module, we need to coordinate the name spaces.</p>
 <p><code>callModule()</code> does this.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
-<a class="sourceLine" id="cb36-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
-<a class="sourceLine" id="cb36-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
-<a class="sourceLine" id="cb36-5" data-line-number="5">  ... other reactive definitions ...</a>
-<a class="sourceLine" id="cb36-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb40-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>))</a>
+<a class="sourceLine" id="cb40-3" data-line-number="3">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb40-4" data-line-number="4">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb40-5" data-line-number="5">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb40-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
 <p>It’s your job to use <code>&quot;fred&quot;</code> consistently.</p>
 </section><section id="a-multiple-use-pattern" class="slide level2">
 <h2>A multiple-use pattern</h2>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
-<a class="sourceLine" id="cb37-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>),</a>
-<a class="sourceLine" id="cb37-3" data-line-number="3">              <span class="kw">density_UI</span>(<span class="st">&quot;ginger&quot;</span>))</a>
-<a class="sourceLine" id="cb37-4" data-line-number="4">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb37-5" data-line-number="5">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
-<a class="sourceLine" id="cb37-6" data-line-number="6">  <span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
-<a class="sourceLine" id="cb37-7" data-line-number="7">  ... other reactive definitions ...</a>
-<a class="sourceLine" id="cb37-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb37-9" data-line-number="9"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">tagList</span>(... other UI stuff ...,     </a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">              <span class="kw">density_UI</span>(<span class="st">&quot;fred&quot;</span>),</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">              <span class="kw">density_UI</span>(<span class="st">&quot;ginger&quot;</span>))</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb41-5" data-line-number="5">  <span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb41-6" data-line-number="6">  <span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">  ... other reactive definitions ...</a>
+<a class="sourceLine" id="cb41-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb41-9" data-line-number="9"><span class="kw">shinyApp</span>(ui, server)</a></code></pre></div>
 </section><section id="accessing-fred-and-gingers-reactives" class="slide level2">
 <h2>Accessing Fred and Ginger’s reactives</h2>
 <p>Functions like <code>density()</code> can return values after they create the reactive entities.</p>
 <p>This enables you to provide other reactive entities access to the reactives in Fred or Ginger.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb38-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
-<a class="sourceLine" id="cb38-3" data-line-number="3">  ... other stuff <span class="cf">in</span> your module</a>
-<a class="sourceLine" id="cb38-4" data-line-number="4">  <span class="kw">return</span>(<span class="kw">list</span>(rvals, ... and any others you want.))</a>
-<a class="sourceLine" id="cb38-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">density &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">  rvals &lt;-<span class="st"> </span><span class="kw">reactive</span>({<span class="kw">rnorm</span>(<span class="dv">1000</span>) <span class="op">+</span><span class="st"> </span>input<span class="op">$</span>x})</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">  ... other stuff <span class="cf">in</span> your module</a>
+<a class="sourceLine" id="cb42-4" data-line-number="4">  <span class="kw">return</span>(<span class="kw">list</span>(rvals, ... and any others you want.))</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">}</a></code></pre></div>
 <p>Then,</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">  Freds_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
-<a class="sourceLine" id="cb39-3" data-line-number="3">  Gingers_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
-<a class="sourceLine" id="cb39-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb39-5" data-line-number="5">  <span class="co"># Calculate the sum of Fred and Gingers random values</span></a>
-<a class="sourceLine" id="cb39-6" data-line-number="6">  new_reactive &lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
-<a class="sourceLine" id="cb39-7" data-line-number="7">    Freds_reactives<span class="op">$</span><span class="kw">rvals</span>() <span class="op">+</span><span class="st"> </span>Gingers_reactives<span class="op">$</span><span class="kw">rvals</span>()</a>
-<a class="sourceLine" id="cb39-8" data-line-number="8">  })</a>
-<a class="sourceLine" id="cb39-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">  Freds_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;fred&quot;</span>)</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">  Gingers_reactives &lt;-<span class="st"> </span><span class="kw">callModule</span>(density, <span class="st">&quot;ginger&quot;</span>)</a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">  <span class="co"># Calculate the sum of Fred and Gingers random values</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">  new_reactive &lt;-<span class="st"> </span><span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb43-7" data-line-number="7">    Freds_reactives<span class="op">$</span><span class="kw">rvals</span>() <span class="op">+</span><span class="st"> </span>Gingers_reactives<span class="op">$</span><span class="kw">rvals</span>()</a>
+<a class="sourceLine" id="cb43-8" data-line-number="8">  })</a>
+<a class="sourceLine" id="cb43-9" data-line-number="9">}</a></code></pre></div>
 </section></section>
 <section><section id="project-4" class="title-slide slide level1"><h1>Project 4</h1></section><section id="project-4-modules" class="slide level2">
 <h2>Project 4: Modules</h2>
@@ -2435,8 +2557,8 @@ Or I will kill you</p>
 <section class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>But the visualizer knows that they will eventually be used.<a href="#/fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>There are others, see <code>quote()</code>, <code>expression</code>, and <code>parse</code>.<a href="#/fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>There are others, see <code>quote()</code>, <code>expression</code>, and <code>parse</code>.<a href="#/fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>But the visualizer knows that they will eventually be used.<a href="#/fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
     </div>

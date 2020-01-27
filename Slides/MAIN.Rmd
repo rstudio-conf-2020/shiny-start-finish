@@ -92,6 +92,9 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 # Reactives {data-background-image="./images/cityscape.png"}
 
+```{r child="closures.Rmd"}
+```
+
 ```{r child="reactives.Rmd"}
 ```
 
@@ -112,7 +115,7 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
  
 ## Augment the server for Project-2-calculator
 
-# Avoiding loops: Updating inputs
+# Avoiding reactive loops: Updating inputs
 
 ```{r child="values-and-inputs.Rmd"}
 ```
@@ -127,15 +130,17 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 # Shiny documents
 
-Laying out an Rmd document: Big Mac?
+<!-- Laying out an Rmd document: Big Mac?
 
 See prototype.Rmd under 06-design-ui
+-->
 
-# Flexdashboards
+# Dashboards
 
-apps/dashboards/flexdashboard_01.Rmd
+```{r child="dashboards.Rmd"}
+```
 
-# TUESDAY
+# TUESDAY {data-background-image="./images/title-slide.png"}
 
 # Deploy
 
