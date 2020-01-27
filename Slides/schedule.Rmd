@@ -24,5 +24,5 @@ See the GitHub repo for the course, [here](https://github.com/rstudio-conf-2020/
 - WiFi: Network: rstudio20, password: tidyverse20 
 - GitHub site (short link): [https://rstd.io/conf20-intro-shiny](https://rstd.io/conf20-intro-shiny)
 - [Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093)  
-- Lunch: Grand Ballroom A: 12:30 - 13:30
+- Lunch: On our floor: 12:30 - 13:30
 - [Code of conduct](http://info.rstudio.com/Q0tN0sX0Ny2Sm0C6Y005sH0)
