@@ -33,7 +33,7 @@ Strongly recommended ... RStudio.cloud
 <div class="col">
 If you must use your own machine ...
 
-- Make new project from github.com/dtkaplan/Shiny2020
+- Make a new project from <https://github.com/rstudio-conf-2020/shiny-start-finish>
 - Be prepared to install packages. See `Packages-installed.R` in root directory of project.
 </div>
 </div>
