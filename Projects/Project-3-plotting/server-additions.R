@@ -13,7 +13,7 @@ observeEvent(Raw_data(), {
 
 # Task 4
 columns <- reactive({
-  req(input$response, input$explanatory) # task 6 addition
+  # req(input$response, input$explanatory) # task 6 addition
   Raw_data()[c(input$response, input$explanatory)]
 })
 

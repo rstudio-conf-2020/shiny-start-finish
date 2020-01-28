@@ -1,0 +1,51 @@
+<!-- Some solutions -->
+
+```{r echo=FALSE}
+median_price <- reactive({
+  median(accepted_data()$price, na.rm=TRUE)
+})
+
+n_acceptable <- reactive({
+  nrow(accepted_data())
+})
+
+# A redefinition of price_filter that would cause it to be hidden
+# price_filter <- conditionalPanel(
+#   condition = "input.by_price",
+#   sliderInput("price", "Price range (K)",
+#               min = 0, max = 500, value = c(0,500),
+#               step = 1)
+# )
+
+output$median_price <- renderText({median_price()})
+
+  
+output$n_satisfying <- renderText({n_acceptable()})
+
+passed_price <- reactive({
+  SaratogaHouses %>% 
+  filter(
+    price >= 1000 * input$price[1],
+    price <= 1000 * input$price[2]
+  )
+})
+
+passed_lotsize <- reactive({
+  passed_price() %>% 
+  filter(
+    lotSize >= input$lot_area[1],
+    lotSize <= input$lot_area[2]
+  )
+})
+
+# I've skipped construction type
+accepted_data <- reactive({
+  passed_lotsize() %>% 
+  filter(
+    bedrooms >= input$bedrooms[1],
+    bedrooms <= input$bedrooms[2]
+  )
+})
+
+```
+

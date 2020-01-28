@@ -1376,61 +1376,6 @@ UI <- tagList(
 </section><section id="if-you-havent-had-enough" class="slide level2">
 <h2>If you haven’t had enough …</h2>
 <p><img data-src="#section-2" />(images/twin-cities-busses.png](<a href="https://shiny.rstudio.com/gallery/bus-dashboard.html" class="uri">https://shiny.rstudio.com/gallery/bus-dashboard.html</a>)</p>
-</section><section id="project-2" class="slide level2">
-<h2>Project 2</h2>
-</section><section id="project-2-calculator" class="slide level2">
-<h2>Project 2: Calculator</h2>
-<p>In the <code>Projects/Project-2-calculator</code> directory are several files.</p>
-<p>We’ll start with <code>app.R</code> and <code>keyboard.R</code>.</p>
-</section><section id="phase-i-extend-the-ui" class="slide level2">
-<h2>Phase I: Extend the UI</h2>
-<ol type="1">
-<li>Confirm that you can run <code>app.R</code> to create a UI as might be suitable for a calculator.</li>
-<li>Glance through the functions in <code>keyboard.R</code> to get an idea of how you might add new keys. (Hint: It’s not hard.)</li>
-<li>Add several keys: square-root, exp, ln, sin, …. Keep in mind, these keys don’t have to do anything yet except allow themselves to be pushed.</li>
-</ol>
-</section><section id="phase-ii-start-writing-the-server" class="slide level2">
-<h2>Phase II: Start writing the server</h2>
-<p>The file <code>server-starting.R</code> contains statements that call some of the Shiny functions to create reactives. These statements will be <code>source()</code>d into the <code>server()</code> function, as if they were typed there.</p>
-<p>To start the server:</p>
-<ol type="1">
-<li>Create a reactive value <code>entry_string</code>. This will store the number being created at the keyboard. Initialize it to a blank string: <code>&quot;&quot;</code>.
-<ul>
-<li>which of the Shiny functions to make reactives will you use?</li>
-</ul></li>
-<li>Arrange that the value of <code>entry_string</code> is at all times displayed in the <code>current</code> UI output widget.
-<ul>
-<li>which of the Shiny functions to make reactive displays will you use?</li>
-</ul></li>
-<li>Write an observer which, when the “one” button is pressed, concatenates a “1” to the <code>entry_string</code>.
-<ul>
-<li>Use <code>observeEvent()</code>.</li>
-</ul></li>
-<li>Write similar observers for the other 11 buttons in the 4x3 array of keyboard buttons.
-<ul>
-<li>the tricky one is for “delete”. <code>substr()</code> and <code>nchar()</code> will help.</li>
-</ul></li>
-</ol>
-</section><section id="phase-3-respond-to-the-operation-buttons" class="slide level2">
-<h2>Phase 3: Respond to the operation buttons</h2>
-<p>The file <code>server-ops.R</code> is intended to hold server commands to handle the operation button presses. It’s blank right now.</p>
-<p>Your task is to implement a system that will determine which operation button was pressed and store a corresponding identifying string in the reactive value named <code>last_op</code>.</p>
-</section><section id="when-last_op-changes" class="slide level2">
-<h2>When <code>last_op()</code> changes</h2>
-</section><section id="your-turn-taking-an-action-when-last_op-changes" class="slide level2">
-<h2>Your Turn: Taking an action when <code>last_op</code> changes</h2>
-<p>Read through <code>server-ops-soln.R</code> to see some ideas.</p>
-<ol type="1">
-<li>Make a note of what doesn’t make sense to you or why one reactive constructor is used rather than another.</li>
-<li>Let’s discuss and play with changes as they come up.</li>
-</ol>
-</section><section id="changes-that-dont-register" class="slide level2">
-<h2>Changes that don’t register</h2>
-<p>In <code>server-ops-soln.R</code> on lines 18, 20, 22, and so on, what’s going on? Why is <code>last_op()</code> being called twice, when only the second call really matters? What happens when the first call is deleted?</p>
-<p>Hint: 3 + 2 + 4</p>
-</section><section id="see-what-happens-if-we-change-observeevent-to-observe" class="slide level2">
-<h2>See what happens if we change observeEvent to observe</h2>
-<p>Talk about isolate.</p>
 </section></section>
 <section><section id="background-functions" class="title-slide slide level1"><h1>Background: Functions</h1></section><section id="function-environment-closure" class="slide level2" style="margin:10px;font-size:80%;">
 <h2>Function + Environment = “<em>closure</em>”</h2>
@@ -1911,6 +1856,72 @@ Or I will kill you</p>
 <li>when the response variable is not numeric, <code>lm()</code> complains. In such a case, arrange for the response variable to be binary: the most common level and “others”. Also, arrange the model to do logistic regression.</li>
 </ol>
 </section></section>
+<section id="tuesday" class="title-slide slide level1" data-background-image="./images/title-slide.png"><h1>TUESDAY</h1></section>
+<section><section id="recap" class="title-slide slide level1"><h1>Recap</h1></section><section id="review-a-solution-for-project-3" class="slide level2">
+<h2>Review a solution for Project 3</h2>
+</section><section id="not-ready-punting-with-req" class="slide level2">
+<h2>Not ready? Punting with <code>req()</code></h2>
+<p>How to avoid triggering reactive logic when inputs are not ready.</p>
+</section><section id="project-6" class="slide level2">
+<h2>Project 6</h2>
+<p>In <code>Project/Project-6-houses</code></p>
+<p>This is an Rmd document set up to run as Shiny.</p>
+</section><section id="project-2" class="slide level2">
+<h2>Project 2</h2>
+</section><section id="project-2-calculator" class="slide level2">
+<h2>Project 2: Calculator</h2>
+<p>In the <code>Projects/Project-2-calculator</code> directory are several files.</p>
+<p>We’ll start with <code>app.R</code> and <code>keyboard.R</code>.</p>
+</section><section id="phase-i-extend-the-ui" class="slide level2">
+<h2>Phase I: Extend the UI</h2>
+<ol type="1">
+<li>Confirm that you can run <code>app.R</code> to create a UI as might be suitable for a calculator.</li>
+<li>Glance through the functions in <code>keyboard.R</code> to get an idea of how you might add new keys. (Hint: It’s not hard.)</li>
+<li>Add several keys: square-root, exp, ln, sin, …. Keep in mind, these keys don’t have to do anything yet except allow themselves to be pushed.</li>
+</ol>
+</section><section id="phase-ii-start-writing-the-server" class="slide level2">
+<h2>Phase II: Start writing the server</h2>
+<p>The file <code>server-starting.R</code> contains statements that call some of the Shiny functions to create reactives. These statements will be <code>source()</code>d into the <code>server()</code> function, as if they were typed there.</p>
+<p>To start the server:</p>
+<ol type="1">
+<li>Create a reactive value <code>entry_string</code>. This will store the number being created at the keyboard. Initialize it to a blank string: <code>&quot;&quot;</code>.
+<ul>
+<li>which of the Shiny functions to make reactives will you use?</li>
+</ul></li>
+<li>Arrange that the value of <code>entry_string</code> is at all times displayed in the <code>current</code> UI output widget.
+<ul>
+<li>which of the Shiny functions to make reactive displays will you use?</li>
+</ul></li>
+<li>Write an observer which, when the “one” button is pressed, concatenates a “1” to the <code>entry_string</code>.
+<ul>
+<li>Use <code>observeEvent()</code>.</li>
+</ul></li>
+<li>Write similar observers for the other 11 buttons in the 4x3 array of keyboard buttons.
+<ul>
+<li>the tricky one is for “delete”. <code>substr()</code> and <code>nchar()</code> will help.</li>
+</ul></li>
+</ol>
+</section><section id="phase-3-respond-to-the-operation-buttons" class="slide level2">
+<h2>Phase 3: Respond to the operation buttons</h2>
+<p>The file <code>server-ops.R</code> is intended to hold server commands to handle the operation button presses. It’s blank right now.</p>
+<p>Your task is to implement a system that will determine which operation button was pressed and store a corresponding identifying string in the reactive value named <code>last_op</code>.</p>
+</section><section id="when-last_op-changes" class="slide level2">
+<h2>When <code>last_op()</code> changes</h2>
+</section><section id="your-turn-taking-an-action-when-last_op-changes" class="slide level2">
+<h2>Your Turn: Taking an action when <code>last_op</code> changes</h2>
+<p>Read through <code>server-ops-soln.R</code> to see some ideas.</p>
+<ol type="1">
+<li>Make a note of what doesn’t make sense to you or why one reactive constructor is used rather than another.</li>
+<li>Let’s discuss and play with changes as they come up.</li>
+</ol>
+</section><section id="changes-that-dont-register" class="slide level2">
+<h2>Changes that don’t register</h2>
+<p>In <code>server-ops-soln.R</code> on lines 18, 20, 22, and so on, what’s going on? Why is <code>last_op()</code> being called twice, when only the second call really matters? What happens when the first call is deleted?</p>
+<p>Hint: 3 + 2 + 4</p>
+</section><section id="see-what-happens-if-we-change-observeevent-to-observe" class="slide level2">
+<h2>See what happens if we change observeEvent to observe</h2>
+<p>Talk about isolate.</p>
+</section></section>
 <section><section id="debugging" class="title-slide slide level1"><h1>Debugging</h1></section><section id="debugging-1" class="slide level2">
 <h2>Debugging</h2>
 <p>Basic methods:</p>
@@ -2061,7 +2072,6 @@ Or I will kill you</p>
 <li>when the response variable is not numeric, <code>lm()</code> complains. In such a case, arrange for the response variable to be binary: the most common level and “others”. Also, arrange the model to do logistic regression.</li>
 </ol>
 </section></section>
-<section id="shiny-documents" class="title-slide slide level1"><h1>Shiny documents</h1></section>
 <section><section id="dashboards" class="title-slide slide level1"><h1>Dashboards</h1></section><section id="dashboards-1" class="slide level2">
 <h2>Dashboards</h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(shiny)</a>
@@ -2191,7 +2201,6 @@ output:
 </ul>
 <p>Example: <code>Projects/Project-5-dashboards/storyboard.Rmd</code></p>
 </section></section>
-<section id="tuesday" class="title-slide slide level1" data-background-image="./images/title-slide.png"><h1>TUESDAY</h1></section>
 <section><section id="deploy" class="title-slide slide level1"><h1>Deploy</h1></section><section id="get-your-directory-in-order" class="slide level2">
 <h2>Get your directory in order</h2>
 <ol type="1">

@@ -85,11 +85,6 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 ```{r child="UI-frameworks.Rmd"}
 ```
 
-## Project 2
-
-```{r child="project-2.Rmd"}
-```
-
 
 # Background: Functions
 
@@ -106,6 +101,30 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 # Project 3: Plot a data frame
 
 ```{r child = "project-3.Rmd"}
+```
+
+# TUESDAY {data-background-image="./images/title-slide.png"}
+
+# Recap
+
+## Review a solution for Project 3
+
+
+## Not ready? Punting with `req()`
+
+How to avoid triggering reactive logic when inputs are not ready.
+
+## Project 6
+
+In `Project/Project-6-houses`
+
+This is an Rmd document set up to run as Shiny.
+
+
+
+## Project 2
+
+```{r child="project-2.Rmd"}
 ```
 
 
@@ -133,19 +152,14 @@ It's helpful to divide the ideas behind implementing a UI into three conceptual 
 
 
 
-# Shiny documents
 
-<!-- Laying out an Rmd document: Big Mac?
-
-See prototype.Rmd under 06-design-ui
--->
 
 # Dashboards
 
 ```{r child="dashboards.Rmd"}
 ```
 
-# TUESDAY {data-background-image="./images/title-slide.png"}
+
 
 # Deploy
 

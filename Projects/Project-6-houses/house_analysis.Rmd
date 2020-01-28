@@ -1,0 +1,74 @@
+---
+title: "Exploratory report"
+author: "Daniel Kaplan"
+date: "1/27/2020"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(shinyjs)
+data("SaratogaHouses", package = "mosaicData")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+```{r echo=FALSE}
+price_filter <- 
+  sliderInput("price", "Price range (K)",
+              min = 0, max = 500, value = c(0,500),
+              step = 1)
+lot_area_filter <- sliderInput("lot_area", "Lot size (acres)",
+                               min = 0, max = 5, value = c(0,5),
+                               step = 0.1)
+bedrooms <- sliderInput("bedrooms", "Bedrooms", min = 0, max = 10, 
+                       value = c(0,10))
+construction <- selectizeInput("construction", "Construction",
+                               choices = c("new", "old"),
+                               selected = "new")
+```
+
+
+In response to your recent query, here is the report on real-estate transactions over the last year. Altogether, there were `r nrow(SaratogaHouses)` sales.
+
+criterion  | acceptable values
+-----------|------------------
+`r checkboxInput("by_price", "By price")` | `r price_filter`
+`r checkboxInput("by_lotsize", "By lotsize")` | `r lot_area_filter`
+`r checkboxInput("by_bedrooms", "By number of bedrooms")` | `r bedrooms`
+`r checkboxInput("by_const", "By construction")` | `r construction`
+
+`r textOutput("n_satisfying", inline=TRUE)` houses meet your criteria. 
+
+The median price is $`r textOutput("median_price", inline=TRUE)`.
+
+## Reactive logic tasks
+
+1. Write reactives that, given the selection criteria, filter the `SaratogaHouses` data frame to produce just those rows meeting the criteria.
+    - You may want to implement just one of the criteria before adding the others.
+    - Think about whether you want just one reactive that does all the filtering, or a series of reactives each of which filters the output of the previous reactive according to an additional criterion.
+2. Fill in the `textOutput()` named `"n_satisfying"` with the number of rows in the filtered data.
+3. Fill in the `textOutput()` named `"median_price"` with that numerical value
+4. There are checkboxes for the criteria. Arrange things so that, when unchecked, the corresponding slider/selector disappears and that criterion is not used for filtering.
+    - here, we'll use a UI modifier, `conditionPanel()`
+    - In a script-file app, you could use functions from the `shinyjs` package, `hide()` and `show()` to determine whether the widget is being shown. For instance, `hide("price")` will hide the widget with the id `"price"`.
+5. When you have things working, move the UI and reactive logic into an `app.R` style of app.
+    - The point here is better to understand the organization of components in `app.R`.
+    - Also, it's easier to debug in an `app.R`.
+
+For those of you without `dplyr` experience, here is a statement that will take two values defining a range, `lower` and `upper`, and return just those rows where `price` is in the range.
+
+```{r}
+lower = 100000
+upper = 150000
+Acceptable <- SaratogaHouses %>% 
+  filter(price >= lower, price <= upper)
+```
+
+`Acceptable` will be a data frame with just the houses that pass the test.
+
+```{r child="soln.Rmd", eval=FALSE}
+```

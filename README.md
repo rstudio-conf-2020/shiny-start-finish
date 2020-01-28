@@ -63,22 +63,22 @@ Your (lack of) previous experience with Shiny is not an issue. If you have exper
 | 09:00 - 10:30 | Intro & widgets  | 
 | 10:30 - 11:00 | *Coffee break*   |
 | 11:00 - 12:00 | UI structure     |
-| 12:00 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Reactive logic   |
+| 12:30 - 13:30 | *Lunch break*    |
+| 13:30 - 15:00 | "server" and code |
 | 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Debugging        |
+| 15:30 - 17:00 | Reactive logic   |
 
 ### Tuesday
 
-| Time          | Topic         |
+| Time          | Topic            |
 | :------------ | :--------------- |
-| 09:00 - 10:30 | Documents & dashboards  | <!--learnr here -->
+| 09:00 - 10:30 | Recap & Debugging        | <!--learnr here -->
 | 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:00 | Deployment       | <!-- including persistent storage -->
-| 12:00 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Modules          |
+| 11:00 - 12:30 | Documents & dashboards       | 
+| 12:30 - 13:30 | *Lunch break*    |
+| 13:30 - 15:00 | Deployment       |  <!-- including persistent storage -->
 | 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 16:45 | Prettifying      |
+| 15:30 - 16:45 | Modules          |
 | 16:45 - 17:00 | [Feedback](http://rstd.io/ws-survey) |
 
 ## Instructor and Teaching Assistants
