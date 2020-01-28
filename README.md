@@ -13,8 +13,8 @@ by Danny Kaplan
 :writing_hand:    [Community page](https://community.rstudio.com/t/shiny-from-start-to-finish-workshop-rstudio-conf-2020/49093)   
 [rstudio.cloud/project/865256](https://rstudio.cloud/project/865256)     
 GitHub repo: [https://github.com/rstudio-conf-2020/shiny-start-finish](https://github.com/rstudio-conf-2020/shiny-start-finish)  
-wifi: rstudio20, password: tidyverse20 
-
+wifi: rstudio20, password: tidyverse20    
+birds of a feather [document](https://docs.google.com/document/d/13kFAdDLXiOBx6Krz9lBzRxXHnNGDZqmBGRzuKPnUueg/edit?usp=sharing): <http://bit.ly/shinyBoF2020>
 -----
 
 ## Overview
