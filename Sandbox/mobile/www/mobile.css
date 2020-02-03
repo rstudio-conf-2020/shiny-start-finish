@@ -1,0 +1,23 @@
+#D, #E, #sample_size {
+  color: red;
+  background-color: gray;
+}
+
+.btn {
+  display:block;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 1px solid red;
+}
+
+.well {
+  background-color: green;
+  
+}
+
+.selectize-input {
+  height: 30px; 
+  width: 80px; 
+  font-size: 12px;
+}

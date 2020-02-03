@@ -1,0 +1,12 @@
+name: house_analysis
+title: house_analysis
+username: dtkaplan
+account: dtkaplan
+server: workshops.rstudio.com
+hostUrl: https://workshops.rstudio.com/rsconnect/__api__
+appId: 155
+bundleId: 191
+url: https://workshops.rstudio.com/rsconnect/content/155/
+when: 1580249158.93594
+asMultiple: TRUE
+asStatic: FALSE

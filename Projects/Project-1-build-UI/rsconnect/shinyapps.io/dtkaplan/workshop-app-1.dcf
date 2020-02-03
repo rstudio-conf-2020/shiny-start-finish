@@ -1,0 +1,12 @@
+name: workshop-app-1
+title: workshop-app-1
+username:
+account: dtkaplan
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1721328
+bundleId: 2759536
+url: https://dtkaplan.shinyapps.io/workshop-app-1/
+when: 1580249718.61486
+asMultiple: FALSE
+asStatic: FALSE

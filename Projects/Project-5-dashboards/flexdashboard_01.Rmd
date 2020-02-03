@@ -17,6 +17,8 @@ Some text at the start of page 1
 
 ##  Column 1
 
+### Read this
+
 Note the YAML `orientation:` directive, which for this  document is set for columns.
 
 ### Boxes

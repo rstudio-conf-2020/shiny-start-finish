@@ -9,6 +9,7 @@ runtime: shiny
 ```{r setup, include=FALSE}
 library(dplyr)
 library(shinyjs)
+library(mosaicData)
 data("SaratogaHouses", package = "mosaicData")
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -28,7 +29,8 @@ bedrooms <- sliderInput("bedrooms", "Bedrooms", min = 0, max = 10,
                        value = c(0,10))
 construction <- selectizeInput("construction", "Construction",
                                choices = c("new", "old"),
-                               selected = "new")
+                               selected = "new",
+                               multiple = TRUE)
 ```
 
 
@@ -72,3 +74,8 @@ Acceptable <- SaratogaHouses %>%
 
 ```{r child="soln.Rmd", eval=FALSE}
 ```
+
+
+
+
+

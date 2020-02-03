@@ -12,13 +12,15 @@ ui <- fluidPage(
   tableOutput("show_df")
 )
 
-server <- function(input, output, session) {
+server <-   function(input, output, session) {
   Choices <- reactiveValues(
     frame = NULL,
     response = NULL,
     explanatory = NULL
   )
-  observe(Choices$frame <- input$frame) 
+  observe({
+    Choices$frame <- input$frame}
+    ) 
   observe(Choices$response <- input$response) 
   observe(Choices$explanatory <- input$explanatory)
   
